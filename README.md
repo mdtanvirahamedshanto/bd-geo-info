@@ -15,6 +15,8 @@ A comprehensive Bangladesh geographical data package with hierarchical selection
 - 🎨 Customizable styling
 - ✅ Form validation support
 - 📱 TypeScript support
+- 🔍 Error handling and data validation
+- 🎯 Zero dependencies
 
 ## Installation
 
@@ -22,11 +24,13 @@ A comprehensive Bangladesh geographical data package with hierarchical selection
 npm install bd-geo-info
 # or
 yarn add bd-geo-info
+# or
+pnpm add bd-geo-info
 ```
 
-## Usage
+## Quick Start
 
-### Basic Usage
+### Basic Usage with AddressForm
 
 ```tsx
 import { AddressForm } from 'bd-geo-info';
@@ -47,7 +51,7 @@ function App() {
 }
 ```
 
-### Individual Components
+### Individual Components Usage
 
 ```tsx
 import {
@@ -58,10 +62,10 @@ import {
 } from 'bd-geo-info';
 
 function CustomForm() {
-  const [division, setDivision] = useState();
-  const [district, setDistrict] = useState();
-  const [upazila, setUpazila] = useState();
-  const [union, setUnion] = useState();
+  const [division, setDivision] = useState<Division>();
+  const [district, setDistrict] = useState<District>();
+  const [upazila, setUpazila] = useState<Upazila>();
+  const [union, setUnion] = useState<UnionData>();
 
   return (
     <div>
@@ -69,21 +73,25 @@ function CustomForm() {
         value={division}
         onChange={setDivision}
         language="bn"
+        theme={{
+          primaryColor: '#4CAF50',
+          borderRadius: '8px'
+        }}
       />
       <DistrictSelect
-        division={division}
+        division={division?.id}
         value={district}
         onChange={setDistrict}
         language="bn"
       />
       <UpazilaSelect
-        district={district}
+        district={district?.id}
         value={upazila}
         onChange={setUpazila}
         language="bn"
       />
       <UnionSelect
-        upazila={upazila}
+        upazila={upazila?.id}
         value={union}
         onChange={setUnion}
         language="bn"
@@ -93,43 +101,104 @@ function CustomForm() {
 }
 ```
 
-### Utility Functions
+## Common Use Cases
+
+### 1. Custom Styled Form
+
+```tsx
+import { AddressForm } from 'bd-geo-info';
+
+function StyledAddressForm() {
+  return (
+    <AddressForm
+      theme={{
+        primaryColor: '#2196F3',
+        borderRadius: '4px',
+        fontSize: '16px',
+        padding: '12px',
+        borderColor: '#E0E0E0'
+      }}
+      containerClassName="custom-form"
+      labelClassName="custom-label"
+      errorClassName="custom-error"
+      inputContainerClassName="custom-input-container"
+    />
+  );
+}
+```
+
+### 2. Form with Validation
+
+```tsx
+import { AddressForm } from 'bd-geo-info';
+
+function ValidatedForm() {
+  return (
+    <AddressForm
+      validation={{
+        division: { required: true },
+        district: { required: true },
+        upazila: { required: true },
+        union: { required: false },
+        postCode: { required: true }
+      }}
+      customErrors={{
+        division: 'Please select a division',
+        district: 'Please select a district',
+        upazila: 'Please select an upazila',
+        postCode: 'Please enter a valid postcode'
+      }}
+    />
+  );
+}
+```
+
+### 3. Bilingual Form with Custom Labels
+
+```tsx
+import { AddressForm } from 'bd-geo-info';
+
+function BilingualForm() {
+  return (
+    <AddressForm
+      language="bn"
+      customLabels={{
+        division: 'বিভাগ নির্বাচন করুন',
+        district: 'জেলা নির্বাচন করুন',
+        upazila: 'উপজেলা নির্বাচন করুন',
+        union: 'ইউনিয়ন নির্বাচন করুন',
+        postCode: 'পোস্ট কোড'
+      }}
+    />
+  );
+}
+```
+
+### 4. Using Utility Functions
 
 ```typescript
 import {
-  getDivisions,
   getDistricts,
   getUpazilas,
   getUnions,
-  getPostCodes,
-  formatAddress
+  getPostCode
 } from 'bd-geo-info';
 
-// Get divisions list
-const divisions = getDivisions('en');
-
 // Get districts for a division
-const districts = getDistricts(divisionId, 'en');
+const districts = getDistricts(divisionId);
 
 // Get upazilas for a district
-const upazilas = getUpazilas(districtId, 'en');
+const upazilas = getUpazilas(districtId);
 
 // Get unions for an upazila
-const unions = getUnions(upazilaId, 'en');
+const unions = getUnions(upazilaId);
 
-// Get postcodes
-const postcodes = getPostCodes(districtId, upazilaId);
-
-// Format address
-const formattedAddress = formatAddress(
-  division,
-  district,
-  upazila,
-  union,
-  postCode,
-  street,
-  'en'
-);
+// Get postcodes with flexible filtering
+const postcodes = getPostCode({
+  division: divisionId,
+  district: districtId,
+  upazila: upazilaId
+});
 ```
 
 ## API Reference
@@ -147,43 +216,24 @@ const formattedAddress = formatAddress(
 | showLabels | boolean | true | Show/hide field labels |
 | customLabels | AddressFormLabels | - | Custom label text |
 | customErrors | AddressFormErrors | - | Custom error messages |
+| containerClassName | string | '' | CSS class for the form container |
+| labelClassName | string | '' | CSS class for labels |
+| errorClassName | string | '' | CSS class for error messages |
+| inputContainerClassName | string | '' | CSS class for input containers |
 
-### Select Components (Division/District/Upazila/Union)
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| value | T | - | Selected value |
-| onChange | (value: T) => void | - | Change handler |
-| language | 'en' \| 'bn' | 'en' | Display language |
-| className | string | '' | CSS class name |
-| placeholder | string | 'Select...' | Placeholder text |
-| customLabel | string \| ReactNode | - | Custom label |
-| customError | string \| ReactNode | - | Custom error message |
-| theme | Theme | - | Custom theme object |
-
-## Types
+### Theme Customization
 
 ```typescript
-interface AddressFormData {
-  division?: string;
-  district?: string;
-  upazila?: string;
-  union?: string;
-  postCode?: string;
-  street?: string;
-}
-
 interface Theme {
   primaryColor?: string;
-  backgroundColor?: string;
-  borderColor?: string;
   borderRadius?: string;
-  // ... other theme properties
-}
-
-interface ValidationRules {
-  required?: boolean;
-  customValidation?: (value: any) => boolean | string;
+  fontSize?: string;
+  padding?: string;
+  borderColor?: string;
+  errorColor?: string;
+  backgroundColor?: string;
+  textColor?: string;
+  placeholderColor?: string;
 }
 ```
 
@@ -195,11 +245,17 @@ Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTIN
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-
 ## Support 💖
 
-If you find this package helpful, please consider giving it a star on GitHub! For issues and feature requests, please use the GitHub issue tracker.
+If you find this package helpful, please consider giving it a star on GitHub! For issues and feature requests, please use the [GitHub Issues](https://github.com/mdtanvirahamedshanto/bd-geo-info/issues) page.
 
+## Acknowledgments
+- Thanks to the contributors and maintainers for their valuable work.
+
+## Contact
+- Email: [EMAIL](mailto:mdtanvirahamedshanto@gmail.com)
+- GitHub: [GitHub Profile](https://github.com/mdtanvirahamedshanto)
+- LinkedIn: [LinkedIn Profile](https://linkedin.com/in/mdtanvirahamedshanto/)
+- Protfolio: [Portfolio](https://mdtanvirahamedshanto.vercel.app/)
 ---
-
 Made with ❤️ by [Md Tanvir Ahamed Shanto](https://mdtanvirahamedshanto.vercel.app/) for the Bangla community
