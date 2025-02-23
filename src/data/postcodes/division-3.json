@@ -1,0 +1,2629 @@
+{
+  "postcodes": [
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Demra",
+      "postOffice": "Demra",
+      "postCode": "1360"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Demra",
+      "postOffice": "Matuail",
+      "postCode": "1362"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Demra",
+      "postOffice": "Sarulia",
+      "postCode": "1361"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Dhaka Cantt.",
+      "postOffice": "Dhaka CantonmentTSO",
+      "postCode": "1206"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Dhamrai",
+      "postOffice": "Dhamrai",
+      "postCode": "1350"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Dhamrai",
+      "postOffice": "Kamalpur",
+      "postCode": "1351"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Dhanmondi",
+      "postOffice": "Jigatala TSO",
+      "postCode": "1209"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Gulshan",
+      "postOffice": "Banani TSO",
+      "postCode": "1213"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Gulshan",
+      "postOffice": "Gulshan Model Town",
+      "postCode": "1212"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Jatrabari",
+      "postOffice": "Dhania TSO",
+      "postCode": "1232"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Joypara",
+      "postOffice": "Joypara",
+      "postCode": "1330"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Joypara",
+      "postOffice": "Narisha",
+      "postCode": "1332"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Joypara",
+      "postOffice": "Palamganj",
+      "postCode": "1331"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Keraniganj",
+      "postOffice": "Ati",
+      "postCode": "1312"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Keraniganj",
+      "postOffice": "Dhaka Jute Mills",
+      "postCode": "1311"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Keraniganj",
+      "postOffice": "Kalatia",
+      "postCode": "1313"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Keraniganj",
+      "postOffice": "Keraniganj",
+      "postCode": "1310"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Khilgaon",
+      "postOffice": "KhilgaonTSO",
+      "postCode": "1219"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Khilkhet",
+      "postOffice": "KhilkhetTSO",
+      "postCode": "1229"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Lalbag",
+      "postOffice": "Posta TSO",
+      "postCode": "1211"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Mirpur",
+      "postOffice": "Mirpur TSO",
+      "postCode": "1216"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Mohammadpur",
+      "postOffice": "Mohammadpur Housing",
+      "postCode": "1207"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Mohammadpur",
+      "postOffice": "Sangsad BhabanTSO",
+      "postCode": "1225"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Motijheel",
+      "postOffice": "BangabhabanTSO",
+      "postCode": "1222"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Motijheel",
+      "postOffice": "DilkushaTSO",
+      "postCode": "1223"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Nawabganj",
+      "postOffice": "Agla",
+      "postCode": "1323"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Nawabganj",
+      "postOffice": "Churain",
+      "postCode": "1325"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Nawabganj",
+      "postOffice": "Daudpur",
+      "postCode": "1322"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Nawabganj",
+      "postOffice": "Hasnabad",
+      "postCode": "1321"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Nawabganj",
+      "postOffice": "Khalpar",
+      "postCode": "1324"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Nawabganj",
+      "postOffice": "Nawabganj",
+      "postCode": "1320"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "New market",
+      "postOffice": "New Market TSO",
+      "postCode": "1205"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Palton",
+      "postOffice": "Dhaka GPO",
+      "postCode": "1000"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Ramna",
+      "postOffice": "Shantinagr TSO",
+      "postCode": "1217"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Sabujbag",
+      "postOffice": "Basabo TSO",
+      "postCode": "1214"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Savar",
+      "postOffice": "Amin Bazar",
+      "postCode": "1348"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Savar",
+      "postOffice": "Dairy Farm",
+      "postCode": "1341"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Savar",
+      "postOffice": "EPZ",
+      "postCode": "1349"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Savar",
+      "postOffice": "Jahangirnagar Univer",
+      "postCode": "1342"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Savar",
+      "postOffice": "Kashem Cotton Mills",
+      "postCode": "1346"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Savar",
+      "postOffice": "Rajphulbaria",
+      "postCode": "1347"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Savar",
+      "postOffice": "Savar",
+      "postCode": "1340"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Savar",
+      "postOffice": "Savar Canttonment",
+      "postCode": "1344"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Savar",
+      "postOffice": "Saver P.A.T.C",
+      "postCode": "1343"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Savar",
+      "postOffice": "Shimulia",
+      "postCode": "1345"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Sutrapur",
+      "postOffice": "Dhaka Sadar HO",
+      "postCode": "1100"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Sutrapur",
+      "postOffice": "Gendaria TSO",
+      "postCode": "1204"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Sutrapur",
+      "postOffice": "Wari TSO",
+      "postCode": "1203"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Tejgaon",
+      "postOffice": "Tejgaon TSO",
+      "postCode": "1215"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Tejgaon Industrial Area",
+      "postOffice": "Dhaka Politechnic",
+      "postCode": "1208"
+    },
+    {
+      "division_id": "3",
+      "district_id": "1",
+      "upazila": "Uttara",
+      "postOffice": "Uttara Model TwonTSO",
+      "postCode": "1230"
+    },
+    {
+      "division_id": "3",
+      "district_id": "2",
+      "upazila": "Alfadanga",
+      "postOffice": "Alfadanga",
+      "postCode": "7870"
+    },
+    {
+      "division_id": "3",
+      "district_id": "2",
+      "upazila": "Bhanga",
+      "postOffice": "Bhanga",
+      "postCode": "7830"
+    },
+    {
+      "division_id": "3",
+      "district_id": "2",
+      "upazila": "Boalmari",
+      "postOffice": "Boalmari",
+      "postCode": "7860"
+    },
+    {
+      "division_id": "3",
+      "district_id": "2",
+      "upazila": "Boalmari",
+      "postOffice": "Rupatpat",
+      "postCode": "7861"
+    },
+    {
+      "division_id": "3",
+      "district_id": "2",
+      "upazila": "Charbhadrasan",
+      "postOffice": "Charbadrashan",
+      "postCode": "7810"
+    },
+    {
+      "division_id": "3",
+      "district_id": "2",
+      "upazila": "Faridpur Sadar",
+      "postOffice": "Ambikapur",
+      "postCode": "7802"
+    },
+    {
+      "division_id": "3",
+      "district_id": "2",
+      "upazila": "Faridpur Sadar",
+      "postOffice": "Baitulaman Politecni",
+      "postCode": "7803"
+    },
+    {
+      "division_id": "3",
+      "district_id": "2",
+      "upazila": "Faridpur Sadar",
+      "postOffice": "Faridpursadar",
+      "postCode": "7800"
+    },
+    {
+      "division_id": "3",
+      "district_id": "2",
+      "upazila": "Faridpur Sadar",
+      "postOffice": "Kanaipur",
+      "postCode": "7801"
+    },
+    {
+      "division_id": "3",
+      "district_id": "2",
+      "upazila": "Madukhali",
+      "postOffice": "Kamarkali",
+      "postCode": "7851"
+    },
+    {
+      "division_id": "3",
+      "district_id": "2",
+      "upazila": "Madukhali",
+      "postOffice": "Madukhali",
+      "postCode": "7850"
+    },
+    {
+      "division_id": "3",
+      "district_id": "2",
+      "upazila": "Nagarkanda",
+      "postOffice": "Nagarkanda",
+      "postCode": "7840"
+    },
+    {
+      "division_id": "3",
+      "district_id": "2",
+      "upazila": "Nagarkanda",
+      "postOffice": "Talma",
+      "postCode": "7841"
+    },
+    {
+      "division_id": "3",
+      "district_id": "2",
+      "upazila": "Sadarpur",
+      "postOffice": "Bishwa jaker Manjil",
+      "postCode": "7822"
+    },
+    {
+      "division_id": "3",
+      "district_id": "2",
+      "upazila": "Sadarpur",
+      "postOffice": "Hat Krishapur",
+      "postCode": "7821"
+    },
+    {
+      "division_id": "3",
+      "district_id": "2",
+      "upazila": "Sadarpur",
+      "postOffice": "Sadarpur",
+      "postCode": "7820"
+    },
+    {
+      "division_id": "3",
+      "district_id": "2",
+      "upazila": "Shriangan",
+      "postOffice": "Shriangan",
+      "postCode": "7804"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Gazipur Sadar",
+      "postOffice": "B.O.F",
+      "postCode": "1703"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Gazipur Sadar",
+      "postOffice": "B.R.R",
+      "postCode": "1701"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Gazipur Sadar",
+      "postOffice": "Chandna",
+      "postCode": "1702"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Gazipur Sadar",
+      "postOffice": "Gazipur Sadar",
+      "postCode": "1700"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Gazipur Sadar",
+      "postOffice": "National University",
+      "postCode": "1704"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Kaliakaar",
+      "postOffice": "Kaliakaar",
+      "postCode": "1750"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Kaliakaar",
+      "postOffice": "Safipur",
+      "postCode": "1751"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Kaliganj",
+      "postOffice": "Kaliganj",
+      "postCode": "1720"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Kaliganj",
+      "postOffice": "Pubail",
+      "postCode": "1721"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Kaliganj",
+      "postOffice": "Santanpara",
+      "postCode": "1722"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Kaliganj",
+      "postOffice": "Vaoal Jamalpur",
+      "postCode": "1723"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Kapashia",
+      "postOffice": "kapashia",
+      "postCode": "1730"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Monnunagar",
+      "postOffice": "Ershad Nagar",
+      "postCode": "1712"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Monnunagar",
+      "postOffice": "Monnunagar",
+      "postCode": "1710"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Monnunagar",
+      "postOffice": "Nishat Nagar",
+      "postCode": "1711"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Sreepur",
+      "postOffice": "Barmi",
+      "postCode": "1743"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Sreepur",
+      "postOffice": "Bashamur",
+      "postCode": "1747"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Sreepur",
+      "postOffice": "Boubi",
+      "postCode": "1748"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Sreepur",
+      "postOffice": "Kawraid",
+      "postCode": "1745"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Sreepur",
+      "postOffice": "Satkhamair",
+      "postCode": "1744"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Sreepur",
+      "postOffice": "Sreepur",
+      "postCode": "1740"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Sripur",
+      "postOffice": "Rajendrapur",
+      "postCode": "1741"
+    },
+    {
+      "division_id": "3",
+      "district_id": "3",
+      "upazila": "Sripur",
+      "postOffice": "Rajendrapur Canttome",
+      "postCode": "1742"
+    },
+    {
+      "division_id": "3",
+      "district_id": "4",
+      "upazila": "Gopalganj Sadar",
+      "postOffice": "Barfa",
+      "postCode": "8102"
+    },
+    {
+      "division_id": "3",
+      "district_id": "4",
+      "upazila": "Gopalganj Sadar",
+      "postOffice": "Chandradighalia",
+      "postCode": "8013"
+    },
+    {
+      "division_id": "3",
+      "district_id": "4",
+      "upazila": "Gopalganj Sadar",
+      "postOffice": "Gopalganj Sadar",
+      "postCode": "8100"
+    },
+    {
+      "division_id": "3",
+      "district_id": "4",
+      "upazila": "Gopalganj Sadar",
+      "postOffice": "Ulpur",
+      "postCode": "8101"
+    },
+    {
+      "division_id": "3",
+      "district_id": "4",
+      "upazila": "Kashiani",
+      "postOffice": "Jonapur",
+      "postCode": "8133"
+    },
+    {
+      "division_id": "3",
+      "district_id": "4",
+      "upazila": "Kashiani",
+      "postOffice": "Kashiani",
+      "postCode": "8130"
+    },
+    {
+      "division_id": "3",
+      "district_id": "4",
+      "upazila": "Kashiani",
+      "postOffice": "Ramdia College",
+      "postCode": "8131"
+    },
+    {
+      "division_id": "3",
+      "district_id": "4",
+      "upazila": "Kashiani",
+      "postOffice": "Ratoil",
+      "postCode": "8132"
+    },
+    {
+      "division_id": "3",
+      "district_id": "4",
+      "upazila": "Kotalipara",
+      "postOffice": "Kotalipara",
+      "postCode": "8110"
+    },
+    {
+      "division_id": "3",
+      "district_id": "4",
+      "upazila": "Maksudpur",
+      "postOffice": "Batkiamari",
+      "postCode": "8141"
+    },
+    {
+      "division_id": "3",
+      "district_id": "4",
+      "upazila": "Maksudpur",
+      "postOffice": "Khandarpara",
+      "postCode": "8142"
+    },
+    {
+      "division_id": "3",
+      "district_id": "4",
+      "upazila": "Maksudpur",
+      "postOffice": "Maksudpur",
+      "postCode": "8140"
+    },
+    {
+      "division_id": "3",
+      "district_id": "4",
+      "upazila": "Tungipara",
+      "postOffice": "Patgati",
+      "postCode": "8121"
+    },
+    {
+      "division_id": "3",
+      "district_id": "4",
+      "upazila": "Tungipara",
+      "postOffice": "Tungipara",
+      "postCode": "8120"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Dewangonj",
+      "postOffice": "Dewangonj",
+      "postCode": "2030"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Dewangonj",
+      "postOffice": "Dewangonj S. Mills",
+      "postCode": "2031"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Islampur",
+      "postOffice": "Durmoot",
+      "postCode": "2021"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Islampur",
+      "postOffice": "Gilabari",
+      "postCode": "2022"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Islampur",
+      "postOffice": "Islampur",
+      "postCode": "2020"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Jamalpur",
+      "postOffice": "Jamalpur",
+      "postCode": "2000"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Jamalpur",
+      "postOffice": "Nandina",
+      "postCode": "2001"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Jamalpur",
+      "postOffice": "Narundi",
+      "postCode": "2002"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Malandah",
+      "postOffice": "Jamalpur",
+      "postCode": "2011"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Malandah",
+      "postOffice": "Mahmoodpur",
+      "postCode": "2013"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Malandah",
+      "postOffice": "Malancha",
+      "postCode": "2012"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Malandah",
+      "postOffice": "Malandah",
+      "postCode": "2010"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Mathargonj",
+      "postOffice": "Balijhuri",
+      "postCode": "2041"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Mathargonj",
+      "postOffice": "Mathargonj",
+      "postCode": "2040"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Shorishabari",
+      "postOffice": "Bausee",
+      "postCode": "2052"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Shorishabari",
+      "postOffice": "Gunerbari",
+      "postCode": "2051"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Shorishabari",
+      "postOffice": "Jagannath Ghat",
+      "postCode": "2053"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Shorishabari",
+      "postOffice": "Jamuna Sar Karkhana",
+      "postCode": "2055"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Shorishabari",
+      "postOffice": "Pingna",
+      "postCode": "2054"
+    },
+    {
+      "division_id": "3",
+      "district_id": "5",
+      "upazila": "Shorishabari",
+      "postOffice": "Shorishabari",
+      "postCode": "2050"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Bajitpur",
+      "postOffice": "Bajitpur",
+      "postCode": "2336"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Bajitpur",
+      "postOffice": "Laksmipur",
+      "postCode": "2338"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Bajitpur",
+      "postOffice": "Sararchar",
+      "postCode": "2337"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Bhairob",
+      "postOffice": "Bhairab",
+      "postCode": "2350"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Hossenpur",
+      "postOffice": "Hossenpur",
+      "postCode": "2320"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Itna",
+      "postOffice": "Itna",
+      "postCode": "2390"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Karimganj",
+      "postOffice": "Karimganj",
+      "postCode": "2310"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Katiadi",
+      "postOffice": "Gochhihata",
+      "postCode": "2331"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Katiadi",
+      "postOffice": "Katiadi",
+      "postCode": "2330"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Kishoreganj Sadar",
+      "postOffice": "Kishoreganj S.Mills",
+      "postCode": "2301"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Kishoreganj Sadar",
+      "postOffice": "Kishoreganj Sadar",
+      "postCode": "2300"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Kishoreganj Sadar",
+      "postOffice": "Maizhati",
+      "postCode": "2302"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Kishoreganj Sadar",
+      "postOffice": "Nilganj",
+      "postCode": "2303"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Kuliarchar",
+      "postOffice": "Chhoysuti",
+      "postCode": "2341"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Kuliarchar",
+      "postOffice": "Kuliarchar",
+      "postCode": "2340"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Mithamoin",
+      "postOffice": "Abdullahpur",
+      "postCode": "2371"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Mithamoin",
+      "postOffice": "MIthamoin",
+      "postCode": "2370"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Nikli",
+      "postOffice": "Nikli",
+      "postCode": "2360"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Ostagram",
+      "postOffice": "Ostagram",
+      "postCode": "2380"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Pakundia",
+      "postOffice": "Pakundia",
+      "postCode": "2326"
+    },
+    {
+      "division_id": "3",
+      "district_id": "6",
+      "upazila": "Tarial",
+      "postOffice": "Tarial",
+      "postCode": "2316"
+    },
+    {
+      "division_id": "3",
+      "district_id": "7",
+      "upazila": "Barhamganj",
+      "postOffice": "Bahadurpur",
+      "postCode": "7932"
+    },
+    {
+      "division_id": "3",
+      "district_id": "7",
+      "upazila": "Barhamganj",
+      "postOffice": "Barhamganj",
+      "postCode": "7930"
+    },
+    {
+      "division_id": "3",
+      "district_id": "7",
+      "upazila": "Barhamganj",
+      "postOffice": "Nilaksmibandar",
+      "postCode": "7931"
+    },
+    {
+      "division_id": "3",
+      "district_id": "7",
+      "upazila": "Barhamganj",
+      "postOffice": "Umedpur",
+      "postCode": "7933"
+    },
+    {
+      "division_id": "3",
+      "district_id": "7",
+      "upazila": "kalkini",
+      "postOffice": "Kalkini",
+      "postCode": "7920"
+    },
+    {
+      "division_id": "3",
+      "district_id": "7",
+      "upazila": "kalkini",
+      "postOffice": "Sahabrampur",
+      "postCode": "7921"
+    },
+    {
+      "division_id": "3",
+      "district_id": "7",
+      "upazila": "Madaripur Sadar",
+      "postOffice": "Charmugria",
+      "postCode": "7901"
+    },
+    {
+      "division_id": "3",
+      "district_id": "7",
+      "upazila": "Madaripur Sadar",
+      "postOffice": "Habiganj",
+      "postCode": "7903"
+    },
+    {
+      "division_id": "3",
+      "district_id": "7",
+      "upazila": "Madaripur Sadar",
+      "postOffice": "Kulpaddi",
+      "postCode": "7902"
+    },
+    {
+      "division_id": "3",
+      "district_id": "7",
+      "upazila": "Madaripur Sadar",
+      "postOffice": "Madaripur Sadar",
+      "postCode": "7900"
+    },
+    {
+      "division_id": "3",
+      "district_id": "7",
+      "upazila": "Madaripur Sadar",
+      "postOffice": "Mustafapur",
+      "postCode": "7904"
+    },
+    {
+      "division_id": "3",
+      "district_id": "7",
+      "upazila": "Rajoir",
+      "postOffice": "Khalia",
+      "postCode": "7911"
+    },
+    {
+      "division_id": "3",
+      "district_id": "7",
+      "upazila": "Rajoir",
+      "postOffice": "Rajoir",
+      "postCode": "7910"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Doulatpur",
+      "postOffice": "Doulatpur",
+      "postCode": "1860"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Gheor",
+      "postOffice": "Gheor",
+      "postCode": "1840"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Lechhraganj",
+      "postOffice": "Jhitka",
+      "postCode": "1831"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Lechhraganj",
+      "postOffice": "Lechhraganj",
+      "postCode": "1830"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Manikganj Sadar",
+      "postOffice": "Barangail",
+      "postCode": "1804"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Manikganj Sadar",
+      "postOffice": "Gorpara",
+      "postCode": "1802"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Manikganj Sadar",
+      "postOffice": "Mahadebpur",
+      "postCode": "1803"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Manikganj Sadar",
+      "postOffice": "Manikganj Bazar",
+      "postCode": "1801"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Manikganj Sadar",
+      "postOffice": "Manikganj Sadar",
+      "postCode": "1800"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Saturia",
+      "postOffice": "Baliati",
+      "postCode": "1811"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Saturia",
+      "postOffice": "Saturia",
+      "postCode": "1810"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Shibloya",
+      "postOffice": "Aricha",
+      "postCode": "1851"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Shibloya",
+      "postOffice": "Shibaloy",
+      "postCode": "1850"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Shibloya",
+      "postOffice": "Tewta",
+      "postCode": "1852"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Shibloya",
+      "postOffice": "Uthli",
+      "postCode": "1853"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Singari",
+      "postOffice": "Baira",
+      "postCode": "1821"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Singari",
+      "postOffice": "joymantop",
+      "postCode": "1822"
+    },
+    {
+      "division_id": "3",
+      "district_id": "8",
+      "upazila": "Singari",
+      "postOffice": "Singair",
+      "postCode": "1820"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Gajaria",
+      "postOffice": "Gajaria",
+      "postCode": "1510"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Gajaria",
+      "postOffice": "Hossendi",
+      "postCode": "1511"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Gajaria",
+      "postOffice": "Rasulpur",
+      "postCode": "1512"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Lohajong",
+      "postOffice": "Gouragonj",
+      "postCode": "1334"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Lohajong",
+      "postOffice": "Gouragonj",
+      "postCode": "1534"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Lohajong",
+      "postOffice": "Haldia SO",
+      "postCode": "1532"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Lohajong",
+      "postOffice": "Haridia",
+      "postCode": "1333"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Lohajong",
+      "postOffice": "Haridia DESO",
+      "postCode": "1533"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Lohajong",
+      "postOffice": "Korhati",
+      "postCode": "1531"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Lohajong",
+      "postOffice": "Lohajang",
+      "postCode": "1530"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Lohajong",
+      "postOffice": "Madini Mandal",
+      "postCode": "1335"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Lohajong",
+      "postOffice": "Medini Mandal EDSO",
+      "postCode": "1535"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Munshiganj Sadar",
+      "postOffice": "Kathakhali",
+      "postCode": "1503"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Munshiganj Sadar",
+      "postOffice": "Mirkadim",
+      "postCode": "1502"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Munshiganj Sadar",
+      "postOffice": "Munshiganj Sadar",
+      "postCode": "1500"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Munshiganj Sadar",
+      "postOffice": "Rikabibazar",
+      "postCode": "1501"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Sirajdikhan",
+      "postOffice": "Ichapur",
+      "postCode": "1542"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Sirajdikhan",
+      "postOffice": "Kola",
+      "postCode": "1541"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Sirajdikhan",
+      "postOffice": "Malkha Nagar",
+      "postCode": "1543"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Sirajdikhan",
+      "postOffice": "Shekher Nagar",
+      "postCode": "1544"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Sirajdikhan",
+      "postOffice": "Sirajdikhan",
+      "postCode": "1540"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Srinagar",
+      "postOffice": "Baghra",
+      "postCode": "1557"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Srinagar",
+      "postOffice": "Barikhal",
+      "postCode": "1551"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Srinagar",
+      "postOffice": "Bhaggyakul",
+      "postCode": "1558"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Srinagar",
+      "postOffice": "Hashara",
+      "postCode": "1553"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Srinagar",
+      "postOffice": "Kolapara",
+      "postCode": "1554"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Srinagar",
+      "postOffice": "Kumarbhog",
+      "postCode": "1555"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Srinagar",
+      "postOffice": "Mazpara",
+      "postCode": "1552"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Srinagar",
+      "postOffice": "Srinagar",
+      "postCode": "1550"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Srinagar",
+      "postOffice": "Vaggyakul SO",
+      "postCode": "1556"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Tangibari",
+      "postOffice": "Bajrajugini",
+      "postCode": "1523"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Tangibari",
+      "postOffice": "Baligao",
+      "postCode": "1522"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Tangibari",
+      "postOffice": "Betkahat",
+      "postCode": "1521"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Tangibari",
+      "postOffice": "Dighirpar",
+      "postCode": "1525"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Tangibari",
+      "postOffice": "Hasail",
+      "postCode": "1524"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Tangibari",
+      "postOffice": "Pura",
+      "postCode": "1527"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Tangibari",
+      "postOffice": "Pura EDSO",
+      "postCode": "1526"
+    },
+    {
+      "division_id": "3",
+      "district_id": "9",
+      "upazila": "Tangibari",
+      "postOffice": "Tangibari",
+      "postCode": "1520"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Bhaluka",
+      "postOffice": "Bhaluka",
+      "postCode": "2240"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Fulbaria",
+      "postOffice": "Fulbaria",
+      "postCode": "2216"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Gaforgaon",
+      "postOffice": "Duttarbazar",
+      "postCode": "2234"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Gaforgaon",
+      "postOffice": "Gaforgaon",
+      "postCode": "2230"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Gaforgaon",
+      "postOffice": "Kandipara",
+      "postCode": "2233"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Gaforgaon",
+      "postOffice": "Shibganj",
+      "postCode": "2231"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Gaforgaon",
+      "postOffice": "Usti",
+      "postCode": "2232"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Gouripur",
+      "postOffice": "Gouripur",
+      "postCode": "2270"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Gouripur",
+      "postOffice": "Ramgopalpur",
+      "postCode": "2271"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Haluaghat",
+      "postOffice": "Dhara",
+      "postCode": "2261"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Haluaghat",
+      "postOffice": "Haluaghat",
+      "postCode": "2260"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Haluaghat",
+      "postOffice": "Munshirhat",
+      "postCode": "2262"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Isshwargonj",
+      "postOffice": "Atharabari",
+      "postCode": "2282"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Isshwargonj",
+      "postOffice": "Isshwargonj",
+      "postCode": "2280"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Isshwargonj",
+      "postOffice": "Sohagi",
+      "postCode": "2281"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Muktagachha",
+      "postOffice": "Muktagachha",
+      "postCode": "2210"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Mymensingh Sadar",
+      "postOffice": "Agriculture Universi",
+      "postCode": "2202"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Mymensingh Sadar",
+      "postOffice": "Biddyaganj",
+      "postCode": "2204"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Mymensingh Sadar",
+      "postOffice": "Kawatkhali",
+      "postCode": "2201"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Mymensingh Sadar",
+      "postOffice": "Mymensingh Sadar",
+      "postCode": "2200"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Mymensingh Sadar",
+      "postOffice": "Pearpur",
+      "postCode": "2205"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Mymensingh Sadar",
+      "postOffice": "Shombhuganj",
+      "postCode": "2203"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Nandail",
+      "postOffice": "Gangail",
+      "postCode": "2291"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Nandail",
+      "postOffice": "Nandail",
+      "postCode": "2290"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Phulpur",
+      "postOffice": "Beltia",
+      "postCode": "2251"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Phulpur",
+      "postOffice": "Phulpur",
+      "postCode": "2250"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Phulpur",
+      "postOffice": "Tarakanda",
+      "postCode": "2252"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Trishal",
+      "postOffice": "Ahmadbad",
+      "postCode": "2221"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Trishal",
+      "postOffice": "Dhala",
+      "postCode": "2223"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Trishal",
+      "postOffice": "Ram Amritaganj",
+      "postCode": "2222"
+    },
+    {
+      "division_id": "3",
+      "district_id": "10",
+      "upazila": "Trishal",
+      "postOffice": "Trishal",
+      "postCode": "2220"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Araihazar",
+      "postOffice": "Araihazar",
+      "postCode": "1450"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Araihazar",
+      "postOffice": "Gopaldi",
+      "postCode": "1451"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Baidder Bazar",
+      "postOffice": "Baidder Bazar",
+      "postCode": "1440"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Baidder Bazar",
+      "postOffice": "Bara Nagar",
+      "postCode": "1441"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Baidder Bazar",
+      "postOffice": "Barodi",
+      "postCode": "1442"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Bandar",
+      "postOffice": "Bandar",
+      "postCode": "1410"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Bandar",
+      "postOffice": "BIDS",
+      "postCode": "1413"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Bandar",
+      "postOffice": "D.C Mills",
+      "postCode": "1411"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Bandar",
+      "postOffice": "Madanganj",
+      "postCode": "1414"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Bandar",
+      "postOffice": "Nabiganj",
+      "postCode": "1412"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Fatullah",
+      "postOffice": "Fatulla Bazar",
+      "postCode": "1421"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Fatullah",
+      "postOffice": "Fatullah",
+      "postCode": "1420"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Narayanganj Sadar",
+      "postOffice": "Narayanganj Sadar",
+      "postCode": "1400"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Rupganj",
+      "postOffice": "Bhulta",
+      "postCode": "1462"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Rupganj",
+      "postOffice": "Kanchan",
+      "postCode": "1461"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Rupganj",
+      "postOffice": "Murapara",
+      "postCode": "1464"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Rupganj",
+      "postOffice": "Nagri",
+      "postCode": "1463"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Rupganj",
+      "postOffice": "Rupganj",
+      "postCode": "1460"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Siddirganj",
+      "postOffice": "Adamjeenagar",
+      "postCode": "1431"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Siddirganj",
+      "postOffice": "LN Mills",
+      "postCode": "1432"
+    },
+    {
+      "division_id": "3",
+      "district_id": "11",
+      "upazila": "Siddirganj",
+      "postOffice": "Siddirganj",
+      "postCode": "1430"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Belabo",
+      "postOffice": "Belabo",
+      "postCode": "1640"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Monohordi",
+      "postOffice": "Hatirdia",
+      "postCode": "1651"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Monohordi",
+      "postOffice": "Katabaria",
+      "postCode": "1652"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Monohordi",
+      "postOffice": "Monohordi",
+      "postCode": "1650"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Narsingdi Sadar",
+      "postOffice": "Karimpur",
+      "postCode": "1605"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Narsingdi Sadar",
+      "postOffice": "Madhabdi",
+      "postCode": "1604"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Narsingdi Sadar",
+      "postOffice": "Narsingdi College",
+      "postCode": "1602"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Narsingdi Sadar",
+      "postOffice": "Narsingdi Sadar",
+      "postCode": "1600"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Narsingdi Sadar",
+      "postOffice": "Panchdona",
+      "postCode": "1603"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Narsingdi Sadar",
+      "postOffice": "UMC Jute Mills",
+      "postCode": "1601"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Palash",
+      "postOffice": "Char Sindhur",
+      "postCode": "1612"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Palash",
+      "postOffice": "Ghorashal",
+      "postCode": "1613"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Palash",
+      "postOffice": "Ghorashal Urea Facto",
+      "postCode": "1611"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Palash",
+      "postOffice": "Palash",
+      "postCode": "1610"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Raypura",
+      "postOffice": "Bazar Hasnabad",
+      "postCode": "1631"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Raypura",
+      "postOffice": "Radhaganj bazar",
+      "postCode": "1632"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Raypura",
+      "postOffice": "Raypura",
+      "postCode": "1630"
+    },
+    {
+      "division_id": "3",
+      "district_id": "12",
+      "upazila": "Shibpur",
+      "postOffice": "Shibpur",
+      "postCode": "1620"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Susung Durgapur",
+      "postOffice": "Susnng Durgapur",
+      "postCode": "2420"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Atpara",
+      "postOffice": "Atpara",
+      "postCode": "2470"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Barhatta",
+      "postOffice": "Barhatta",
+      "postCode": "2440"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Dharmapasha",
+      "postOffice": "Dharampasha",
+      "postCode": "2450"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Dhobaura",
+      "postOffice": "Dhobaura",
+      "postCode": "2416"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Dhobaura",
+      "postOffice": "Sakoai",
+      "postCode": "2417"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Kalmakanda",
+      "postOffice": "Kalmakanda",
+      "postCode": "2430"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Kendua",
+      "postOffice": "Kendua",
+      "postCode": "2480"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Khaliajuri",
+      "postOffice": "Khaliajhri",
+      "postCode": "2460"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Khaliajuri",
+      "postOffice": "Shaldigha",
+      "postCode": "2462"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Madan",
+      "postOffice": "Madan",
+      "postCode": "2490"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Moddhynagar",
+      "postOffice": "Moddoynagar",
+      "postCode": "2456"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Mohanganj",
+      "postOffice": "Mohanganj",
+      "postCode": "2446"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Netrakona Sadar",
+      "postOffice": "Baikherhati",
+      "postCode": "2401"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Netrakona Sadar",
+      "postOffice": "Netrakona Sadar",
+      "postCode": "2400"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Purbadhola",
+      "postOffice": "Jaria Jhanjhail",
+      "postCode": "2412"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Purbadhola",
+      "postOffice": "Purbadhola",
+      "postCode": "2410"
+    },
+    {
+      "division_id": "3",
+      "district_id": "13",
+      "upazila": "Purbadhola",
+      "postOffice": "Shamgonj",
+      "postCode": "2411"
+    },
+    {
+      "division_id": "3",
+      "district_id": "14",
+      "upazila": "Baliakandi",
+      "postOffice": "Baliakandi",
+      "postCode": "7730"
+    },
+    {
+      "division_id": "3",
+      "district_id": "14",
+      "upazila": "Baliakandi",
+      "postOffice": "Nalia",
+      "postCode": "7731"
+    },
+    {
+      "division_id": "3",
+      "district_id": "14",
+      "upazila": "Pangsha",
+      "postOffice": "Mrigibazar",
+      "postCode": "7723"
+    },
+    {
+      "division_id": "3",
+      "district_id": "14",
+      "upazila": "Pangsha",
+      "postOffice": "Pangsha",
+      "postCode": "7720"
+    },
+    {
+      "division_id": "3",
+      "district_id": "14",
+      "upazila": "Pangsha",
+      "postOffice": "Ramkol",
+      "postCode": "7721"
+    },
+    {
+      "division_id": "3",
+      "district_id": "14",
+      "upazila": "Pangsha",
+      "postOffice": "Ratandia",
+      "postCode": "7722"
+    },
+    {
+      "division_id": "3",
+      "district_id": "14",
+      "upazila": "Rajbari Sadar",
+      "postOffice": "Goalanda",
+      "postCode": "7710"
+    },
+    {
+      "division_id": "3",
+      "district_id": "14",
+      "upazila": "Rajbari Sadar",
+      "postOffice": "Khankhanapur",
+      "postCode": "7711"
+    },
+    {
+      "division_id": "3",
+      "district_id": "14",
+      "upazila": "Rajbari Sadar",
+      "postOffice": "Rajbari Sadar",
+      "postCode": "7700"
+    },
+    {
+      "division_id": "3",
+      "district_id": "15",
+      "upazila": "Bhedorganj",
+      "postOffice": "Bhedorganj",
+      "postCode": "8030"
+    },
+    {
+      "division_id": "3",
+      "district_id": "15",
+      "upazila": "Damudhya",
+      "postOffice": "Damudhya",
+      "postCode": "8040"
+    },
+    {
+      "division_id": "3",
+      "district_id": "15",
+      "upazila": "Gosairhat",
+      "postOffice": "Gosairhat",
+      "postCode": "8050"
+    },
+    {
+      "division_id": "3",
+      "district_id": "15",
+      "upazila": "Jajira",
+      "postOffice": "Jajira",
+      "postCode": "8010"
+    },
+    {
+      "division_id": "3",
+      "district_id": "15",
+      "upazila": "Naria",
+      "postOffice": "Bhozeshwar",
+      "postCode": "8021"
+    },
+    {
+      "division_id": "3",
+      "district_id": "15",
+      "upazila": "Naria",
+      "postOffice": "Gharisar",
+      "postCode": "8022"
+    },
+    {
+      "division_id": "3",
+      "district_id": "15",
+      "upazila": "Naria",
+      "postOffice": "Kartikpur",
+      "postCode": "8024"
+    },
+    {
+      "division_id": "3",
+      "district_id": "15",
+      "upazila": "Naria",
+      "postOffice": "Naria",
+      "postCode": "8020"
+    },
+    {
+      "division_id": "3",
+      "district_id": "15",
+      "upazila": "Naria",
+      "postOffice": "Upshi",
+      "postCode": "8023"
+    },
+    {
+      "division_id": "3",
+      "district_id": "15",
+      "upazila": "Shariatpur Sadar",
+      "postOffice": "Angaria",
+      "postCode": "8001"
+    },
+    {
+      "division_id": "3",
+      "district_id": "15",
+      "upazila": "Shariatpur Sadar",
+      "postOffice": "Chikandi",
+      "postCode": "8002"
+    },
+    {
+      "division_id": "3",
+      "district_id": "15",
+      "upazila": "Shariatpur Sadar",
+      "postOffice": "Shariatpur Sadar",
+      "postCode": "8000"
+    },
+    {
+      "division_id": "3",
+      "district_id": "16",
+      "upazila": "Bakshigonj",
+      "postOffice": "Bakshigonj",
+      "postCode": "2140"
+    },
+    {
+      "division_id": "3",
+      "district_id": "16",
+      "upazila": "Jhinaigati",
+      "postOffice": "Jhinaigati",
+      "postCode": "2120"
+    },
+    {
+      "division_id": "3",
+      "district_id": "16",
+      "upazila": "Nakla",
+      "postOffice": "Gonopaddi",
+      "postCode": "2151"
+    },
+    {
+      "division_id": "3",
+      "district_id": "16",
+      "upazila": "Nakla",
+      "postOffice": "Nakla",
+      "postCode": "2150"
+    },
+    {
+      "division_id": "3",
+      "district_id": "16",
+      "upazila": "Nalitabari",
+      "postOffice": "Hatibandha",
+      "postCode": "2111"
+    },
+    {
+      "division_id": "3",
+      "district_id": "16",
+      "upazila": "Nalitabari",
+      "postOffice": "Nalitabari",
+      "postCode": "2110"
+    },
+    {
+      "division_id": "3",
+      "district_id": "16",
+      "upazila": "Sherpur Shadar",
+      "postOffice": "Sherpur Shadar",
+      "postCode": "2100"
+    },
+    {
+      "division_id": "3",
+      "district_id": "16",
+      "upazila": "Shribardi",
+      "postOffice": "Shribardi",
+      "postCode": "2130"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Basail",
+      "postOffice": "Basail",
+      "postCode": "1920"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Bhuapur",
+      "postOffice": "Bhuapur",
+      "postCode": "1960"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Delduar",
+      "postOffice": "Delduar",
+      "postCode": "1910"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Delduar",
+      "postOffice": "Elasin",
+      "postCode": "1913"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Delduar",
+      "postOffice": "Hinga Nagar",
+      "postCode": "1914"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Delduar",
+      "postOffice": "Jangalia",
+      "postCode": "1911"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Delduar",
+      "postOffice": "Lowhati",
+      "postCode": "1915"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Delduar",
+      "postOffice": "Patharail",
+      "postCode": "1912"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Ghatail",
+      "postOffice": "D. Pakutia",
+      "postCode": "1982"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Ghatail",
+      "postOffice": "Dhalapara",
+      "postCode": "1983"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Ghatail",
+      "postOffice": "Ghatial",
+      "postCode": "1980"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Ghatail",
+      "postOffice": "Lohani",
+      "postCode": "1984"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Ghatail",
+      "postOffice": "Zahidganj",
+      "postCode": "1981"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Gopalpur",
+      "postOffice": "Gopalpur",
+      "postCode": "1990"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Gopalpur",
+      "postOffice": "Hemnagar",
+      "postCode": "1992"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Gopalpur",
+      "postOffice": "Jhowail",
+      "postCode": "1991"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Kalihati",
+      "postOffice": "Ballabazar",
+      "postCode": "1973"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Kalihati",
+      "postOffice": "Elinga",
+      "postCode": "1974"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Kalihati",
+      "postOffice": "Kalihati",
+      "postCode": "1970"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Kalihati",
+      "postOffice": "Nagarbari",
+      "postCode": "1977"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Kalihati",
+      "postOffice": "Nagarbari SO",
+      "postCode": "1976"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Kalihati",
+      "postOffice": "Nagbari",
+      "postCode": "1972"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Kalihati",
+      "postOffice": "Palisha",
+      "postCode": "1975"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Kalihati",
+      "postOffice": "Rajafair",
+      "postCode": "1971"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Kashkaolia",
+      "postOffice": "Kashkawlia",
+      "postCode": "1930"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Madhupur",
+      "postOffice": "Dhobari",
+      "postCode": "1997"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Madhupur",
+      "postOffice": "Madhupur",
+      "postCode": "1996"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Mirzapur",
+      "postOffice": "Gorai",
+      "postCode": "1941"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Mirzapur",
+      "postOffice": "Jarmuki",
+      "postCode": "1944"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Mirzapur",
+      "postOffice": "M.C. College",
+      "postCode": "1942"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Mirzapur",
+      "postOffice": "Mirzapur",
+      "postCode": "1940"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Mirzapur",
+      "postOffice": "Mohera",
+      "postCode": "1945"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Mirzapur",
+      "postOffice": "Warri paikpara",
+      "postCode": "1943"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Nagarpur",
+      "postOffice": "Dhuburia",
+      "postCode": "1937"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Nagarpur",
+      "postOffice": "Nagarpur",
+      "postCode": "1936"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Nagarpur",
+      "postOffice": "Salimabad",
+      "postCode": "1938"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Sakhipur",
+      "postOffice": "Kochua",
+      "postCode": "1951"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Sakhipur",
+      "postOffice": "Sakhipur",
+      "postCode": "1950"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Tangail Sadar",
+      "postOffice": "Kagmari",
+      "postCode": "1901"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Tangail Sadar",
+      "postOffice": "Korotia",
+      "postCode": "1903"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Tangail Sadar",
+      "postOffice": "Purabari",
+      "postCode": "1904"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Tangail Sadar",
+      "postOffice": "Santosh",
+      "postCode": "1902"
+    },
+    {
+      "division_id": "3",
+      "district_id": "17",
+      "upazila": "Tangail Sadar",
+      "postOffice": "Tangail Sadar",
+      "postCode": "1900"
+    }
+  ]
+}
