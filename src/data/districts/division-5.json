@@ -1,0 +1,66 @@
+[
+  {
+    "id": "18",
+    "division_id": "5",
+    "name": "Bogura",
+    "bn_name": "বগুড়া",
+    "lat": "24.8465228",
+    "long": "89.377755"
+  },
+  {
+    "id": "19",
+    "division_id": "5",
+    "name": "Joypurhat",
+    "bn_name": "জয়পুরহাট",
+    "lat": "25.0968",
+    "long": "89.0227"
+  },
+  {
+    "id": "20",
+    "division_id": "5",
+    "name": "Naogaon",
+    "bn_name": "নওগাঁ",
+    "lat": "24.7936",
+    "long": "88.9318"
+  },
+  {
+    "id": "21",
+    "division_id": "5",
+    "name": "Natore",
+    "bn_name": "নাটোর",
+    "lat": "24.420556",
+    "long": "89.000282"
+  },
+  {
+    "id": "22",
+    "division_id": "5",
+    "name": "Nawabganj",
+    "bn_name": "নবাবগঞ্জ",
+    "lat": "24.5965034",
+    "long": "88.2775122"
+  },
+  {
+    "id": "23",
+    "division_id": "5",
+    "name": "Pabna",
+    "bn_name": "পাবনা",
+    "lat": "23.998524",
+    "long": "89.233645"
+  },
+  {
+    "id": "24",
+    "division_id": "5",
+    "name": "Rajshahi",
+    "bn_name": "রাজশাহী",
+    "lat": "24.3745",
+    "long": "88.6042"
+  },
+  {
+    "id": "25",
+    "division_id": "5",
+    "name": "Sirajgonj",
+    "bn_name": "সিরাজগঞ্জ",
+    "lat": "24.4533978",
+    "long": "89.7006815"
+  }
+]

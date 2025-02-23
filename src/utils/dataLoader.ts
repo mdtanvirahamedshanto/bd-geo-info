@@ -1,19 +1,20 @@
 import { Division, District, Upazila, UnionData, PostCode } from '../types';
 
 const loadDivisions = async (): Promise<Division[]> => {
-  const divisions = (await import('../data/bd-divisions.json')).default.divisions;
-  return divisions;
+  try {
+    const divisions = (await import('../data/bd-divisions.json')).default.divisions;
+    return divisions;
+  } catch (error) {
+    console.error('Error loading divisions:', error);
+    return [];
+  }
 };
 
 const loadDistricts = async (divisionId: string | null = null): Promise<District[]> => {
   if (!divisionId) return [];
-  const districts = (await import('../data/bd-districts.json')).default.districts;
-  
-  return districts
-    .filter((district: { id: string; division_id: string; name: string; bn_name: string; lat: string; long: string; }) => 
-      district.division_id === divisionId
-    )
-    .map((district): District => ({
+  try {
+    const districts = (await import(`../data/districts/division-${divisionId}.json`)).default;
+    return districts.map((district: { id: string; division_id: string; name: string; bn_name: string; lat: string; long: string }): District => ({
       id: district.id,
       division_id: district.division_id,
       name: district.name,
@@ -21,8 +22,11 @@ const loadDistricts = async (divisionId: string | null = null): Promise<District
       lat: district.lat,
       lon: district.long,
       url: ''
-    }))
-    .sort((a, b) => a.name.localeCompare(b.name));
+    })).sort((a: District, b: District) => a.name.localeCompare(b.name));
+  } catch (error) {
+    console.error(`Error loading districts for division ${divisionId}:`, error);
+    return [];
+  }
 };
 
 const loadUpazilas = async (districtId: string | null = null): Promise<Upazila[]> => {

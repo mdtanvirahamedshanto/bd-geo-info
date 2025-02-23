@@ -1,0 +1,34 @@
+[
+  {
+    "id": "5",
+    "division_id": "8",
+    "name": "Jamalpur",
+    "bn_name": "জামালপুর",
+    "lat": "24.937533",
+    "long": "89.937775"
+  },
+  {
+    "id": "10",
+    "division_id": "8",
+    "name": "Mymensingh",
+    "bn_name": "ময়মনসিংহ",
+    "lat": "24.7471",
+    "long": "90.4203"
+  },
+  {
+    "id": "13",
+    "division_id": "8",
+    "name": "Netrokona",
+    "bn_name": "নেত্রকোণা",
+    "lat": "24.870955",
+    "long": "90.727887"
+  },
+  {
+    "id": "16",
+    "division_id": "8",
+    "name": "Sherpur",
+    "bn_name": "শেরপুর",
+    "lat": "25.0204933",
+    "long": "90.0152966"
+  }
+]

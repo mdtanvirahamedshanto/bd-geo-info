@@ -1,0 +1,82 @@
+[
+  {
+    "id": "55",
+    "division_id": "4",
+    "name": "Bagerhat",
+    "bn_name": "বাগেরহাট",
+    "lat": "22.651568",
+    "long": "89.785938"
+  },
+  {
+    "id": "56",
+    "division_id": "4",
+    "name": "Chuadanga",
+    "bn_name": "চুয়াডাঙ্গা",
+    "lat": "23.6401961",
+    "long": "88.841841"
+  },
+  {
+    "id": "57",
+    "division_id": "4",
+    "name": "Jashore",
+    "bn_name": "যশোর",
+    "lat": "23.16643",
+    "long": "89.2081126"
+  },
+  {
+    "id": "58",
+    "division_id": "4",
+    "name": "Jhenaidah",
+    "bn_name": "ঝিনাইদহ",
+    "lat": "23.5448176",
+    "long": "89.1539213"
+  },
+  {
+    "id": "59",
+    "division_id": "4",
+    "name": "Khulna",
+    "bn_name": "খুলনা",
+    "lat": "22.815774",
+    "long": "89.568679"
+  },
+  {
+    "id": "60",
+    "division_id": "4",
+    "name": "Kushtia",
+    "bn_name": "কুষ্টিয়া",
+    "lat": "23.901258",
+    "long": "89.120482"
+  },
+  {
+    "id": "61",
+    "division_id": "4",
+    "name": "Magura",
+    "bn_name": "মাগুরা",
+    "lat": "23.487337",
+    "long": "89.419956"
+  },
+  {
+    "id": "62",
+    "division_id": "4",
+    "name": "Meherpur",
+    "bn_name": "মেহেরপুর",
+    "lat": "23.762213",
+    "long": "88.631821"
+  },
+  {
+    "id": "63",
+    "division_id": "4",
+    "name": "Narail",
+    "bn_name": "নড়াইল",
+    "lat": "23.172534",
+    "long": "89.512672"
+  },
+  {
+    "id": "64",
+    "division_id": "4",
+    "name": "Satkhira",
+    "bn_name": "সাতক্ষীরা",
+    "lat": "22.7185",
+    "long": "89.0705"
+  }
+]
