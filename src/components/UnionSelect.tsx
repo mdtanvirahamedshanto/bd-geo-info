@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Upazila, UnionData } from '../types';
 import { getUnions } from '../utils';
 
@@ -33,15 +33,25 @@ export default function UnionSelect({
   containerClassName = '',
   showLabels = true,
 }: UnionSelectProps) {
-  const unions = upazila
-    ? getUnions(upazila.id).map(union => ({
-        id: union.value,
-        upazila_id: upazila.id,
-        name: union.label,
-        bn_name: union.label,
-        url: ''
-      } as UnionData))
-    : [];
+  const [unions, setUnions] = useState<UnionData[]>([]);
+
+  useEffect(() => {
+    const loadUnions = async () => {
+      if (upazila) {
+        const unionData = await getUnions(upazila.id);
+        setUnions(unionData.map(union => ({
+          id: union.value,
+          upazila_id: upazila.id,
+          name: union.label,
+          bn_name: union.label,
+          url: ''
+        } as UnionData)));
+      } else {
+        setUnions([]);
+      }
+    };
+    loadUnions();
+  }, [upazila]);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const union = unions.find((u) => u.id === e.target.value);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { District, Upazila } from "../types/index";
 import { getUpazilas } from '../utils';
 
@@ -31,7 +31,19 @@ export default function UpazilaSelect({
   labelClassName = '',
   containerClassName = '',
 }: UpazilaSelectProps) {
-  const upazilas = district ? getUpazilas(district.id) : [];
+  const [upazilas, setUpazilas] = useState<Upazila[]>([]);
+
+  useEffect(() => {
+    const loadUpazilas = async () => {
+      if (district) {
+        const upazilaData = await getUpazilas(district.id);
+        setUpazilas(upazilaData);
+      } else {
+        setUpazilas([]);
+      }
+    };
+    loadUpazilas();
+  }, [district]);
 
   return (
     <div className={containerClassName}>
@@ -39,7 +51,7 @@ export default function UpazilaSelect({
       <select
         value={value?.id || ''}
         onChange={(e) => {
-          const upazila = upazilas.find((u) => u.id === e.target.value);
+          const upazila = upazilas.find((u: Upazila) => u.id === e.target.value);
           if (upazila) {
             onChange?.(upazila);
           }
@@ -48,7 +60,7 @@ export default function UpazilaSelect({
         disabled={!district}
       >
         <option value="">{placeholder}</option>
-        {upazilas.map((upazila) => (
+        {upazilas.map((upazila: Upazila) => (
           <option key={upazila.id} value={upazila.id}>
             {language === 'bn' ? upazila.bn_name : upazila.name}
           </option>

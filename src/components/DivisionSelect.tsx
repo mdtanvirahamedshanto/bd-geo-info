@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Division } from '../types';
-import { divisions } from '../data/bd-divisions.json';
+import { loadDivisions } from '../utils/dataLoader';
 
 interface DivisionSelectProps {
   value?: Division;
@@ -29,7 +29,11 @@ export default function DivisionSelect({
   labelClassName = '',
   containerClassName = '',
 }: DivisionSelectProps) {
-  const divisionData: Division[] = divisions || [];
+  const [divisionData, setDivisionData] = useState<Division[]>([]);
+
+  useEffect(() => {
+    loadDivisions().then(setDivisionData);
+  }, []);
 
   return (
     <div className={containerClassName}>

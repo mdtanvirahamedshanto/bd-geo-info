@@ -1,6 +1,6 @@
 {
   "name": "bd-geo-info",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A comprehensive Bangladesh geographical data package with hierarchical selection and address form components",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

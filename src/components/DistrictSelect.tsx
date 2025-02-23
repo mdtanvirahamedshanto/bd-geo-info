@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { District, Division } from '../types/index';
-import { getDistricts } from '../utils';
+import { loadDistricts } from '../utils/dataLoader';
 
 interface DistrictSelectProps {
   division?: Division;
@@ -33,7 +33,13 @@ export default function DistrictSelect({
   containerClassName = '',
   showLabels = true,
 }: DistrictSelectProps) {
-  const districts = division ? getDistricts(division.id) : [];
+  const [districts, setDistricts] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (division) {
+      loadDistricts(division.id).then(setDistricts);
+    }
+  }, [division]);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const district = districts.find((d) => d.value === e.target.value);
