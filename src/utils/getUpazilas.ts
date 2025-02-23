@@ -1,5 +1,5 @@
 import { Upazila } from '../types';
-import upazilas from '../data/upazilas.json';
+import upazilas from '../data/bd-upazilas.json'
 
 export default function getUpazilas(districtId: string | null = null): Upazila[] {
   if (!districtId) {
@@ -7,7 +7,7 @@ export default function getUpazilas(districtId: string | null = null): Upazila[]
   }
 
   try {
-    return upazilas.data
+    return upazilas.upazilas
       .filter((upazila: Upazila) => upazila.district_id === districtId)
       .sort((a, b) => a.name.localeCompare(b.name));
   } catch (error) {

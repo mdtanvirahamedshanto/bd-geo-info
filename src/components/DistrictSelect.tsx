@@ -1,5 +1,5 @@
 import React from 'react';
-import { District, Division } from '..';
+import { District, Division } from '../types/index';
 import { getDistricts } from '../utils';
 
 interface DistrictSelectProps {
@@ -9,6 +9,13 @@ interface DistrictSelectProps {
   language?: 'en' | 'bn';
   className?: string;
   placeholder?: string;
+  customLabel?: string | React.ReactNode;
+  customError?: string | React.ReactNode;
+  theme?: any;
+  errorClassName?: string;
+  labelClassName?: string;
+  containerClassName?: string;
+  showLabels?: boolean;
 }
 
 export default function DistrictSelect({
@@ -18,25 +25,55 @@ export default function DistrictSelect({
   language = 'en',
   className = '',
   placeholder = 'Select District',
+  customLabel,
+  customError,
+  theme,
+  errorClassName = '',
+  labelClassName = '',
+  containerClassName = '',
+  showLabels = true,
 }: DistrictSelectProps) {
   const districts = division ? getDistricts(division.id) : [];
 
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const district = districts.find((d) => d.value === e.target.value);
+    if (district) {
+      const districtData: District = {
+        id: district.value,
+        division_id: division?.id || '',
+        name: district.label,
+        bn_name: district.label,
+        lat: '',
+        lon: '',
+        url: ''
+      };
+      onChange?.(districtData);
+    }
+  };
+
   return (
-    <select
-      value={value?.id || ''}
-      onChange={(e) => {
-        const district = districts.find((d) => d.id === e.target.value);
-        onChange?.(district);
-      }}
-      className={className}
-      disabled={!division}
-    >
-      <option value="">{placeholder}</option>
-      {districts.map((district) => (
-        <option key={district.id} value={district.id}>
-          {language === 'bn' ? district.bn_name : district.name}
+    <div className={containerClassName}>
+      {showLabels && (
+        <label className={labelClassName}>
+          {customLabel || (language === 'bn' ? 'জেলা:' : 'District:')}
+        </label>
+      )}
+      <select
+        value={value?.id || ''}
+        onChange={handleChange}
+        className={className}
+        disabled={!districts.length}
+      >
+        <option value="">
+          {placeholder || (language === 'bn' ? 'জেলা নির্বাচন করুন' : 'Select District')}
         </option>
-      ))}
-    </select>
+        {districts.map((district) => (
+          <option key={district.value} value={district.value}>
+            {district.label}
+          </option>
+        ))}
+      </select>
+      {customError && <div className={errorClassName}>{customError}</div>}
+    </div>
   );
 }

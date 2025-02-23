@@ -7,9 +7,14 @@ export default function getUnions(upazilaId: string): Union[] {
   }
 
   try {
-    return unions.data
+    // First convert to unknown, then assert the type to handle the unions array structure
+    const unionsData = (unions as unknown) as Union[];
+    return unionsData
       .filter((union: Union) => union.upazila_id === upazilaId)
-      .sort((a, b) => a.name.localeCompare(b.name));
+      .sort((a, b) => {
+        if (!a.name || !b.name) return 0;
+        return a.name.localeCompare(b.name);
+      });
   } catch (error) {
     console.error('Error fetching unions:', error);
     return [];

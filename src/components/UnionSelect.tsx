@@ -1,14 +1,21 @@
 import React from 'react';
-import { Upazila, Union } from '..';
-import unions from '../data/unions.json';
+import { Upazila, UnionData } from '../types';
+import { getUnions } from '../utils';
 
 interface UnionSelectProps {
   upazila?: Upazila;
-  value?: Union;
-  onChange?: (union: Union) => void;
+  value?: UnionData;
+  onChange?: (union: UnionData) => void;
   language?: 'en' | 'bn';
   className?: string;
   placeholder?: string;
+  customLabel?: string | React.ReactNode;
+  customError?: string | React.ReactNode;
+  theme?: any;
+  errorClassName?: string;
+  labelClassName?: string;
+  containerClassName?: string;
+  showLabels?: boolean;
 }
 
 export default function UnionSelect({
@@ -18,28 +25,54 @@ export default function UnionSelect({
   language = 'en',
   className = '',
   placeholder = 'Select Union',
+  customLabel,
+  customError,
+  theme,
+  errorClassName = '',
+  labelClassName = '',
+  containerClassName = '',
+  showLabels = true,
 }: UnionSelectProps) {
-  const unionList = upazila
-    ? unions.find((item: any) => item.type === 'table' && item.name === 'unions')?.data
-        .filter((union: Union) => union.upazilla_id === upazila.id) || []
+  const unions = upazila
+    ? getUnions(upazila.id).map(union => ({
+        id: union.value,
+        upazila_id: upazila.id,
+        name: union.label,
+        bn_name: union.label,
+        url: ''
+      } as UnionData))
     : [];
 
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const union = unions.find((u) => u.id === e.target.value);
+    if (union) {
+      onChange?.(union);
+    }
+  };
+
   return (
-    <select
-      value={value?.id || ''}
-      onChange={(e) => {
-        const union = unionList.find((u) => u.id === e.target.value);
-        onChange?.(union);
-      }}
-      className={className}
-      disabled={!upazila}
-    >
-      <option value="">{placeholder}</option>
-      {unionList.map((union) => (
-        <option key={union.id} value={union.id}>
-          {language === 'bn' ? union.bn_name : union.name}
+    <div className={containerClassName}>
+      {showLabels && (
+        <label className={labelClassName}>
+          {customLabel || (language === 'bn' ? 'ইউনিয়ন:' : 'Union:')}
+        </label>
+      )}
+      <select
+        value={value?.id || ''}
+        onChange={handleChange}
+        className={className}
+        disabled={!unions.length}
+      >
+        <option value="">
+          {placeholder || (language === 'bn' ? 'ইউনিয়ন নির্বাচন করুন' : 'Select Union')}
         </option>
-      ))}
-    </select>
+        {unions.map((union) => (
+          <option key={union.id} value={union.id}>
+            {language === 'bn' ? union.bn_name : union.name}
+          </option>
+        ))}
+      </select>
+      {customError && <div className={errorClassName}>{customError}</div>}
+    </div>
   );
 }

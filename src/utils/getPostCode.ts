@@ -11,11 +11,20 @@ export default function getPostCode(params: {
   }
 
   try {
-    return postcodes.data
-      .filter((postcode: PostCode) => {
-        if (params.division && postcode.division_id.toLowerCase() !== params.division.toLowerCase()) return false;
-        if (params.district && postcode.district_id.toLowerCase() !== params.district.toLowerCase()) return false;
-        if (params.upazila && postcode.upazila.toLowerCase() !== params.upazila.toLowerCase()) return false;
+    return (postcodes.postcodes as PostCode[])
+      .filter((postcode) => {
+        const postcodeData = postcode as {
+          division_id: string;
+          district_id: string;
+          district?: string;
+          upazila: string;
+          postOffice: string;
+          postCode: string;
+        };
+
+        if (params.division && postcodeData.division_id.toLowerCase() !== params.division.toLowerCase()) return false;
+        if (params.district && (postcodeData.district_id?.toLowerCase() !== params.district.toLowerCase() && postcodeData.district?.toLowerCase() !== params.district.toLowerCase())) return false;
+        if (params.upazila && postcodeData.upazila.toLowerCase() !== params.upazila.toLowerCase()) return false;
         return true;
       })
       .sort((a, b) => a.postCode.localeCompare(b.postCode));

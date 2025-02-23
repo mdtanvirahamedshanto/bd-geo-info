@@ -1,17 +1,20 @@
 # bd-geo-info
+[![npm version](https://img.shields.io/npm/v/bd-geo-info.svg)](https://www.npmjs.com/package/bd-geo-info)
+![npm](https://img.shields.io/npm/v/bd-geo-info)
+![typescript](https://img.shields.io/badge/TypeScript-Ready-blue)
 
-A comprehensive Bangladesh geographical data package with hierarchical selection and address form components. This package provides both backend utilities and frontend React components for handling Bangladesh's administrative divisions, districts, upazilas, unions, and postal codes.
+A comprehensive Bangladesh geographical data package with hierarchical selection and address form components for React applications. This package provides ready-to-use components for handling Bangladesh's administrative divisions, districts, upazilas, unions, and postcodes with bilingual support (English/Bangla).
 
 ## Features
 
-- Complete geographical data of Bangladesh
-- Bilingual support (English and Bangla)
-- React components for address forms
-- Utility functions for data retrieval
-- TypeScript support
-- Postal code lookup
-- Cascading dropdowns
-- Zero dependencies (except React)
+- 🗺️ Complete geographical data of Bangladesh
+- 🔄 Hierarchical selection components
+- 📝 Ready-to-use address form component
+- 🌐 Bilingual support (English/বাংলা)
+- 📮 Integrated postcode lookup
+- 🎨 Customizable styling
+- ✅ Form validation support
+- 📱 TypeScript support
 
 ## Installation
 
@@ -23,29 +26,30 @@ yarn add bd-geo-info
 
 ## Usage
 
-### Using the Address Form Component
+### Basic Usage
 
-```jsx
+```tsx
 import { AddressForm } from 'bd-geo-info';
 
 function App() {
-  const handleAddressChange = (address) => {
-    console.log('Selected address:', address);
+  const handleAddressChange = (addressData) => {
+    console.log('Address Data:', addressData);
   };
 
   return (
     <AddressForm
-      language="en" // or 'bn' for Bangla
+      language="en"
       onChange={handleAddressChange}
-      className="custom-form-class"
+      showPostCode={true}
+      showLabels={true}
     />
   );
 }
 ```
 
-### Using Individual Components
+### Individual Components
 
-```jsx
+```tsx
 import {
   DivisionSelect,
   DistrictSelect,
@@ -53,145 +57,149 @@ import {
   UnionSelect
 } from 'bd-geo-info';
 
-function CustomAddressForm() {
-  const [division, setDivision] = useState(null);
-  const [district, setDistrict] = useState(null);
+function CustomForm() {
+  const [division, setDivision] = useState();
+  const [district, setDistrict] = useState();
+  const [upazila, setUpazila] = useState();
+  const [union, setUnion] = useState();
 
   return (
     <div>
       <DivisionSelect
         value={division}
         onChange={setDivision}
-        language="en"
+        language="bn"
       />
       <DistrictSelect
         division={division}
         value={district}
         onChange={setDistrict}
-        language="en"
+        language="bn"
+      />
+      <UpazilaSelect
+        district={district}
+        value={upazila}
+        onChange={setUpazila}
+        language="bn"
+      />
+      <UnionSelect
+        upazila={upazila}
+        value={union}
+        onChange={setUnion}
+        language="bn"
       />
     </div>
   );
 }
 ```
 
-### Using Utility Functions
+### Utility Functions
 
-```javascript
+```typescript
 import {
+  getDivisions,
   getDistricts,
   getUpazilas,
   getUnions,
-  getPostCode
+  getPostCodes,
+  formatAddress
 } from 'bd-geo-info';
 
-// Get districts of a division
-const districts = getDistricts('3');
+// Get divisions list
+const divisions = getDivisions('en');
 
-// Get upazilas of a district
-const upazilas = getUpazilas('10');
+// Get districts for a division
+const districts = getDistricts(divisionId, 'en');
 
-// Get unions of an upazila
-const unions = getUnions('100');
+// Get upazilas for a district
+const upazilas = getUpazilas(districtId, 'en');
 
-// Get post code information
-const postcodes = getPostCode({
-  division: 'Dhaka',
-  district: 'Dhaka',
-  upazila: 'Gulshan'
-});
+// Get unions for an upazila
+const unions = getUnions(upazilaId, 'en');
+
+// Get postcodes
+const postcodes = getPostCodes(districtId, upazilaId);
+
+// Format address
+const formattedAddress = formatAddress(
+  division,
+  district,
+  upazila,
+  union,
+  postCode,
+  street,
+  'en'
+);
 ```
 
 ## API Reference
 
-### Components
+### AddressForm
 
-#### `<AddressForm />`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| language | 'en' \| 'bn' | 'en' | Language for labels and values |
+| onChange | (data: AddressFormData) => void | - | Callback when form data changes |
+| className | string | '' | CSS class for form container |
+| theme | Theme | - | Custom theme object |
+| validation | AddressFormValidation | - | Validation rules |
+| showPostCode | boolean | true | Show/hide postcode field |
+| showLabels | boolean | true | Show/hide field labels |
+| customLabels | AddressFormLabels | - | Custom label text |
+| customErrors | AddressFormErrors | - | Custom error messages |
 
-| Prop | Type | Description |
-|------|------|-------------|
-| language | 'en' \| 'bn' | Language for labels and placeholders |
-| onChange | (address: AddressData) => void | Callback when address changes |
-| className | string | Custom CSS class |
-| children | ReactNode | Additional form elements |
+### Select Components (Division/District/Upazila/Union)
 
-#### `<DivisionSelect />`, `<DistrictSelect />`, `<UpazilaSelect />`, `<UnionSelect />`
-
-| Prop | Type | Description |
-|------|------|-------------|
-| value | Division \| District \| Upazila \| Union | Selected value |
-| onChange | (value: T) => void | Change handler |
-| language | 'en' \| 'bn' | Display language |
-| placeholder | string | Placeholder text |
-
-### Utility Functions
-
-#### `getDistricts(divisionId: string): District[]`
-Returns an array of districts for the given division ID.
-
-#### `getUpazilas(districtId: string): Upazila[]`
-Returns an array of upazilas for the given district ID.
-
-#### `getUnions(upazilaId: string): Union[]`
-Returns an array of unions for the given upazila ID.
-
-#### `getPostCode(params: { division?: string; district?: string; upazila?: string }): PostCode[]`
-Returns an array of matching post codes based on the provided parameters.
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| value | T | - | Selected value |
+| onChange | (value: T) => void | - | Change handler |
+| language | 'en' \| 'bn' | 'en' | Display language |
+| className | string | '' | CSS class name |
+| placeholder | string | 'Select...' | Placeholder text |
+| customLabel | string \| ReactNode | - | Custom label |
+| customError | string \| ReactNode | - | Custom error message |
+| theme | Theme | - | Custom theme object |
 
 ## Types
 
 ```typescript
-interface Division {
-  id: string;
-  name: string;
-  bn_name: string;
+interface AddressFormData {
+  division?: string;
+  district?: string;
+  upazila?: string;
+  union?: string;
+  postCode?: string;
+  street?: string;
 }
 
-interface District {
-  id: string;
-  division_id: string;
-  name: string;
-  bn_name: string;
-  lat?: string;
-  lon?: string;
-  url?: string;
+interface Theme {
+  primaryColor?: string;
+  backgroundColor?: string;
+  borderColor?: string;
+  borderRadius?: string;
+  // ... other theme properties
 }
 
-interface Upazila {
-  id: string;
-  district_id: string;
-  name: string;
-  bn_name: string;
-  url?: string;
-}
-
-interface Union {
-  id: string;
-  upazilla_id: string;
-  name: string;
-  bn_name: string;
-  url?: string;
-}
-
-interface PostCode {
-  id: string;
-  postCode: string;
-  upazila: string;
-  district: string;
-  division: string;
+interface ValidationRules {
+  required?: boolean;
+  customValidation?: (value: any) => boolean | string;
 }
 ```
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details on how to submit pull requests, report issues, and contribute to the project.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+## Support 💖
+
+If you find this package helpful, please consider giving it a star on GitHub! For issues and feature requests, please use the GitHub issue tracker.
+
+---
+
+Made with ❤️ by [Md Tanvir Ahamed Shanto](https://mdtanvirahamedshanto.vercel.app/) for the Bangla community
