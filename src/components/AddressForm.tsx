@@ -145,49 +145,65 @@ export default function AddressForm({
   const selectProps = {
     theme,
     errorClassName: `${errorClassName} text-[var(--error-color)] text-xs mt-1`,
-    labelClassName: `${labelClassName} block text-[var(--label-color)] text-sm font-medium mb-1`,
-    containerClassName: `${inputContainerClassName} flex flex-col mb-4 w-full md:w-[var(--desktop-width)]`,
+    labelClassName: `${labelClassName} block text-[var(--label-color)] text-sm font-medium mb-2`,
+    containerClassName: `${inputContainerClassName} flex flex-col mb-6 w-full md:w-[var(--desktop-width)]`,
     language,
-    className: `w-full h-[var(--select-height)] px-3 py-2 bg-[var(--background-color)] border border-[var(--border-color)] rounded-[var(--border-radius)] text-[var(--font-size)] transition-[var(--transition)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent hover:border-[var(--hover-border-color)] hover:bg-[var(--hover-bg-color)] disabled:opacity-50 disabled:cursor-not-allowed`
+    className: `w-full h-[var(--select-height)] px-4 py-2.5 bg-[var(--background-color)] border border-[var(--border-color)] rounded-[var(--border-radius)] text-[var(--font-size)] transition-[var(--transition)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent hover:border-[var(--hover-border-color)] hover:bg-[var(--hover-bg-color)] disabled:opacity-50 disabled:cursor-not-allowed shadow-sm`
   };
 
   return (
-    <div className={`${containerClassName} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4`} style={getStyles()}>
-      <DivisionSelect
-        {...selectProps}
-        value={selectedDivision}
-        onChange={handleDivisionChange}
-        placeholder={language === 'bn' ? 'বিভাগ নির্বাচন করুন' : 'Select Division'}
-        customLabel={customLabels?.division}
-        customError={customErrors?.division || errors.division}
-      />
-      <DistrictSelect
-        {...selectProps}
-        division={selectedDivision}
-        value={selectedDistrict}
-        onChange={handleDistrictChange}
-        placeholder={language === 'bn' ? 'জেলা নির্বাচন করুন' : 'Select District'}
-        customLabel={customLabels?.district}
-        customError={customErrors?.district || errors.district}
-      />
-      <UpazilaSelect
-        {...selectProps}
-        district={selectedDistrict}
-        value={selectedUpazila}
-        onChange={handleUpazilaChange}
-        placeholder={language === 'bn' ? 'উপজেলা নির্বাচন করুন' : 'Select Upazila'}
-        customLabel={customLabels?.upazila}
-        customError={customErrors?.upazila || errors.upazila}
-      />
-      <UnionSelect
-        {...selectProps}
-        upazila={selectedUpazila}
-        value={selectedUnion}
-        onChange={handleUnionChange}
-        placeholder={language === 'bn' ? 'ইউনিয়ন নির্বাচন করুন' : 'Select Union'}
-        customLabel={customLabels?.union}
-        customError={customErrors?.union || errors.union}
-      />
+    <div className={`${containerClassName} flex flex-col gap-4 p-6 bg-white rounded-lg shadow-sm w-full`} style={{
+      ...getStyles(),
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '1rem',
+      maxWidth: '100%'
+    }}>
+      <div className="flex flex-wrap gap-4 w-full" style={{ rowGap: '1rem' }}>
+        <div className="w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.33%-0.67rem)]">
+          <DivisionSelect
+            {...selectProps}
+            value={selectedDivision}
+            onChange={handleDivisionChange}
+            placeholder={language === 'bn' ? 'বিভাগ নির্বাচন করুন' : 'Select Division'}
+            customLabel={customLabels?.division}
+            customError={customErrors?.division || errors.division}
+          />
+        </div>
+        <div className="w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.33%-0.67rem)]">
+          <DistrictSelect
+            {...selectProps}
+            division={selectedDivision}
+            value={selectedDistrict}
+            onChange={handleDistrictChange}
+            placeholder={language === 'bn' ? 'জেলা নির্বাচন করুন' : 'Select District'}
+            customLabel={customLabels?.district}
+            customError={customErrors?.district || errors.district}
+          />
+        </div>
+        <div className="w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.33%-0.67rem)]">
+          <UpazilaSelect
+            {...selectProps}
+            district={selectedDistrict}
+            value={selectedUpazila}
+            onChange={handleUpazilaChange}
+            placeholder={language === 'bn' ? 'উপজেলা নির্বাচন করুন' : 'Select Upazila'}
+            customLabel={customLabels?.upazila}
+            customError={customErrors?.upazila || errors.upazila}
+          />
+        </div>
+        <div className="w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.33%-0.67rem)]">
+          <UnionSelect
+            {...selectProps}
+            upazila={selectedUpazila}
+            value={selectedUnion}
+            onChange={handleUnionChange}
+            placeholder={language === 'bn' ? 'ইউনিয়ন নির্বাচন করুন' : 'Select Union'}
+            customLabel={customLabels?.union}
+            customError={customErrors?.union || errors.union}
+          />
+        </div>
+      </div>
       {children}
     </div>
   );

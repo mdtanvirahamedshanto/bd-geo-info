@@ -73,23 +73,35 @@ import {
 const LocationSelector = () => {
   const [division, setDivision] = useState();
   const [district, setDistrict] = useState();
+  const [upazila, setUpazila] = useState();
 
   return (
     <div>
       <DivisionSelect
         language="en"
-        onChange={(div) => setDivision(div)}
+        onChange={setDivision}
         placeholder="Select Division"
+        customLabel="Division"
+        customError={errors.division}
       />
       <DistrictSelect
         division={division}
-        onChange={(dist) => setDistrict(dist)}
+        onChange={setDistrict}
         placeholder="Select District"
+        customLabel="District"
+        showLabels={true}
       />
       <UpazilaSelect
         district={district}
-        onChange={(upazila) => console.log(upazila)}
+        onChange={setUpazila}
         placeholder="Select Upazila"
+        className="custom-select-class"
+      />
+      <UnionSelect
+        upazila={upazila}
+        onChange={(union) => console.log(union)}
+        language="bn"
+        showLabels={true}
       />
     </div>
   );
@@ -125,6 +137,8 @@ const postCodes = getPostCode({
 
 ## 🎨 Theme Customization
 
+The library provides extensive theme customization options through a theme object:
+
 ```typescript
 interface Theme {
   colors?: {
@@ -142,6 +156,24 @@ interface Theme {
     label?: string;      // Margin for labels
   };
 }
+
+// Example Usage
+const theme = {
+  colors: {
+    primary: '#4f46e5',
+    background: '#f9fafb',
+    border: '#e5e7eb'
+  },
+  borderRadius: '0.5rem',
+  fontSize: {
+    input: '0.875rem',
+    label: '0.75rem'
+  },
+  spacing: {
+    input: '0.75rem 1rem',
+    label: '0 0 0.5rem'
+  }
+};
 ```
 
 ## 📋 Component Props
@@ -156,25 +188,80 @@ interface AddressFormProps {
   validation?: AddressFormValidation; // Validation rules
   showPostCode?: boolean;           // Show/hide post code
   showLabels?: boolean;             // Show/hide labels
-  customLabels?: Record<string, string>; // Custom label text
-  customErrors?: Record<string, string>; // Custom error messages
+  customLabels?: {
+    division?: string | React.ReactNode;
+    district?: string | React.ReactNode;
+    upazila?: string | React.ReactNode;
+    union?: string | React.ReactNode;
+  };
+  customErrors?: {
+    division?: string | React.ReactNode;
+    district?: string | React.ReactNode;
+    upazila?: string | React.ReactNode;
+    union?: string | React.ReactNode;
+  };
   className?: string;               // Container class
+  containerClassName?: string;      // Outer container class
+  labelClassName?: string;          // Label class
+  errorClassName?: string;          // Error message class
 }
 ```
 
-### Select Components
+### Select Components (DivisionSelect, DistrictSelect, UpazilaSelect, UnionSelect)
 
 ```typescript
 interface SelectProps {
-  language?: 'en' | 'bn';
-  onChange: (value: T) => void;
-  value?: T;
-  placeholder?: string;
-  customLabel?: string;
-  customError?: string;
-  theme?: Theme;
-  className?: string;
+  language?: 'en' | 'bn';          // Display language
+  onChange?: (value: T) => void;    // Value change handler
+  value?: T;                       // Selected value
+  placeholder?: string;            // Placeholder text
+  customLabel?: string | React.ReactNode;  // Custom label
+  customError?: string | React.ReactNode;  // Error message
+  theme?: Theme;                   // Custom theme
+  className?: string;              // Select element class
+  containerClassName?: string;     // Container class
+  labelClassName?: string;         // Label class
+  errorClassName?: string;         // Error message class
+  showLabels?: boolean;           // Show/hide label
 }
+```
+
+## 🔍 Validation
+
+The library supports built-in validation with customizable rules:
+
+```typescript
+interface AddressFormValidation {
+  division?: {
+    required?: boolean;
+    customValidation?: (value: any) => string | true;
+  };
+  district?: {
+    required?: boolean;
+    customValidation?: (value: any) => string | true;
+  };
+  upazila?: {
+    required?: boolean;
+    customValidation?: (value: any) => string | true;
+  };
+  union?: {
+    required?: boolean;
+    customValidation?: (value: any) => string | true;
+  };
+}
+
+// Example Usage
+const validation = {
+  division: {
+    required: true,
+    customValidation: (value) => {
+      if (value === 'restricted') return 'This division is restricted';
+      return true;
+    }
+  },
+  district: { required: true },
+  upazila: { required: true }
+};
 ```
 
 ## 🤝 Contributing
@@ -198,4 +285,4 @@ If you find this package helpful, please consider giving it a star on GitHub! Fo
 
 ---
 
-Made with ❤️ by [Md Tanvir Ahamed Shanto](https://mdtanvirahamedshanto.vercel.app/) for the Bangla community
+Made with ❤️ by [Md Tanvir Ahamed Shanto](https://github.com/mdtanvirahamedshanto)
