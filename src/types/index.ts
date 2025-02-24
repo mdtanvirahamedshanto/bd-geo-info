@@ -12,8 +12,8 @@ export interface District {
   name: string;
   bn_name: string;
   lat: string;
-  lon: string;
-  url: string;
+  long: string;
+  url?: string;
 }
 
 export interface Upazila {
@@ -25,18 +25,17 @@ export interface Upazila {
 
 export interface UnionData {
   id: string;
-  upazila_id: string;
+  upazilla_id: string;
   name: string;
   bn_name: string;
   url: string;
 }
 
 export interface Union {
-  upazila_id: string;
   type: string;
   name?: string;
   database?: string;
-  data: UnionData[];
+  data?: UnionData[];
 }
 
 export interface PostCode {
@@ -48,9 +47,48 @@ export interface PostCode {
   postCode: string;
 }
 
-export interface GeoLocation {
-  lat: string;
-  lon: string;
+export interface AddressFormProps {
+  onSubmit?: (data: AddressFormData) => void;
+  onChange?: (data: AddressFormData) => void;
+  defaultValues?: Partial<AddressFormData>;
+  errors?: AddressFormErrors;
+  className?: string;
+  showPostCode?: boolean;
+  showStreet?: boolean;
+  showUnion?: boolean;
+  showLabels?: boolean;
+  labels?: {
+    division?: string | React.ReactNode;
+    district?: string | React.ReactNode;
+    upazila?: string | React.ReactNode;
+    union?: string | React.ReactNode;
+    postCode?: string | React.ReactNode;
+    street?: string | React.ReactNode;
+    submit?: string | React.ReactNode;
+  };
+  placeholders?: {
+    division?: string;
+    district?: string;
+    upazila?: string;
+    union?: string;
+    postCode?: string;
+    street?: string;
+  };
+  disabled?: boolean;
+  submitButtonProps?: {
+    className?: string;
+    disabled?: boolean;
+  };
+  children?: React.ReactNode;
+  theme?: Theme;
+  validation?: AddressFormValidation;
+  customLabels?: AddressFormLabels;
+  customErrors?: AddressFormErrors;
+  containerClassName?: string;
+  labelClassName?: string;
+  errorClassName?: string;
+  inputContainerClassName?: string;
+  language?: 'en' | 'bn';
 }
 
 export interface AddressFormData {
@@ -60,40 +98,6 @@ export interface AddressFormData {
   union?: string;
   postCode?: string;
   street?: string;
-}
-
-export interface Theme {
-  primaryColor?: string;
-  backgroundColor?: string;
-  borderColor?: string;
-  borderRadius?: string;
-  fontSize?: string;
-  padding?: string;
-  margin?: string;
-  hoverBackgroundColor?: string;
-  focusBorderColor?: string;
-  errorColor?: string;
-  disabledOpacity?: string;
-  labelColor?: string;
-  placeholderColor?: string;
-  transition?: string;
-  boxShadow?: string;
-  errorFontSize?: string;
-  labelFontSize?: string;
-}
-
-export interface ValidationRules {
-  required?: boolean;
-  customValidation?: (value: any) => boolean | string;
-}
-
-export interface AddressFormLabels {
-  division?: string | React.ReactNode;
-  district?: string | React.ReactNode;
-  upazila?: string | React.ReactNode;
-  union?: string | React.ReactNode;
-  postCode?: string | React.ReactNode;
-  street?: string | React.ReactNode;
 }
 
 export interface AddressFormErrors {
@@ -114,9 +118,9 @@ export interface AddressFormValidation {
   street?: ValidationRules;
 }
 
-export interface SelectProps {
-  value?: string;
-  onChange: (value: string) => void;
+export interface SelectProps<T = string> {
+  value?: T;
+  onChange?: (value: T) => void;
   language?: 'en' | 'bn';
   className?: string;
   placeholder?: string;
@@ -130,19 +134,76 @@ export interface SelectProps {
   customError?: string | React.ReactNode;
 }
 
+export interface ValidationRules {
+  required?: boolean;
+  customValidation?: (value: any) => string | true;
+}
+
+export interface AddressFormLabels {
+  division?: string | React.ReactNode;
+  district?: string | React.ReactNode;
+  upazila?: string | React.ReactNode;
+  union?: string | React.ReactNode;
+  postCode?: string | React.ReactNode;
+  street?: string | React.ReactNode;
+}
+
+export interface Theme {
+  colors?: {
+    primary?: string;
+    background?: string;
+    border?: string;
+  };
+  borderRadius?: string;
+  fontSize?: {
+    input?: string;
+  };
+  spacing?: {
+    input?: string;
+    label?: string;
+  };
+}
+
 export interface AddressFormProps {
   language?: 'en' | 'bn';
   onChange?: (address: AddressFormData) => void;
+  onSubmit?: (data: AddressFormData) => void;
+  defaultValues?: Partial<AddressFormData>;
+  errors?: AddressFormErrors;
   className?: string;
   children?: React.ReactNode;
   theme?: Theme;
   validation?: AddressFormValidation;
   showPostCode?: boolean;
+  showStreet?: boolean;
+  showUnion?: boolean;
   showLabels?: boolean;
+  labels?: {
+    division?: string | React.ReactNode;
+    district?: string | React.ReactNode;
+    upazila?: string | React.ReactNode;
+    union?: string | React.ReactNode;
+    postCode?: string | React.ReactNode;
+    street?: string | React.ReactNode;
+    submit?: string | React.ReactNode;
+  };
+  placeholders?: {
+    division?: string;
+    district?: string;
+    upazila?: string;
+    union?: string;
+    postCode?: string;
+    street?: string;
+  };
   customLabels?: AddressFormLabels;
   customErrors?: AddressFormErrors;
   containerClassName?: string;
   labelClassName?: string;
   errorClassName?: string;
   inputContainerClassName?: string;
+  disabled?: boolean;
+  submitButtonProps?: {
+    className?: string;
+    disabled?: boolean;
+  };
 }

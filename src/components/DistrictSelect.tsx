@@ -1,21 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { District, Division } from '../types/index';
-import { loadDistricts } from '../utils/dataLoader';
+import { District, Division, SelectProps } from '../types/index';
+import { getDistricts } from '../utils';
 
-interface DistrictSelectProps {
+interface DistrictSelectProps extends SelectProps<District> {
   division?: Division;
   value?: District;
   onChange?: (district: District) => void;
-  language?: 'en' | 'bn';
-  className?: string;
-  placeholder?: string;
-  customLabel?: string | React.ReactNode;
-  customError?: string | React.ReactNode;
-  theme?: any;
-  errorClassName?: string;
-  labelClassName?: string;
-  containerClassName?: string;
-  showLabels?: boolean;
 }
 
 export default function DistrictSelect({
@@ -31,51 +21,48 @@ export default function DistrictSelect({
   errorClassName = '',
   labelClassName = '',
   containerClassName = '',
-  showLabels = true,
+  disabled = false
 }: DistrictSelectProps) {
-  const [districts, setDistricts] = useState<any[]>([]);
+  const [districts, setDistricts] = useState<District[]>([]);
 
   useEffect(() => {
-    if (division) {
-      loadDistricts(division.id).then(setDistricts);
-    }
-  }, [division]);
-
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const district = districts.find((d) => d.value === e.target.value);
-    if (district) {
-      const districtData: District = {
-        id: district.value,
-        division_id: division?.id || '',
-        name: district.label,
-        bn_name: district.label,
-        lat: '',
-        lon: '',
-        url: ''
-      };
-      onChange?.(districtData);
-    }
-  };
+    const loadData = async () => {
+      if (division) {
+        const districtData = await getDistricts(division.id, language);
+        setDistricts(districtData.map(d => ({
+          id: d.value,
+          division_id: division.id,
+          name: d.label,
+          bn_name: d.label,
+          lat: '',
+          long: '',
+          url: ''
+        })));
+      } else {
+        setDistricts([]);
+      }
+    };
+    loadData();
+  }, [division, language]);
 
   return (
     <div className={containerClassName}>
-      {showLabels && (
-        <label className={labelClassName}>
-          {customLabel || (language === 'bn' ? 'জেলা:' : 'District:')}
-        </label>
-      )}
+      {customLabel && <label className={labelClassName}>{customLabel}</label>}
       <select
         value={value?.id || ''}
-        onChange={handleChange}
+        onChange={(e) => {
+          const district = districts.find((d) => d.id === e.target.value);
+          if (district) {
+            onChange?.(district);
+          }
+        }}
         className={className}
-        disabled={!districts.length}
+        disabled={disabled || !districts.length}
       >
-        <option value="">
-          {placeholder || (language === 'bn' ? 'জেলা নির্বাচন করুন' : 'Select District')}
-        </option>
+        <option value="">{placeholder}</option>
         {districts.map((district) => (
-          <option key={district.value} value={district.value}>
-            {district.label}
+          <option key={district.id} value={district.id}>
+            {language === 'bn' ? district.bn_name : district.name}
           </option>
         ))}
       </select>

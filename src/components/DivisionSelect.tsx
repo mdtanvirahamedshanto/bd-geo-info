@@ -1,38 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { Division } from '../types';
-import { loadDivisions } from '../utils/dataLoader';
+import { Division, SelectProps } from '../types';
+import divisions from '../data/bd-divisions.json';
 
-interface DivisionSelectProps {
+interface DivisionSelectProps extends SelectProps<Division> {
   value?: Division;
   onChange?: (division: Division) => void;
-  language?: 'en' | 'bn';
-  className?: string;
-  placeholder?: string;
-  customLabel?: string | React.ReactNode;
-  customError?: string | React.ReactNode;
-  theme?: any;
-  errorClassName?: string;
-  labelClassName?: string;
-  containerClassName?: string;
 }
 
 export default function DivisionSelect({
   value,
   onChange,
   language = 'en',
-  className = '',
   placeholder = 'Select Division',
+  className = '',
+  theme,
   customLabel,
   customError,
-  theme,
   errorClassName = '',
   labelClassName = '',
   containerClassName = '',
+  disabled = false
 }: DivisionSelectProps) {
   const [divisionData, setDivisionData] = useState<Division[]>([]);
 
   useEffect(() => {
-    loadDivisions().then(setDivisionData);
+    setDivisionData(divisions.divisions);
   }, []);
 
   return (
@@ -47,6 +39,7 @@ export default function DivisionSelect({
           }
         }}
         className={className}
+        disabled={disabled}
       >
         <option value="">{placeholder}</option>
         {divisionData.map((division) => (

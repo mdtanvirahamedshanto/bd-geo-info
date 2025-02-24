@@ -41,11 +41,11 @@ export default function UnionSelect({
         const unionData = await getUnions(upazila.id);
         setUnions(unionData.map(union => ({
           id: union.value,
-          upazila_id: upazila.id,
+          upazilla_id: upazila?.id || '', // Fixed property name from upazila_id to upazilla_id
           name: union.label,
           bn_name: union.label,
           url: ''
-        } as UnionData)));
+        })));
       } else {
         setUnions([]);
       }

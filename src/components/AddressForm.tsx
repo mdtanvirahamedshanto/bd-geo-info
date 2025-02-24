@@ -104,13 +104,13 @@ export default function AddressForm({
   const getStyles = () => {
     if (!theme) return {};
     return {
-      '--primary-color': theme.primaryColor,
-      '--background-color': theme.backgroundColor,
-      '--border-color': theme.borderColor,
+      '--primary-color': theme.colors?.primary,
+      '--background-color': theme.colors?.background,
+      '--border-color': theme.colors?.border,
       '--border-radius': theme.borderRadius,
-      '--font-size': theme.fontSize,
-      '--padding': theme.padding,
-      '--margin': theme.margin,
+      '--font-size': theme.fontSize?.input,
+      '--padding': theme.spacing?.input,
+      '--margin': theme.spacing?.label,
     } as React.CSSProperties;
   };
 

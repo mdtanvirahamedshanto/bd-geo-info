@@ -1,10 +1,12 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "module": "ESNext",
-    "outDir": "./dist",
-    "declaration": false
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
+    "outDir": "dist/esm",
+    "target": "ES2017",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "jsx": "react",
+    "resolveJsonModule": true
+  }
 }

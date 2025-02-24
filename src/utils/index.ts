@@ -19,7 +19,7 @@ export const getDistricts = async (divisionId: string, language: 'en' | 'bn' = '
       name: district.name,
       bn_name: district.bn_name,
       lat: district.lat,
-      lon: district.long,
+      long: district.long,
       url: ''
     }))
     .map((district) => ({
@@ -54,11 +54,9 @@ export const getUpazilas = async (districtId: string, language: 'en' | 'bn' = 'e
 export const getUnions = async (upazilaId: string, language: 'en' | 'bn' = 'en'): Promise<{ value: string; label: string }[]> => {
   const unions = (await import('../data/unions.json')).default;
   const filteredUnions = unions
-    .filter((union: { data?: { id: string; upazilla_id: string; name: string; bn_name: string; url: string }[] }) => 
-      union.data?.some(u => u.upazilla_id === upazilaId)
-    )
-    .map((union: { data?: { id: string; upazilla_id: string; name: string; bn_name: string; url: string }[] }) => {
-      const unionData = union.data?.find(u => u.upazilla_id === upazilaId);
+    .filter((union: any) => union.data?.some((u: UnionData) => u.upazilla_id === upazilaId))
+    .map((union: any) => {
+      const unionData = union.data?.find((u: UnionData) => u.upazilla_id === upazilaId);
       if (!unionData) return null;
       return {
         value: unionData.id,
@@ -98,13 +96,12 @@ export const formatAddress = async (
   ]);
 
   const divisionData = divisions.default.divisions.find((d: Division) => d.id === division);
-  const districtData = districts.default.districts.find((d: { id: string; division_id: string; name: string; bn_name: string; lat: string; long: string; }) => d.id === district);
+  const districtData = districts.default.districts.find((d: District) => d.id === district);
   const upazilaData = upazilas.default.upazilas.find((u: Upazila) => u.id === upazila);
   
   const unionData = unions.default
-    .find((union: { data?: { id: string; upazilla_id: string; name: string; bn_name: string; url: string }[] }) => 
-      union.data?.some(u => u.upazilla_id === upazila))
-    ?.data?.find((u: { id: string; upazilla_id: string; name: string; bn_name: string; url: string }) => u.upazilla_id === upazila);
+    .find((union: any) => union.data?.some((u: UnionData) => u.upazilla_id === upazila))
+    ?.data?.find((u: UnionData) => u.upazilla_id === upazila);
 
   if (!divisionData || !districtData || !upazilaData || !unionData || !postCode) {
     return '';
