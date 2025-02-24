@@ -74,7 +74,7 @@ export default function UnionSelect({
             transition: 'color 0.3s ease'
           }}
         >
-          {customLabel || (language === 'bn' ? 'ইউনিয়ন:' : 'Union:')}
+          {customLabel}
         </label>
       )}
       <div className="relative w-full">
