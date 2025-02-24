@@ -31,22 +31,22 @@ export default function AddressForm({
 
   const handleDivisionChange = (division: Division) => {
     setSelectedDivision(division);
-    handleChange({ division: division.id });
+    handleChange({ division: language === 'bn' ? division.bn_name : division.name });
   };
 
   const handleDistrictChange = (district: District) => {
     setSelectedDistrict(district);
-    handleChange({ district: district.id });
+    handleChange({ district: language === 'bn' ? district.bn_name : district.name });
   };
 
   const handleUpazilaChange = (upazila: Upazila) => {
     setSelectedUpazila(upazila);
-    handleChange({ upazila: upazila.id });
+    handleChange({ upazila: language === 'bn' ? upazila.bn_name : upazila.name });
   };
 
   const handleUnionChange = (union: UnionData) => {
     setSelectedUnion(union);
-    handleChange({ union: union.id });
+    handleChange({ union: language === 'bn' ? union.bn_name : union.name });
   };
 
   const validateField = (field: keyof AddressFormValidation, value: any) => {
@@ -102,28 +102,57 @@ export default function AddressForm({
   };
 
   const getStyles = () => {
-    if (!theme) return {};
+    if (!theme) {
+      return {
+        '--primary-color': '#3b82f6',
+        '--background-color': '#ffffff',
+        '--border-color': '#e5e7eb',
+        '--border-radius': '0.375rem',
+        '--font-size': '0.875rem',
+        '--padding': '0.625rem 0.875rem',
+        '--margin': '0.5rem',
+        '--select-height': '2.5rem',
+        '--transition': 'all 0.2s ease-in-out',
+        '--hover-border-color': '#93c5fd',
+        '--hover-bg-color': '#f8fafc',
+        '--error-color': '#ef4444',
+        '--label-color': '#374151',
+        '--placeholder-color': '#9ca3af',
+        '--mobile-width': '100%',
+        '--desktop-width': '24rem'
+      } as React.CSSProperties;
+    }
     return {
-      '--primary-color': theme.colors?.primary,
-      '--background-color': theme.colors?.background,
-      '--border-color': theme.colors?.border,
-      '--border-radius': theme.borderRadius,
-      '--font-size': theme.fontSize?.input,
-      '--padding': theme.spacing?.input,
-      '--margin': theme.spacing?.label,
+      '--primary-color': theme.colors?.primary || '#3b82f6',
+      '--background-color': theme.colors?.background || '#ffffff',
+      '--border-color': theme.colors?.border || '#e5e7eb',
+      '--border-radius': theme.borderRadius || '0.375rem',
+      '--font-size': theme.fontSize?.input || '0.875rem',
+      '--padding': theme.spacing?.input || '0.625rem 0.875rem',
+      '--margin': theme.spacing?.label || '0.5rem',
+      '--select-height': '2.5rem',
+      '--transition': 'all 0.2s ease-in-out',
+      '--hover-border-color': '#93c5fd',
+      '--hover-bg-color': '#f8fafc',
+      '--error-color': '#ef4444',
+      '--label-color': '#374151',
+      '--placeholder-color': '#9ca3af',
+      '--mobile-width': '100%',
+      '--desktop-width': '24rem'
     } as React.CSSProperties;
   };
 
   const selectProps = {
     theme,
-    errorClassName,
-    labelClassName,
-    containerClassName: inputContainerClassName,
-    language
+    errorClassName: `${errorClassName} text-[var(--error-color)] text-xs mt-1`,
+    labelClassName: `${labelClassName} block text-[var(--label-color)] text-sm font-medium mb-1`,
+    containerClassName: `${inputContainerClassName} flex flex-col mb-4 w-full md:w-[var(--desktop-width)]`,
+    language,
+    className: `w-full h-[var(--select-height)] px-3 py-2 bg-[var(--background-color)] border border-[var(--border-color)] rounded-[var(--border-radius)] text-[var(--font-size)] transition-[var(--transition)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent hover:border-[var(--hover-border-color)] hover:bg-[var(--hover-bg-color)] disabled:opacity-50 disabled:cursor-not-allowed`
   };
 
   return (
-    <div className={containerClassName} style={getStyles()}>
+    <div className={`${containerClassName} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4`} style={getStyles()}>
       <DivisionSelect
         {...selectProps}
         value={selectedDivision}
@@ -159,16 +188,6 @@ export default function AddressForm({
         customLabel={customLabels?.union}
         customError={customErrors?.union || errors.union}
       />
-      {showPostCode && address.postCode && (
-        <div className={inputContainerClassName}>
-          {showLabels && (
-            <label className={labelClassName}>
-              {customLabels?.postCode || (language === 'bn' ? 'পোস্ট কোড:' : 'Post Code:')}
-            </label>
-          )}
-          <span>{address.postCode}</span>
-        </div>
-      )}
       {children}
     </div>
   );

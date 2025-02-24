@@ -134,6 +134,23 @@ export interface SelectProps<T = string> {
   customError?: string | React.ReactNode;
 }
 
+export interface PostOfficeSelectProps {
+  division?: Division;
+  district?: District;
+  upazila?: Upazila;
+  value?: PostCode;
+  onChange?: (postOffice: PostCode) => void;
+  language?: 'en' | 'bn';
+  className?: string;
+  placeholder?: string;
+  customLabel?: string | React.ReactNode;
+  customError?: string | React.ReactNode;
+  theme?: Theme;
+  errorClassName?: string;
+  labelClassName?: string;
+  containerClassName?: string;
+}
+
 export interface ValidationRules {
   required?: boolean;
   customValidation?: (value: any) => string | true;
