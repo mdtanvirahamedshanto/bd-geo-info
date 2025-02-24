@@ -152,15 +152,12 @@ export default function AddressForm({
   };
 
   return (
-    <div className={`${containerClassName} flex flex-col gap-4 p-6 bg-white rounded-lg shadow-sm w-full`} style={{
-      ...getStyles(),
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '1rem',
-      maxWidth: '100%'
-    }}>
-      <div className="flex flex-wrap gap-4 w-full" style={{ rowGap: '1rem' }}>
-        <div className="w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.33%-0.67rem)]">
+    <div 
+      className={`${containerClassName} bg-white rounded-lg shadow-sm w-full max-w-[1200px] mx-auto p-6`} 
+      style={getStyles()}
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="relative">
           <DivisionSelect
             {...selectProps}
             value={selectedDivision}
@@ -170,7 +167,7 @@ export default function AddressForm({
             customError={customErrors?.division || errors.division}
           />
         </div>
-        <div className="w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.33%-0.67rem)]">
+        <div className="relative">
           <DistrictSelect
             {...selectProps}
             division={selectedDivision}
@@ -181,7 +178,7 @@ export default function AddressForm({
             customError={customErrors?.district || errors.district}
           />
         </div>
-        <div className="w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.33%-0.67rem)]">
+        <div className="relative">
           <UpazilaSelect
             {...selectProps}
             district={selectedDistrict}
@@ -192,7 +189,7 @@ export default function AddressForm({
             customError={customErrors?.upazila || errors.upazila}
           />
         </div>
-        <div className="w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.33%-0.67rem)]">
+        <div className="relative">
           <UnionSelect
             {...selectProps}
             upazila={selectedUpazila}

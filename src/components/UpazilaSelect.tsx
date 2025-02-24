@@ -76,10 +76,6 @@ export default function UpazilaSelect({
           style={{
             minHeight: '2.75rem',
             boxShadow: '0 1px 2px rgba(0, 0, 0, 0.05)',
-            backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
-            backgroundPosition: 'right 0.5rem center',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: '1.5em 1.5em'
           }}
         >
           <option value="" className="text-gray-500">{placeholder}</option>
