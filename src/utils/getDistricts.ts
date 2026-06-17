@@ -8,6 +8,7 @@ interface RawDistrict {
   bn_name: string;
   lat: string;
   long: string;
+  url?: string;
 }
 
 interface DistrictsData {
@@ -25,6 +26,6 @@ export const getDistricts = async (divisionId: string, language: 'en' | 'bn' = '
       bn_name: district.bn_name,
       lat: district.lat,
       long: district.long,
-      url: ''
+      url: district.url || ''
     }));
 };

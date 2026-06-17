@@ -18,6 +18,13 @@ A comprehensive React component library for handling Bangladesh's geographical d
 - 🔍 Comprehensive error handling
 - 🎯 Zero dependencies
 
+## ⚡ Performance & Bundle Size Optimizations
+
+To keep the package **super fast**, **lightweight**, and **low memory**, we implement the following optimizations:
+- **$O(1)$ Hash Map Lookups**: Datasets are indexed by parent ID (e.g. upazilas by district ID, unions by upazila ID, villages by upazila ID). This allows instant, direct lookup instead of scanning/filtering thousands of objects.
+- **Code Splitting & Dynamic Importing**: Large datasets (like villages and unions) are imported dynamically only when you invoke their query functions, preventing bundle bloat for basic search forms.
+- **Build-Time Asset Minification**: All raw JSON data files are minified during the build step, stripping away formatting whitespaces to save ~300 KB of network payload size.
+
 ## 📦 Installation
 
 ```bash
@@ -110,29 +117,35 @@ const LocationSelector = () => {
 
 ### Utility Functions
 
+To support dynamic code-splitting, some of the utilities are asynchronous. Use `await` or `.then()` to retrieve their results:
+
 ```typescript
 import { 
   getDistricts, 
   getUpazilas, 
   getUnions, 
-  getPostCode 
+  getPostCode,
+  getVillages
 } from 'bd-geo-info';
 
-// Get districts for a division
-const districts = getDistricts('3'); // Returns districts in Dhaka division
+// 1. Get districts for a division (asynchronous)
+const districts = await getDistricts('1', 'en');
 
-// Get upazilas for a district
-const upazilas = getUpazilas('26'); // Returns upazilas in Dhaka district
+// 2. Get upazilas for a district (synchronous)
+const upazilas = getUpazilas('1');
 
-// Get unions for an upazila
-const unions = getUnions('123'); // Returns unions in specific upazila
+// 3. Get unions for an upazila (asynchronous)
+const unions = await getUnions('1', 'en');
 
-// Get post code for an area
+// 4. Get post code for an area (synchronous)
 const postCodes = getPostCode({
-  division: '3',
-  district: '26',
-  upazila: '123'
+  division: '6',
+  district: '47',
+  upazila: 'Dhaka'
 });
+
+// 5. Get villages for an upazila (asynchronous)
+const villages = await getVillages('1');
 ```
 
 ## 🎨 Theme Customization

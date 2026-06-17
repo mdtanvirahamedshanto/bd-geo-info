@@ -1,6 +1,6 @@
 {
   "name": "bd-geo-info",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "A comprehensive Bangladesh geographical data package with hierarchical selection and address form components",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -13,11 +13,10 @@
     }
   },
   "files": [
-    "dist/",
-    "src/"
+    "dist/"
   ],
   "scripts": {
-    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types && node scripts/minify-json.js",
     "build:cjs": "npx tsc -p tsconfig.cjs.json",
     "build:esm": "npx tsc -p tsconfig.esm.json",
     "build:types": "npx tsc -p tsconfig.types.json",

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { AddressFormData, AddressFormProps, AddressFormValidation, Division, District, Upazila, UnionData } from "../types/index";
+import { AddressFormData, AddressFormProps, AddressFormValidation, Division, District, Upazila, UnionData, Village } from "../types/index";
 import DivisionSelect from './DivisionSelect';
 import DistrictSelect from './DistrictSelect';
 import UpazilaSelect from './UpazilaSelect';
 import UnionSelect from './UnionSelect';
+import VillageSelect from './VillageSelect';
 import getPostCode from '../utils/getPostCode';
 
 export default function AddressForm({
@@ -14,6 +15,8 @@ export default function AddressForm({
   theme,
   validation,
   showPostCode = true,
+  showUnion = true,
+  showVillage = false,
   showLabels = true,
   customLabels,
   customErrors,
@@ -28,25 +31,40 @@ export default function AddressForm({
   const [selectedDistrict, setSelectedDistrict] = useState<District>();
   const [selectedUpazila, setSelectedUpazila] = useState<Upazila>();
   const [selectedUnion, setSelectedUnion] = useState<UnionData>();
+  const [selectedVillage, setSelectedVillage] = useState<Village>();
 
   const handleDivisionChange = (division: Division) => {
     setSelectedDivision(division);
+    setSelectedDistrict(undefined);
+    setSelectedUpazila(undefined);
+    setSelectedUnion(undefined);
+    setSelectedVillage(undefined);
     handleChange({ division: language === 'bn' ? division.bn_name : division.name });
   };
 
   const handleDistrictChange = (district: District) => {
     setSelectedDistrict(district);
+    setSelectedUpazila(undefined);
+    setSelectedUnion(undefined);
+    setSelectedVillage(undefined);
     handleChange({ district: language === 'bn' ? district.bn_name : district.name });
   };
 
   const handleUpazilaChange = (upazila: Upazila) => {
     setSelectedUpazila(upazila);
+    setSelectedUnion(undefined);
+    setSelectedVillage(undefined);
     handleChange({ upazila: language === 'bn' ? upazila.bn_name : upazila.name });
   };
 
   const handleUnionChange = (union: UnionData) => {
     setSelectedUnion(union);
     handleChange({ union: language === 'bn' ? union.bn_name : union.name });
+  };
+
+  const handleVillageChange = (village: Village) => {
+    setSelectedVillage(village);
+    handleChange({ village: village.name });
   };
 
   const validateField = (field: keyof AddressFormValidation, value: any) => {
@@ -72,13 +90,16 @@ export default function AddressForm({
       updatedAddress.district = undefined;
       updatedAddress.upazila = undefined;
       updatedAddress.union = undefined;
+      updatedAddress.village = undefined;
       updatedAddress.postCode = undefined;
     } else if ('district' in newData) {
       updatedAddress.upazila = undefined;
       updatedAddress.union = undefined;
+      updatedAddress.village = undefined;
       updatedAddress.postCode = undefined;
     } else if ('upazila' in newData) {
       updatedAddress.union = undefined;
+      updatedAddress.village = undefined;
       // Update postcode when upazila changes
       const postcodes = getPostCode({
         division: updatedAddress.division?.toString() || '',
@@ -189,17 +210,32 @@ export default function AddressForm({
             customError={customErrors?.upazila || errors.upazila}
           />
         </div>
-        <div className="relative">
-          <UnionSelect
-            {...selectProps}
-            upazila={selectedUpazila}
-            value={selectedUnion}
-            onChange={handleUnionChange}
-            placeholder={language === 'bn' ? 'ইউনিয়ন নির্বাচন করুন' : 'Select Union'}
-            customLabel={customLabels?.union}
-            customError={customErrors?.union || errors.union}
-          />
-        </div>
+        {showUnion && (
+          <div className="relative">
+            <UnionSelect
+              {...selectProps}
+              upazila={selectedUpazila}
+              value={selectedUnion}
+              onChange={handleUnionChange}
+              placeholder={language === 'bn' ? 'ইউনিয়ন নির্বাচন করুন' : 'Select Union'}
+              customLabel={customLabels?.union}
+              customError={customErrors?.union || errors.union}
+            />
+          </div>
+        )}
+        {showVillage && (
+          <div className="relative">
+            <VillageSelect
+              {...selectProps}
+              upazila={selectedUpazila}
+              value={selectedVillage}
+              onChange={handleVillageChange}
+              placeholder={language === 'bn' ? 'গ্রাম/মৌজা নির্বাচন করুন' : 'Select Village/Mouza'}
+              customLabel={customLabels?.village}
+              customError={customErrors?.village || errors.village}
+            />
+          </div>
+        )}
       </div>
       {children}
     </div>
