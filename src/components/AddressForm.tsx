@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { AddressFormData, AddressFormProps, AddressFormValidation, Division, District, Upazila, UnionData } from "../types/index";
+import { AddressFormData, AddressFormValidation, Division, District, Upazila, UnionData } from "../types/index";
+import { AddressFormProps } from "../types/react";
 import DivisionSelect from './DivisionSelect';
 import DistrictSelect from './DistrictSelect';
 import UpazilaSelect from './UpazilaSelect';

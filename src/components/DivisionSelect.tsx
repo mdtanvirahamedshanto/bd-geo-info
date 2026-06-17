@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Division, SelectProps } from '../types';
+import { Division } from '../types';
+import { SelectProps } from '../types/react';
 import divisions from '../data/bd-divisions.json';
 
 interface DivisionSelectProps extends SelectProps<Division> {

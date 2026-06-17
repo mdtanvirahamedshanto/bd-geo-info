@@ -1,5 +1,4 @@
 import { Division, District, Upazila, Union, PostCode, UnionData } from '../types';
-import { ReactNode } from 'react';
 
 export const getDivisions = async (language: 'en' | 'bn' = 'en'): Promise<{ value: string; label: string }[]> => {
   const divisions = (await import('../data/bd-divisions.json')).default.divisions;

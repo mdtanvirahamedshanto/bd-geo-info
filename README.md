@@ -3,27 +3,24 @@
 [![npm version](https://img.shields.io/npm/v/bd-geo-info.svg)](https://www.npmjs.com/package/bd-geo-info)
 ![typescript](https://img.shields.io/badge/TypeScript-Ready-blue)
 
-A comprehensive React component library for handling Bangladesh's geographical data, providing hierarchical selection components and a complete address form solution. Built with TypeScript and zero dependencies, it offers bilingual support (English/Bangla) for divisions, districts, upazilas, unions, and postcodes.
+A comprehensive Bangladesh geographical data package — divisions, districts, upazilas, unions, and postcodes. The **core utilities are 100% framework-agnostic**, working in any JS/TS environment. React components are available as an optional subpath import.
 
 ## 🚀 Key Features
 
 - 🗺️ Complete geographical data of Bangladesh
-- 🔄 Hierarchical selection components (Division → District → Upazila → Union)
-- 📝 Ready-to-use address form component with validation
-- 🌐 Bilingual support (English/বাংলা)
-- 📮 Integrated postcode lookup system
-- 🎨 Highly customizable styling with theme support
-- ✅ Built-in form validation
-- 📱 Full TypeScript support
-- 🔍 Comprehensive error handling
-- 🎯 Zero dependencies
+- ⚡ Framework-agnostic core — works with Vue, Angular, Svelte, NestJS, Next.js, plain Node.js, or any JS/TS project
+- ⚛️ Optional React components via `bd-geo-info/react`
+- 🔄 Hierarchical data (Division → District → Upazila → Union)
+- 🌐 Bilingual support (English / বাংলা)
+- 📮 Postcode lookup
+- 📱 Full TypeScript support with separate types for core and React
+- 🎯 Zero required dependencies — React is optional
 
-## ⚡ Performance & Bundle Size Optimizations
+## ⚡ Performance & Bundle Size
 
-To keep the package **super fast**, **lightweight**, and **low memory**, we implement the following optimizations:
-- **$O(1)$ Hash Map Lookups**: Datasets are indexed by parent ID (e.g. upazilas by district ID, unions by upazila ID, villages by upazila ID). This allows instant, direct lookup instead of scanning/filtering thousands of objects.
-- **Code Splitting & Dynamic Importing**: Large datasets (like villages and unions) are imported dynamically only when you invoke their query functions, preventing bundle bloat for basic search forms.
-- **Build-Time Asset Minification**: All raw JSON data files are minified during the build step, stripping away formatting whitespaces to save ~300 KB of network payload size.
+- **O(1) hash-map lookups** — upazilas indexed by district ID, unions by upazila ID
+- **Dynamic imports** — large datasets are code-split and loaded on demand
+- **Build-time JSON minification** — ~300 KB savings on network payload
 
 ## 📦 Installation
 
@@ -35,266 +32,343 @@ yarn add bd-geo-info
 pnpm add bd-geo-info
 ```
 
-## 🎯 Quick Start
+React components require React as a peer dependency:
 
-### Complete Address Form
-
-```tsx
-import { AddressForm } from 'bd-geo-info';
-
-const MyForm = () => {
-  return (
-    <AddressForm
-      language="en"
-      onChange={(values) => console.log(values)}
-      theme={{
-        colors: {
-          primary: '#007bff',
-          background: '#ffffff',
-          border: '#ced4da'
-        },
-        borderRadius: '4px',
-        fontSize: {
-          input: '1rem'
-        }
-      }}
-      validation={{
-        division: { required: true },
-        district: { required: true }
-      }}
-    />
-  );
-};
+```bash
+npm install bd-geo-info react react-dom
 ```
 
-### Individual Components
+---
+
+## Usage by Framework
+
+### Vanilla JS / TypeScript / Node.js / NestJS
+
+```typescript
+import { getDivisions, getDistricts, getUpazilas, getUnions, getPostCode } from 'bd-geo-info';
+
+// Get all divisions
+const divisions = await getDivisions('en');
+
+// Get districts for a division
+const districts = await getDistricts('3', 'en');
+
+// Get upazilas for a district
+const upazilas = await getUpazilas('20', 'en');
+
+// Get unions for an upazila
+const unions = await getUnions('100', 'en');
+
+// Postcode lookup (synchronous)
+const postcodes = getPostCode({ division: '3', district: '20', upazila: 'Mirpur' });
+```
+
+NestJS service example:
+
+```typescript
+import { Injectable } from '@nestjs/common';
+import { getDivisions, getDistricts, getUpazilas } from 'bd-geo-info';
+
+@Injectable()
+export class GeoService {
+  getDivisions(lang: 'en' | 'bn' = 'en') {
+    return getDivisions(lang);
+  }
+
+  getDistricts(divisionId: string, lang: 'en' | 'bn' = 'en') {
+    return getDistricts(divisionId, lang);
+  }
+
+  getUpazilas(districtId: string, lang: 'en' | 'bn' = 'en') {
+    return getUpazilas(districtId, lang);
+  }
+}
+```
+
+---
+
+### Vue 3 (Composition API)
+
+```vue
+<script setup lang="ts">
+import { ref, watch } from 'vue';
+import { getDivisions, getDistricts, getUpazilas, getUnions } from 'bd-geo-info';
+import type { Division } from 'bd-geo-info';
+
+const divisions = ref<{ value: string; label: string }[]>([]);
+const districts = ref<{ value: string; label: string }[]>([]);
+const selectedDivision = ref('');
+const selectedDistrict = ref('');
+
+// Load divisions on mount
+getDivisions('en').then(data => { divisions.value = data; });
+
+// Reactively load districts when division changes
+watch(selectedDivision, async (divId) => {
+  selectedDistrict.value = '';
+  districts.value = divId ? await getDistricts(divId, 'en') : [];
+});
+</script>
+
+<template>
+  <select v-model="selectedDivision">
+    <option value="">Select Division</option>
+    <option v-for="d in divisions" :key="d.value" :value="d.value">
+      {{ d.label }}
+    </option>
+  </select>
+
+  <select v-model="selectedDistrict" :disabled="!selectedDivision">
+    <option value="">Select District</option>
+    <option v-for="d in districts" :key="d.value" :value="d.value">
+      {{ d.label }}
+    </option>
+  </select>
+</template>
+```
+
+---
+
+### Angular
+
+```typescript
+// geo.service.ts
+import { Injectable } from '@angular/core';
+import { from, Observable } from 'rxjs';
+import { getDivisions, getDistricts, getUpazilas, getUnions } from 'bd-geo-info';
+
+@Injectable({ providedIn: 'root' })
+export class GeoService {
+  getDivisions(lang: 'en' | 'bn' = 'en') {
+    return from(getDivisions(lang));
+  }
+  getDistricts(divisionId: string, lang: 'en' | 'bn' = 'en') {
+    return from(getDistricts(divisionId, lang));
+  }
+  getUpazilas(districtId: string, lang: 'en' | 'bn' = 'en') {
+    return from(getUpazilas(districtId, lang));
+  }
+  getUnions(upazilaId: string, lang: 'en' | 'bn' = 'en') {
+    return from(getUnions(upazilaId, lang));
+  }
+}
+```
+
+```typescript
+// address.component.ts
+import { Component, OnInit } from '@angular/core';
+import { GeoService } from './geo.service';
+
+@Component({
+  selector: 'app-address',
+  template: `
+    <select (change)="onDivisionChange($event)">
+      <option value="">Select Division</option>
+      <option *ngFor="let d of divisions" [value]="d.value">{{ d.label }}</option>
+    </select>
+
+    <select [disabled]="!districts.length">
+      <option value="">Select District</option>
+      <option *ngFor="let d of districts" [value]="d.value">{{ d.label }}</option>
+    </select>
+  `
+})
+export class AddressComponent implements OnInit {
+  divisions: { value: string; label: string }[] = [];
+  districts: { value: string; label: string }[] = [];
+
+  constructor(private geo: GeoService) {}
+
+  ngOnInit() {
+    this.geo.getDivisions('en').subscribe(data => this.divisions = data);
+  }
+
+  onDivisionChange(event: Event) {
+    const id = (event.target as HTMLSelectElement).value;
+    this.districts = [];
+    if (id) {
+      this.geo.getDistricts(id, 'en').subscribe(data => this.districts = data);
+    }
+  }
+}
+```
+
+---
+
+### Svelte
+
+```svelte
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { getDivisions, getDistricts, getUpazilas } from 'bd-geo-info';
+
+  let divisions: { value: string; label: string }[] = [];
+  let districts: { value: string; label: string }[] = [];
+  let selectedDivision = '';
+  let selectedDistrict = '';
+
+  onMount(async () => {
+    divisions = await getDivisions('en');
+  });
+
+  async function handleDivisionChange() {
+    selectedDistrict = '';
+    districts = selectedDivision ? await getDistricts(selectedDivision, 'en') : [];
+  }
+</script>
+
+<select bind:value={selectedDivision} on:change={handleDivisionChange}>
+  <option value="">Select Division</option>
+  {#each divisions as d}
+    <option value={d.value}>{d.label}</option>
+  {/each}
+</select>
+
+<select bind:value={selectedDistrict} disabled={!selectedDivision}>
+  <option value="">Select District</option>
+  {#each districts as d}
+    <option value={d.value}>{d.label}</option>
+  {/each}
+</select>
+```
+
+---
+
+### React
+
+Import from `bd-geo-info/react` to get the pre-built components:
 
 ```tsx
-import { 
-  DivisionSelect, 
-  DistrictSelect, 
-  UpazilaSelect, 
-  UnionSelect 
-} from 'bd-geo-info';
+import { AddressForm, DivisionSelect, DistrictSelect, UpazilaSelect, UnionSelect } from 'bd-geo-info/react';
+
+// Complete address form
+const MyForm = () => (
+  <AddressForm
+    language="en"
+    onChange={(values) => console.log(values)}
+    showPostCode
+    showUnion
+    validation={{
+      division: { required: true },
+      district: { required: true },
+    }}
+    theme={{
+      colors: { primary: '#007bff', background: '#ffffff', border: '#ced4da' },
+      borderRadius: '4px',
+    }}
+  />
+);
+```
+
+Individual components:
+
+```tsx
+import { useState } from 'react';
+import { DivisionSelect, DistrictSelect, UpazilaSelect, UnionSelect } from 'bd-geo-info/react';
+import type { Division, District, Upazila, UnionData } from 'bd-geo-info/react';
 
 const LocationSelector = () => {
-  const [division, setDivision] = useState();
-  const [district, setDistrict] = useState();
-  const [upazila, setUpazila] = useState();
+  const [division, setDivision] = useState<Division>();
+  const [district, setDistrict] = useState<District>();
+  const [upazila, setUpazila] = useState<Upazila>();
 
   return (
     <div>
-      <DivisionSelect
-        language="en"
-        onChange={setDivision}
-        placeholder="Select Division"
-        customLabel="Division"
-        customError={errors.division}
-      />
-      <DistrictSelect
-        division={division}
-        onChange={setDistrict}
-        placeholder="Select District"
-        customLabel="District"
-        showLabels={true}
-      />
-      <UpazilaSelect
-        district={district}
-        onChange={setUpazila}
-        placeholder="Select Upazila"
-        className="custom-select-class"
-      />
-      <UnionSelect
-        upazila={upazila}
-        onChange={(union) => console.log(union)}
-        language="bn"
-        showLabels={true}
-      />
+      <DivisionSelect language="en" onChange={setDivision} placeholder="Select Division" />
+      <DistrictSelect division={division} onChange={setDistrict} placeholder="Select District" />
+      <UpazilaSelect district={district} onChange={setUpazila} placeholder="Select Upazila" />
+      <UnionSelect upazila={upazila} onChange={(u) => console.log(u)} language="bn" />
     </div>
   );
 };
 ```
 
-### Utility Functions
+You can also use the raw utilities directly in React (useful for custom UI libraries):
 
-To support dynamic code-splitting, some of the utilities are asynchronous. Use `await` or `.then()` to retrieve their results:
+```tsx
+import { getDivisions, getDistricts } from 'bd-geo-info';
+```
+
+---
+
+### Next.js
+
+Works with both App Router and Pages Router. Use the core utilities server-side:
 
 ```typescript
-import { 
-  getDistricts, 
-  getUpazilas, 
-  getUnions, 
-  getPostCode,
-  getVillages
+// app/api/districts/route.ts
+import { getDistricts } from 'bd-geo-info';
+
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const divisionId = searchParams.get('divisionId') ?? '';
+  const districts = await getDistricts(divisionId, 'en');
+  return Response.json(districts);
+}
+```
+
+For client components, use `bd-geo-info/react`:
+
+```tsx
+'use client';
+import { DivisionSelect } from 'bd-geo-info/react';
+```
+
+---
+
+## Core API Reference
+
+All functions are exported from `bd-geo-info` (no React required).
+
+```typescript
+import {
+  getDivisions,   // (lang?) => Promise<{ value, label }[]>
+  getDistricts,   // (divisionId, lang?) => Promise<{ value, label }[]>
+  getUpazilas,    // (districtId, lang?) => Promise<{ value, label }[]>
+  getUnions,      // (upazilaId, lang?) => Promise<{ value, label }[]>
+  getPostCodes,   // (districtId, upazila?) => Promise<PostCode[]>
+  getPostCode,    // ({ division?, district?, upazila? }) => PostCode[]  (sync)
+  formatAddress,  // (div, dist, upa, union, post, street, lang?) => Promise<string>
+  validatePostCode, // (postCode: string) => boolean
 } from 'bd-geo-info';
-
-// 1. Get districts for a division (asynchronous)
-const districts = await getDistricts('1', 'en');
-
-// 2. Get upazilas for a district (synchronous)
-const upazilas = getUpazilas('1');
-
-// 3. Get unions for an upazila (asynchronous)
-const unions = await getUnions('1', 'en');
-
-// 4. Get post code for an area (synchronous)
-const postCodes = getPostCode({
-  division: '6',
-  district: '47',
-  upazila: 'Dhaka'
-});
-
-// 5. Get villages for an upazila (asynchronous)
-const villages = await getVillages('1');
 ```
 
-## 🎨 Theme Customization
+## Types
 
-The library provides extensive theme customization options through a theme object:
+Core types (no React dependency):
 
 ```typescript
-interface Theme {
-  colors?: {
-    primary?: string;    // Primary color for interactive elements
-    background?: string; // Background color
-    border?: string;     // Border color
-  };
-  borderRadius?: string;  // Border radius for components
-  fontSize?: {
-    input?: string;      // Font size for inputs
-    label?: string;      // Font size for labels
-  };
-  spacing?: {
-    input?: string;      // Padding for inputs
-    label?: string;      // Margin for labels
-  };
-}
-
-// Example Usage
-const theme = {
-  colors: {
-    primary: '#4f46e5',
-    background: '#f9fafb',
-    border: '#e5e7eb'
-  },
-  borderRadius: '0.5rem',
-  fontSize: {
-    input: '0.875rem',
-    label: '0.75rem'
-  },
-  spacing: {
-    input: '0.75rem 1rem',
-    label: '0 0 0.5rem'
-  }
-};
+import type {
+  Division, District, Upazila, UnionData, Union,
+  PostCode, AddressFormData, AddressFormValidation,
+  ValidationRules, Theme
+} from 'bd-geo-info';
 ```
 
-## 📋 Component Props
-
-### AddressForm
+React-specific types:
 
 ```typescript
-interface AddressFormProps {
-  language?: 'en' | 'bn';           // Display language
-  onChange?: (data: AddressFormData) => void; // Form data change handler
-  theme?: Theme;                    // Custom theme
-  validation?: AddressFormValidation; // Validation rules
-  showPostCode?: boolean;           // Show/hide post code
-  showLabels?: boolean;             // Show/hide labels
-  customLabels?: {
-    division?: string | React.ReactNode;
-    district?: string | React.ReactNode;
-    upazila?: string | React.ReactNode;
-    union?: string | React.ReactNode;
-  };
-  customErrors?: {
-    division?: string | React.ReactNode;
-    district?: string | React.ReactNode;
-    upazila?: string | React.ReactNode;
-    union?: string | React.ReactNode;
-  };
-  className?: string;               // Container class
-  containerClassName?: string;      // Outer container class
-  labelClassName?: string;          // Label class
-  errorClassName?: string;          // Error message class
-}
+import type {
+  AddressFormProps, AddressFormErrors, AddressFormLabels,
+  SelectProps, PostOfficeSelectProps
+} from 'bd-geo-info/react';
 ```
 
-### Select Components (DivisionSelect, DistrictSelect, UpazilaSelect, UnionSelect)
-
-```typescript
-interface SelectProps {
-  language?: 'en' | 'bn';          // Display language
-  onChange?: (value: T) => void;    // Value change handler
-  value?: T;                       // Selected value
-  placeholder?: string;            // Placeholder text
-  customLabel?: string | React.ReactNode;  // Custom label
-  customError?: string | React.ReactNode;  // Error message
-  theme?: Theme;                   // Custom theme
-  className?: string;              // Select element class
-  containerClassName?: string;     // Container class
-  labelClassName?: string;         // Label class
-  errorClassName?: string;         // Error message class
-  showLabels?: boolean;           // Show/hide label
-}
-```
-
-## 🔍 Validation
-
-The library supports built-in validation with customizable rules:
-
-```typescript
-interface AddressFormValidation {
-  division?: {
-    required?: boolean;
-    customValidation?: (value: any) => string | true;
-  };
-  district?: {
-    required?: boolean;
-    customValidation?: (value: any) => string | true;
-  };
-  upazila?: {
-    required?: boolean;
-    customValidation?: (value: any) => string | true;
-  };
-  union?: {
-    required?: boolean;
-    customValidation?: (value: any) => string | true;
-  };
-}
-
-// Example Usage
-const validation = {
-  division: {
-    required: true,
-    customValidation: (value) => {
-      if (value === 'restricted') return 'This division is restricted';
-      return true;
-    }
-  },
-  district: { required: true },
-  upazila: { required: true }
-};
-```
+---
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on how to submit pull requests, report issues, and contribute to the project.
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 💪 Support
-
-If you find this package helpful, please consider giving it a star on GitHub! For issues and feature requests, please use the [GitHub Issues](https://github.com/mdtanvirahamedshanto/bd-geo-info/issues) page.
+MIT — see [LICENSE](LICENSE).
 
 ## 📫 Contact
 
 - Email: [mdtanvirahamedshanto@gmail.com](mailto:mdtanvirahamedshanto@gmail.com)
-- GitHub: [GitHub Profile](https://github.com/mdtanvirahamedshanto)
-- LinkedIn: [LinkedIn Profile](https://linkedin.com/in/mdtanvirahamedshanto/)
-- Portfolio: [Portfolio](https://mdtanvirahamedshanto.vercel.app/)
+- GitHub: [mdtanvirahamedshanto](https://github.com/mdtanvirahamedshanto)
+- LinkedIn: [mdtanvirahamedshanto](https://linkedin.com/in/mdtanvirahamedshanto/)
 
 ---
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Upazila, UnionData } from '../types';
+import type { ReactNode } from 'react';
 import { getUnions } from '../utils';
 
 interface UnionSelectProps {
@@ -9,8 +10,8 @@ interface UnionSelectProps {
   language?: 'en' | 'bn';
   className?: string;
   placeholder?: string;
-  customLabel?: string | React.ReactNode;
-  customError?: string | React.ReactNode;
+  customLabel?: string | ReactNode;
+  customError?: string | ReactNode;
   theme?: any;
   errorClassName?: string;
   labelClassName?: string;

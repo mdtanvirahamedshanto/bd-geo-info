@@ -1,15 +1,22 @@
-// Components
-export { default as AddressForm } from './components/AddressForm';
-export { default as DivisionSelect } from './components/DivisionSelect';
-export { default as DistrictSelect } from './components/DistrictSelect';
-export { default as UpazilaSelect } from './components/UpazilaSelect';
-export { default as UnionSelect } from './components/UnionSelect';
+// Core utility functions (framework-agnostic)
+export { getDivisions, getDistricts, getUpazilas, getUnions, getPostCodes, formatAddress, validatePostCode } from './utils';
 
-// Utils
-export { getDistricts } from './utils/getDistricts';
-export { default as getUpazilas } from './utils/getUpazilas';
-export { getUnions } from './utils/getUnions';
+// Individual util exports for backwards compatibility
+export { getDistricts as getDistrictsList } from './utils/getDistricts';
+export { default as getUpazilasList } from './utils/getUpazilas';
+export { getUnions as getUnionsList, getUnionsList as getUnionsSync } from './utils/getUnions';
 export { default as getPostCode } from './utils/getPostCode';
 
-// Types
-export * from './types';
+// Core types (no React dependency)
+export type {
+  Division,
+  District,
+  Upazila,
+  UnionData,
+  Union,
+  PostCode,
+  AddressFormData,
+  AddressFormValidation,
+  ValidationRules,
+  Theme,
+} from './types';
