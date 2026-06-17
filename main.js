@@ -1,3 +1,59 @@
+/* ══════════════════════════════════════════
+   npm Registry — live version + downloads
+   ══════════════════════════════════════════ */
+async function loadNpmData() {
+  const PKG = 'bd-geo-info';
+
+  try {
+    // Fetch version + metadata
+    const [regRes, dlRes] = await Promise.all([
+      fetch(`https://registry.npmjs.org/${PKG}/latest`),
+      fetch(`https://api.npmjs.org/downloads/point/last-month/${PKG}`)
+    ]);
+
+    if (regRes.ok) {
+      const data = await regRes.json();
+      const version = data.version; // e.g. "5.0.0"
+
+      // Nav badge
+      const navBadge = document.getElementById('nav-version');
+      if (navBadge) navBadge.textContent = `v${version}`;
+
+      // Stats card
+      const statVer = document.getElementById('stat-version');
+      if (statVer) statVer.textContent = `v${version}`;
+    }
+
+    if (dlRes.ok) {
+      const dlData = await dlRes.json();
+      const count = dlData.downloads; // raw number
+
+      const statDl = document.getElementById('stat-downloads');
+      if (statDl) statDl.textContent = formatCount(count);
+    }
+  } catch (err) {
+    // Silently fall back to hardcoded values if offline / CORS issue
+    const navBadge = document.getElementById('nav-version');
+    if (navBadge) navBadge.textContent = 'v5.0';
+
+    const statVer = document.getElementById('stat-version');
+    if (statVer) statVer.textContent = 'v5.0';
+
+    const statDl = document.getElementById('stat-downloads');
+    if (statDl) statDl.textContent = '—';
+  }
+}
+
+// Format number: 12345 → "12.3k", 1234567 → "1.2M"
+function formatCount(n) {
+  if (!n || isNaN(n)) return '—';
+  if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M';
+  if (n >= 1_000)     return (n / 1_000).toFixed(1).replace(/\.0$/, '') + 'k';
+  return String(n);
+}
+
+loadNpmData();
+
 /* ── Mobile menu ── */
 const mobileBtn  = document.getElementById('mobileBtn');
 const mobileMenu = document.getElementById('mobileMenu');

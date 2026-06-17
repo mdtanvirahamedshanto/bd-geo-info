@@ -64,7 +64,7 @@
     <a href="#" class="flex items-center gap-2 font-bold text-lg text-white shrink-0">
       <span class="text-2xl">🇧🇩</span>
       <span>bd-geo-info</span>
-      <span class="text-[11px] font-semibold bg-bd-green text-white px-2 py-0.5 rounded-full">v5.0</span>
+      <span id="nav-version" class="text-[11px] font-semibold bg-bd-green text-white px-2 py-0.5 rounded-full">v5.0</span>
     </a>
     <!-- Desktop links -->
     <ul class="hidden lg:flex items-center gap-1 ml-auto list-none">
@@ -97,8 +97,7 @@
     <div class="flex gap-2 pt-2 border-t border-rim mt-2">
       <a href="https://www.npmjs.com/package/bd-geo-info" target="_blank" class="flex-1 text-center text-sm font-semibold bg-surface text-slate-300 px-4 py-2 rounded-lg">npm</a>
       <a href="https://github.com/mdtanvirahamedshanto/bd-geo-info" target="_blank" class="flex-1 text-center text-sm font-semibold bg-accent text-white px-4 py-2 rounded-lg">GitHub</a>
-    </div>
-  </div>
+    </div>  </div>
 </nav>
 
 <!-- ═══════════════════════ HERO ═══════════════════════ -->
@@ -107,11 +106,27 @@
   <div class="max-w-4xl mx-auto px-6 relative">
     <!-- Badges -->
     <div class="flex flex-wrap gap-2 justify-center mb-7">
-      <a href="https://www.npmjs.com/package/bd-geo-info" target="_blank"><img src="https://img.shields.io/npm/v/bd-geo-info.svg?style=flat-square" alt="npm version" class="h-5" /></a>
-      <a href="https://www.npmjs.com/package/bd-geo-info" target="_blank"><img src="https://img.shields.io/npm/dm/bd-geo-info.svg?style=flat-square" alt="downloads" class="h-5" /></a>
+      <a href="https://www.npmjs.com/package/bd-geo-info" target="_blank"><img id="badge-version" src="https://img.shields.io/npm/v/bd-geo-info.svg?style=flat-square" alt="npm version" class="h-5" /></a>
+      <a href="https://www.npmjs.com/package/bd-geo-info" target="_blank"><img id="badge-downloads" src="https://img.shields.io/npm/dm/bd-geo-info.svg?style=flat-square" alt="downloads" class="h-5" /></a>
       <img src="https://img.shields.io/badge/TypeScript-Ready-3178c6?style=flat-square" alt="TypeScript" class="h-5" />
       <img src="https://img.shields.io/badge/License-MIT-22c55e?style=flat-square" alt="MIT" class="h-5" />
       <img src="https://img.shields.io/badge/Zero%20Dependencies-required-00b894?style=flat-square" alt="Zero deps" class="h-5" />
+      <a href="https://github.com/mdtanvirahamedshanto/bd-geo-info" target="_blank"><img id="badge-stars" src="https://img.shields.io/github/stars/mdtanvirahamedshanto/bd-geo-info?style=flat-square&label=Stars" alt="GitHub Stars" class="h-5" /></a>
+    </div>
+    <!-- Live meta pill -->
+    <div id="hero-meta" class="hidden flex-wrap gap-3 justify-center mb-5">
+      <span class="inline-flex items-center gap-1.5 text-xs bg-surface border border-rim text-slate-400 px-3 py-1 rounded-full">
+        🏷️ <span id="meta-version">—</span>
+      </span>
+      <span class="inline-flex items-center gap-1.5 text-xs bg-surface border border-rim text-slate-400 px-3 py-1 rounded-full">
+        ⬇️ <span id="meta-downloads">—</span> this month
+      </span>
+      <span class="inline-flex items-center gap-1.5 text-xs bg-surface border border-rim text-slate-400 px-3 py-1 rounded-full">
+        ⭐ <span id="meta-stars">—</span> stars
+      </span>
+      <span class="inline-flex items-center gap-1.5 text-xs bg-surface border border-rim text-slate-400 px-3 py-1 rounded-full">
+        🕐 updated <span id="meta-updated">—</span>
+      </span>
     </div>
     <!-- Heading -->
     <h1 class="text-5xl sm:text-6xl font-extrabold leading-tight tracking-tight text-white mb-5">
@@ -139,13 +154,13 @@
 
 <!-- ═══════════════════════ STATS ═══════════════════════ -->
 <div class="border-y border-rim bg-ink-2">
-  <div class="max-w-6xl mx-auto px-6 grid grid-cols-3 sm:grid-cols-6 divide-x divide-rim">
-    <div class="text-center py-6 px-4"><div class="text-3xl font-extrabold text-accent tracking-tight">8</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">Divisions</div></div>
-    <div class="text-center py-6 px-4"><div class="text-3xl font-extrabold text-accent tracking-tight">64</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">Districts</div></div>
-    <div class="text-center py-6 px-4"><div class="text-3xl font-extrabold text-accent tracking-tight">495</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">Upazilas</div></div>
-    <div class="text-center py-6 px-4"><div class="text-3xl font-extrabold text-accent tracking-tight">4,554</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">Unions</div></div>
-    <div class="text-center py-6 px-4"><div class="text-3xl font-extrabold text-accent tracking-tight">9,000+</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">Post Offices</div></div>
-    <div class="text-center py-6 px-4"><div class="text-3xl font-extrabold text-accent tracking-tight">2</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">Languages</div></div>
+  <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 divide-x divide-y sm:divide-y-0 divide-rim">
+    <div class="text-center py-6 px-4"><div id="stat-version"   class="text-3xl font-extrabold text-accent tracking-tight animate-pulse">—</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">Version</div></div>
+    <div class="text-center py-6 px-4"><div id="stat-downloads" class="text-3xl font-extrabold text-accent tracking-tight animate-pulse">—</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">Monthly DLs</div></div>
+    <div class="text-center py-6 px-4"><div id="stat-total-dl"  class="text-3xl font-extrabold text-accent tracking-tight animate-pulse">—</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">Total DLs</div></div>
+    <div class="text-center py-6 px-4"><div id="stat-stars"     class="text-3xl font-extrabold text-accent tracking-tight animate-pulse">—</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">GitHub Stars</div></div>
+    <div class="text-center py-6 px-4"><div id="stat-forks"     class="text-3xl font-extrabold text-accent tracking-tight animate-pulse">—</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">Forks</div></div>
+    <div class="text-center py-6 px-4"><div id="stat-issues"    class="text-3xl font-extrabold text-accent tracking-tight animate-pulse">—</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">Open Issues</div></div>
   </div>
 </div>
 
@@ -687,7 +702,17 @@ app.listen(<span class="tn">3000</span>);</code></pre>
         <p class="text-sm text-slate-500 mb-4 leading-relaxed">Bangladesh geographical data for every JS/TS framework. MIT licensed, open source.</p>
         <div class="flex flex-wrap gap-2">
           <a href="https://www.npmjs.com/package/bd-geo-info" target="_blank"><img src="https://img.shields.io/npm/v/bd-geo-info.svg?style=flat-square" alt="npm" class="h-4" /></a>
-          <a href="https://github.com/mdtanvirahamedshanto/bd-geo-info" target="_blank"><img src="https://img.shields.io/github/stars/mdtanvirahamedshanto/bd-geo-info?style=flat-square" alt="stars" class="h-4" /></a>
+          <a href="https://github.com/mdtanvirahamedshanto/bd-geo-info" target="_blank"><img id="footer-stars-badge" src="https://img.shields.io/github/stars/mdtanvirahamedshanto/bd-geo-info?style=flat-square" alt="stars" class="h-4" /></a>
+        </div>
+        <!-- Live footer stats -->
+        <div id="footer-live" class="hidden flex-wrap gap-2 mt-3">
+          <span class="text-xs text-slate-600">⭐ <span id="footer-stars">—</span></span>
+          <span class="text-xs text-slate-600">·</span>
+          <span class="text-xs text-slate-600">🍴 <span id="footer-forks">—</span></span>
+          <span class="text-xs text-slate-600">·</span>
+          <span class="text-xs text-slate-600">🐛 <span id="footer-issues">—</span> issues</span>
+          <span class="text-xs text-slate-600">·</span>
+          <span class="text-xs text-slate-600">📅 <span id="footer-published">—</span></span>
         </div>
       </div>
       <div>
