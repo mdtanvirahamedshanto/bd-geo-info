@@ -25,13 +25,6 @@ export interface Upazila {
   url?: string;
 }
 
-export interface Village {
-  id: string;
-  name: string;
-  jl: string;
-  survey: string | null;
-}
-
 export interface UnionData {
   id: string;
   upazilla_id: string;
@@ -65,14 +58,12 @@ export interface AddressFormProps {
   showPostCode?: boolean;
   showStreet?: boolean;
   showUnion?: boolean;
-  showVillage?: boolean;
   showLabels?: boolean;
   labels?: {
     division?: string | React.ReactNode;
     district?: string | React.ReactNode;
     upazila?: string | React.ReactNode;
     union?: string | React.ReactNode;
-    village?: string | React.ReactNode;
     postCode?: string | React.ReactNode;
     street?: string | React.ReactNode;
     submit?: string | React.ReactNode;
@@ -82,7 +73,6 @@ export interface AddressFormProps {
     district?: string;
     upazila?: string;
     union?: string;
-    village?: string;
     postCode?: string;
     street?: string;
   };
@@ -108,7 +98,6 @@ export interface AddressFormData {
   district?: string;
   upazila?: string;
   union?: string;
-  village?: string;
   postCode?: string;
   street?: string;
 }
@@ -118,7 +107,6 @@ export interface AddressFormErrors {
   district?: string | React.ReactNode;
   upazila?: string | React.ReactNode;
   union?: string | React.ReactNode;
-  village?: string | React.ReactNode;
   postCode?: string | React.ReactNode;
   street?: string | React.ReactNode;
 }
@@ -128,7 +116,6 @@ export interface AddressFormValidation {
   district?: ValidationRules;
   upazila?: ValidationRules;
   union?: ValidationRules;
-  village?: ValidationRules;
   postCode?: ValidationRules;
   street?: ValidationRules;
 }
@@ -176,7 +163,6 @@ export interface AddressFormLabels {
   district?: string | React.ReactNode;
   upazila?: string | React.ReactNode;
   union?: string | React.ReactNode;
-  village?: string | React.ReactNode;
   postCode?: string | React.ReactNode;
   street?: string | React.ReactNode;
 }

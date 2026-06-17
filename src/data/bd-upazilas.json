@@ -459,6 +459,13 @@
             "name": "Ramganj",
             "bn_name": "রামগঞ্জ",
             "url": "ramganj.lakshmipur.gov.bd"
+        },
+        {
+            "id": "499",
+            "district_id": "7",
+            "name": "Chandraganj",
+            "bn_name": "চন্দ্রগঞ্জ",
+            "url": ""
         }
     ],
     "8": [
@@ -630,7 +637,14 @@
             "district_id": "9",
             "name": "Eidgaon",
             "bn_name": "ঈদগাঁও",
-            "url": "null"
+            "url": ""
+        },
+        {
+            "id": "496",
+            "district_id": "9",
+            "name": "Matamuhuri",
+            "bn_name": "মাতামুহুরী",
+            "url": ""
         }
     ],
     "10": [
@@ -963,6 +977,13 @@
             "name": "Shibganj",
             "bn_name": "শিবগঞ্জ",
             "url": "shibganj.bogra.gov.bd"
+        },
+        {
+            "id": "495",
+            "district_id": "14",
+            "name": "Mokamtola",
+            "bn_name": "মোকামতলা",
+            "url": ""
         }
     ],
     "15": [
@@ -2258,7 +2279,7 @@
             "district_id": "39",
             "name": "Madhyanagar",
             "bn_name": "মধ্যনগর",
-            "url": "null"
+            "url": ""
         }
     ],
     "40": [
@@ -2805,7 +2826,7 @@
             "district_id": "50",
             "name": "Dasar",
             "bn_name": "ডাসার",
-            "url": "null"
+            "url": ""
         }
     ],
     "51": [
@@ -3207,6 +3228,20 @@
             "name": "Baliadangi",
             "bn_name": "বালিয়াডাঙ্গী",
             "url": "baliadangi.thakurgaon.gov.bd"
+        },
+        {
+            "id": "497",
+            "district_id": "58",
+            "name": "Ruhia",
+            "bn_name": "রুহিয়া",
+            "url": ""
+        },
+        {
+            "id": "498",
+            "district_id": "58",
+            "name": "Bhully",
+            "bn_name": "ভুল্লী",
+            "url": ""
         }
     ],
     "59": [

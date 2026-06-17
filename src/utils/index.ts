@@ -54,17 +54,7 @@ export const getUnions = async (upazilaId: string, language: 'en' | 'bn' = 'en')
   }));
 };
 
-export const getVillages = async (upazilaId: string, language: 'en' | 'bn' = 'en'): Promise<{ value: string; label: string; jl: string; survey: string | null }[]> => {
-  const villagesData = (await import('../data/bd-villages.json')).default;
-  const villages = (villagesData as any)[upazilaId] || [];
-  return villages
-    .map(([id, name, jl, survey]: [string, string, string, string | null]) => ({
-      value: id,
-      label: name,
-      jl: jl,
-      survey: survey
-    }));
-};
+
 
 export const getPostCodes = async (districtId: string | null = null, upazila?: string): Promise<PostCode[]> => {
   if (!districtId) {
@@ -84,21 +74,8 @@ export const formatAddress = async (
   union: string,
   postCode: string,
   street: string,
-  villageOrLanguage?: string,
-  languageParam?: 'en' | 'bn'
+  language: 'en' | 'bn' = 'en'
 ): Promise<string> => {
-  let village: string | undefined = undefined;
-  let language: 'en' | 'bn' = 'en';
-
-  if (villageOrLanguage === 'en' || villageOrLanguage === 'bn') {
-    language = villageOrLanguage;
-  } else {
-    village = villageOrLanguage;
-    if (languageParam === 'en' || languageParam === 'bn') {
-      language = languageParam;
-    }
-  }
-
   const [divisions, districts, upazilas, unions] = await Promise.all([
     import('../data/bd-divisions.json'),
     import('../data/bd-districts.json'),
@@ -120,12 +97,10 @@ export const formatAddress = async (
   }
 
   const formattedStreet = street?.trim() || '';
-  const formattedVillage = village?.trim() || '';
   
   if (language === 'en') {
     const addressParts = [];
     if (formattedStreet) addressParts.push(formattedStreet);
-    if (formattedVillage) addressParts.push(formattedVillage);
     addressParts.push(unionData.name);
     addressParts.push(upazilaData.name);
     return `${addressParts.join(', ')}, ${districtData.name}-${postCode}, ${divisionData.name}`;
@@ -133,7 +108,6 @@ export const formatAddress = async (
   
   const addressParts = [];
   if (formattedStreet) addressParts.push(formattedStreet);
-  if (formattedVillage) addressParts.push(formattedVillage);
   addressParts.push(unionData.bn_name);
   addressParts.push(upazilaData.bn_name);
   return `${addressParts.join(', ')}, ${districtData.bn_name}-${postCode}, ${divisionData.bn_name}`;
