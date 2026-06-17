@@ -1,1 +1,68 @@
-{"divisions":[{"id":"1","name":"Chattagram","bn_name":"চট্টগ্রাম","lat":"22.356851","long":"91.783182","url":"www.chittagongdiv.gov.bd"},{"id":"2","name":"Rajshahi","bn_name":"রাজশাহী","lat":"24.363589","long":"88.624135","url":"www.rajshahidiv.gov.bd"},{"id":"3","name":"Khulna","bn_name":"খুলনা","lat":"22.845641","long":"89.540328","url":"www.khulnadiv.gov.bd"},{"id":"4","name":"Barisal","bn_name":"বরিশাল","lat":"22.701002","long":"90.353451","url":"www.barisaldiv.gov.bd"},{"id":"5","name":"Sylhet","bn_name":"সিলেট","lat":"24.894929","long":"91.868706","url":"www.sylhetdiv.gov.bd"},{"id":"6","name":"Dhaka","bn_name":"ঢাকা","lat":"23.810332","long":"90.412518","url":"www.dhakadiv.gov.bd"},{"id":"7","name":"Rangpur","bn_name":"রংপুর","lat":"25.743892","long":"89.275227","url":"www.rangpurdiv.gov.bd"},{"id":"8","name":"Mymensingh","bn_name":"ময়মনসিংহ","lat":"24.747149","long":"90.420273","url":"www.mymensinghdiv.gov.bd"}]}
+{
+    "divisions": [
+        {
+            "id": "1",
+            "name": "Chattagram",
+            "bn_name": "চট্টগ্রাম",
+            "lat": "22.356851",
+            "long": "91.783182",
+            "url": "www.chittagongdiv.gov.bd"
+        },
+        {
+            "id": "2",
+            "name": "Rajshahi",
+            "bn_name": "রাজশাহী",
+            "lat": "24.363589",
+            "long": "88.624135",
+            "url": "www.rajshahidiv.gov.bd"
+        },
+        {
+            "id": "3",
+            "name": "Khulna",
+            "bn_name": "খুলনা",
+            "lat": "22.845641",
+            "long": "89.540328",
+            "url": "www.khulnadiv.gov.bd"
+        },
+        {
+            "id": "4",
+            "name": "Barisal",
+            "bn_name": "বরিশাল",
+            "lat": "22.701002",
+            "long": "90.353451",
+            "url": "www.barisaldiv.gov.bd"
+        },
+        {
+            "id": "5",
+            "name": "Sylhet",
+            "bn_name": "সিলেট",
+            "lat": "24.894929",
+            "long": "91.868706",
+            "url": "www.sylhetdiv.gov.bd"
+        },
+        {
+            "id": "6",
+            "name": "Dhaka",
+            "bn_name": "ঢাকা",
+            "lat": "23.810332",
+            "long": "90.412518",
+            "url": "www.dhakadiv.gov.bd"
+        },
+        {
+            "id": "7",
+            "name": "Rangpur",
+            "bn_name": "রংপুর",
+            "lat": "25.743892",
+            "long": "89.275227",
+            "url": "www.rangpurdiv.gov.bd"
+        },
+        {
+            "id": "8",
+            "name": "Mymensingh",
+            "bn_name": "ময়মনসিংহ",
+            "lat": "24.747149",
+            "long": "90.420273",
+            "url": "www.mymensinghdiv.gov.bd"
+        }
+    ]
+}
