@@ -1,11 +1,736 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bd-geo-info — Bangladesh Geo Data for Every JS/TS Framework</title>
+  <meta name="description" content="Complete Bangladesh geographical data — divisions, districts, upazilas, unions, postcodes. Framework-agnostic TypeScript package for React, Vue, Angular, Svelte, NestJS and more." />
+  <meta name="keywords" content="bangladesh geo, bd geo, division district upazila union postcode, bangladesh address npm package typescript react vue angular nestjs" />
+  <meta property="og:title" content="bd-geo-info — Bangladesh Geo Data" />
+  <meta property="og:description" content="Divisions, Districts, Upazilas, Unions, Postcodes — bilingual, framework-agnostic, full TypeScript." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+          },
+          colors: {
+            bd: { green: '#006a4e', red: '#f42a41' },
+            accent: { DEFAULT: '#00b894', dark: '#00a381', glow: 'rgba(0,184,148,0.15)' },
+            surface: { DEFAULT: '#1a2540', 2: '#1f2d4a' },
+            ink: { DEFAULT: '#0a0e1a', 2: '#0f1626', 3: '#141d2e' },
+            rim: '#243255',
+            code: '#0d1423',
+          },
+          backgroundImage: {
+            'hero-glow': 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,106,78,0.2) 0%, transparent 70%)',
+          },
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+    /* Syntax tokens */
+    .tk  { color: #cba6f7 } /* keyword */
+    .ts  { color: #a6e3a1 } /* string */
+    .tc  { color: #6c7086; font-style:italic } /* comment */
+    .tf  { color: #89b4fa } /* fn/identifier */
+    .tg  { color: #f38ba8 } /* tag */
+    .tn  { color: #fab387 } /* number/decorator */
+    /* active tab underline */
+    .tab-active { color: #00b894 !important; border-bottom-color: #00b894 !important; background: rgba(0,184,148,0.06) !important; }
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0e1a; }
+    ::-webkit-scrollbar-thumb { background: #243255; border-radius: 3px; }
+    pre { scrollbar-width: thin; scrollbar-color: #243255 #0d1423; }
+  </style>
 </head>
-<body>
-    
+<body class="bg-ink text-slate-200 antialiased">
+
+<!-- ═══════════════════════ NAV ═══════════════════════ -->
+<nav id="nav" class="fixed top-0 inset-x-0 z-50 border-b border-rim bg-ink/80 backdrop-blur-xl">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center gap-6">
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2 font-bold text-lg text-white shrink-0">
+      <span class="text-2xl">🇧🇩</span>
+      <span>bd-geo-info</span>
+      <span class="text-[11px] font-semibold bg-bd-green text-white px-2 py-0.5 rounded-full">v5.0</span>
+    </a>
+    <!-- Desktop links -->
+    <ul class="hidden lg:flex items-center gap-1 ml-auto list-none">
+      <li><a href="#features" class="text-slate-400 hover:text-white text-sm font-medium px-3 py-1.5 rounded-lg hover:bg-surface transition-all">Features</a></li>
+      <li><a href="#install"  class="text-slate-400 hover:text-white text-sm font-medium px-3 py-1.5 rounded-lg hover:bg-surface transition-all">Install</a></li>
+      <li><a href="#api"      class="text-slate-400 hover:text-white text-sm font-medium px-3 py-1.5 rounded-lg hover:bg-surface transition-all">API</a></li>
+      <li><a href="#frameworks" class="text-slate-400 hover:text-white text-sm font-medium px-3 py-1.5 rounded-lg hover:bg-surface transition-all">Frameworks</a></li>
+      <li><a href="#react"    class="text-slate-400 hover:text-white text-sm font-medium px-3 py-1.5 rounded-lg hover:bg-surface transition-all">React</a></li>
+      <li><a href="#types"    class="text-slate-400 hover:text-white text-sm font-medium px-3 py-1.5 rounded-lg hover:bg-surface transition-all">Types</a></li>
+    </ul>
+    <!-- Action buttons -->
+    <div class="hidden lg:flex items-center gap-2">
+      <a href="https://www.npmjs.com/package/bd-geo-info" target="_blank" class="text-sm font-semibold bg-surface hover:bg-surface-2 text-slate-300 px-4 py-1.5 rounded-lg transition-all">npm</a>
+      <a href="https://github.com/mdtanvirahamedshanto/bd-geo-info" target="_blank" class="text-sm font-semibold bg-accent hover:bg-accent-dark text-white px-4 py-1.5 rounded-lg transition-all shadow-lg shadow-accent/20">GitHub ↗</a>
+    </div>
+    <!-- Mobile menu button -->
+    <button id="mobileBtn" class="lg:hidden ml-auto p-2 text-slate-400 hover:text-white" aria-label="Menu">
+      <svg id="iconMenu" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="iconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-rim bg-ink/95 px-6 py-4 flex flex-col gap-1">
+    <a href="#features" class="text-slate-400 hover:text-white py-2 text-sm font-medium transition-colors">Features</a>
+    <a href="#install"  class="text-slate-400 hover:text-white py-2 text-sm font-medium transition-colors">Install</a>
+    <a href="#api"      class="text-slate-400 hover:text-white py-2 text-sm font-medium transition-colors">API</a>
+    <a href="#frameworks" class="text-slate-400 hover:text-white py-2 text-sm font-medium transition-colors">Frameworks</a>
+    <a href="#react"    class="text-slate-400 hover:text-white py-2 text-sm font-medium transition-colors">React</a>
+    <a href="#types"    class="text-slate-400 hover:text-white py-2 text-sm font-medium transition-colors">Types</a>
+    <div class="flex gap-2 pt-2 border-t border-rim mt-2">
+      <a href="https://www.npmjs.com/package/bd-geo-info" target="_blank" class="flex-1 text-center text-sm font-semibold bg-surface text-slate-300 px-4 py-2 rounded-lg">npm</a>
+      <a href="https://github.com/mdtanvirahamedshanto/bd-geo-info" target="_blank" class="flex-1 text-center text-sm font-semibold bg-accent text-white px-4 py-2 rounded-lg">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="relative overflow-hidden pt-36 pb-24 text-center bg-hero-glow">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 600px 500px at 50% -10%, rgba(0,184,148,0.07) 0%, transparent 70%)"></div>
+  <div class="max-w-4xl mx-auto px-6 relative">
+    <!-- Badges -->
+    <div class="flex flex-wrap gap-2 justify-center mb-7">
+      <a href="https://www.npmjs.com/package/bd-geo-info" target="_blank"><img src="https://img.shields.io/npm/v/bd-geo-info.svg?style=flat-square" alt="npm version" class="h-5" /></a>
+      <a href="https://www.npmjs.com/package/bd-geo-info" target="_blank"><img src="https://img.shields.io/npm/dm/bd-geo-info.svg?style=flat-square" alt="downloads" class="h-5" /></a>
+      <img src="https://img.shields.io/badge/TypeScript-Ready-3178c6?style=flat-square" alt="TypeScript" class="h-5" />
+      <img src="https://img.shields.io/badge/License-MIT-22c55e?style=flat-square" alt="MIT" class="h-5" />
+      <img src="https://img.shields.io/badge/Zero%20Dependencies-required-00b894?style=flat-square" alt="Zero deps" class="h-5" />
+    </div>
+    <!-- Heading -->
+    <h1 class="text-5xl sm:text-6xl font-extrabold leading-tight tracking-tight text-white mb-5">
+      Bangladesh Geo Data<br />
+      <span class="bg-gradient-to-r from-accent to-blue-400 bg-clip-text text-transparent">for Every JS/TS Framework</span>
+    </h1>
+    <p class="text-lg text-slate-400 mb-10 leading-relaxed">
+      Divisions · Districts · Upazilas · Unions · Postcodes<br class="hidden sm:block"/>
+      Bilingual (EN / বাংলা) · Zero required dependencies · Full TypeScript
+    </p>
+    <!-- CTA -->
+    <div class="flex flex-wrap gap-4 justify-center mb-8">
+      <a href="#install" class="bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3 rounded-xl transition-all shadow-lg shadow-accent/25 hover:-translate-y-0.5">Get Started →</a>
+      <a href="#api" class="border border-rim hover:border-accent text-slate-300 hover:text-accent font-semibold px-8 py-3 rounded-xl transition-all">API Reference</a>
+    </div>
+    <!-- Install strip -->
+    <div class="inline-flex items-center gap-3 bg-code border border-rim px-5 py-3 rounded-xl font-mono text-sm text-accent">
+      <span>npm install bd-geo-info</span>
+      <button class="copy-btn text-slate-500 hover:text-accent transition-colors" data-copy="npm install bd-geo-info" title="Copy">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ STATS ═══════════════════════ -->
+<div class="border-y border-rim bg-ink-2">
+  <div class="max-w-6xl mx-auto px-6 grid grid-cols-3 sm:grid-cols-6 divide-x divide-rim">
+    <div class="text-center py-6 px-4"><div class="text-3xl font-extrabold text-accent tracking-tight">8</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">Divisions</div></div>
+    <div class="text-center py-6 px-4"><div class="text-3xl font-extrabold text-accent tracking-tight">64</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">Districts</div></div>
+    <div class="text-center py-6 px-4"><div class="text-3xl font-extrabold text-accent tracking-tight">495</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">Upazilas</div></div>
+    <div class="text-center py-6 px-4"><div class="text-3xl font-extrabold text-accent tracking-tight">4,554</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">Unions</div></div>
+    <div class="text-center py-6 px-4"><div class="text-3xl font-extrabold text-accent tracking-tight">9,000+</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">Post Offices</div></div>
+    <div class="text-center py-6 px-4"><div class="text-3xl font-extrabold text-accent tracking-tight">2</div><div class="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-1">Languages</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ FEATURES ═══════════════════════ -->
+<section id="features" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <span class="inline-block text-xs font-bold tracking-widest uppercase text-accent bg-accent/10 border border-accent/25 px-4 py-1.5 rounded-full mb-4">Why bd-geo-info</span>
+      <h2 class="text-4xl font-extrabold tracking-tight text-white mb-3">Everything you need, nothing you don't</h2>
+      <p class="text-slate-400 text-lg">Built to work anywhere JavaScript runs — frontend, backend, serverless, or edge.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-surface border border-rim rounded-2xl p-6 hover:border-accent/40 hover:-translate-y-1 transition-all group">
+        <div class="text-3xl mb-4">🔌</div>
+        <h3 class="font-bold text-white mb-2">Framework Agnostic</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Core utilities have zero runtime dependencies. Works with React, Vue, Angular, Svelte, NestJS, Express, or plain Node.js.</p>
+      </div>
+      <div class="bg-surface border border-rim rounded-2xl p-6 hover:border-accent/40 hover:-translate-y-1 transition-all">
+        <div class="text-3xl mb-4">⚡</div>
+        <h3 class="font-bold text-white mb-2">O(1) Lookups</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Datasets indexed by parent ID — no linear scans across thousands of records. Instant results at any depth.</p>
+      </div>
+      <div class="bg-surface border border-rim rounded-2xl p-6 hover:border-accent/40 hover:-translate-y-1 transition-all">
+        <div class="text-3xl mb-4">📦</div>
+        <h3 class="font-bold text-white mb-2">Code Split</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Large JSON datasets use dynamic <code class="text-sky-300 bg-ink-3 px-1 rounded text-xs">import()</code> and load on demand — never bloat your initial bundle.</p>
+      </div>
+      <div class="bg-surface border border-rim rounded-2xl p-6 hover:border-accent/40 hover:-translate-y-1 transition-all">
+        <div class="text-3xl mb-4">🌐</div>
+        <h3 class="font-bold text-white mb-2">Bilingual</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Every entry has both English and বাংলা names. Switch output language with a single parameter.</p>
+      </div>
+      <div class="bg-surface border border-rim rounded-2xl p-6 hover:border-accent/40 hover:-translate-y-1 transition-all">
+        <div class="text-3xl mb-4">🔷</div>
+        <h3 class="font-bold text-white mb-2">Full TypeScript</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Strict types for all data shapes and utilities. Separate types for core and React so non-React projects stay clean.</p>
+      </div>
+      <div class="bg-surface border border-rim rounded-2xl p-6 hover:border-accent/40 hover:-translate-y-1 transition-all">
+        <div class="text-3xl mb-4">⚛️</div>
+        <h3 class="font-bold text-white mb-2">Optional React UI</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Pre-built cascading selects via <code class="text-sky-300 bg-ink-3 px-1 rounded text-xs">bd-geo-info/react</code>. Non-React users pay zero cost.</p>
+      </div>
+      <div class="bg-surface border border-rim rounded-2xl p-6 hover:border-accent/40 hover:-translate-y-1 transition-all">
+        <div class="text-3xl mb-4">🗜️</div>
+        <h3 class="font-bold text-white mb-2">Minified Data</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">All JSON assets minified at build time — ~300 KB saved vs raw source on every install.</p>
+      </div>
+      <div class="bg-surface border border-rim rounded-2xl p-6 hover:border-accent/40 hover:-translate-y-1 transition-all">
+        <div class="text-3xl mb-4">🌲</div>
+        <h3 class="font-bold text-white mb-2">Tree Shakeable</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Declares <code class="text-sky-300 bg-ink-3 px-1 rounded text-xs">"sideEffects": false</code>. Bundlers drop every export you don't use.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ INSTALL ═══════════════════════ -->
+<section id="install" class="py-24 bg-ink-2">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <span class="inline-block text-xs font-bold tracking-widest uppercase text-accent bg-accent/10 border border-accent/25 px-4 py-1.5 rounded-full mb-4">Installation</span>
+      <h2 class="text-4xl font-extrabold tracking-tight text-white">Get started in seconds</h2>
+    </div>
+    <!-- PM cards -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+      <div class="bg-surface border border-rim rounded-xl p-4">
+        <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">npm</div>
+        <div class="relative"><pre class="font-mono text-sm text-accent pr-8 overflow-x-auto">npm install bd-geo-info</pre><button class="copy-btn absolute top-0 right-0 text-slate-500 hover:text-accent transition-colors" data-copy="npm install bd-geo-info"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></div>
+      </div>
+      <div class="bg-surface border border-rim rounded-xl p-4">
+        <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">yarn</div>
+        <div class="relative"><pre class="font-mono text-sm text-accent pr-8 overflow-x-auto">yarn add bd-geo-info</pre><button class="copy-btn absolute top-0 right-0 text-slate-500 hover:text-accent transition-colors" data-copy="yarn add bd-geo-info"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></div>
+      </div>
+      <div class="bg-surface border border-rim rounded-xl p-4">
+        <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">pnpm</div>
+        <div class="relative"><pre class="font-mono text-sm text-accent pr-8 overflow-x-auto">pnpm add bd-geo-info</pre><button class="copy-btn absolute top-0 right-0 text-slate-500 hover:text-accent transition-colors" data-copy="pnpm add bd-geo-info"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></div>
+      </div>
+      <div class="bg-surface border border-rim rounded-xl p-4">
+        <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">bun</div>
+        <div class="relative"><pre class="font-mono text-sm text-accent pr-8 overflow-x-auto">bun add bd-geo-info</pre><button class="copy-btn absolute top-0 right-0 text-slate-500 hover:text-accent transition-colors" data-copy="bun add bd-geo-info"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></div>
+      </div>
+    </div>
+    <!-- Callout -->
+    <div class="border-l-4 border-blue-500 bg-blue-500/10 rounded-r-xl px-5 py-4 text-sm text-slate-400 mb-10">
+      <strong class="text-slate-200">Using React components?</strong> Also install React: <code class="font-mono text-sky-300 text-xs bg-ink-3 px-1.5 py-0.5 rounded">npm install bd-geo-info react react-dom</code>
+    </div>
+    <!-- Quick start code -->
+    <h3 class="text-lg font-bold text-white mb-4">Quick Start</h3>
+    <div class="relative bg-code border border-rim rounded-xl overflow-hidden">
+      <div class="flex items-center gap-1.5 px-4 py-3 border-b border-rim bg-ink-3">
+        <span class="w-3 h-3 rounded-full bg-red-500/70"></span>
+        <span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
+        <span class="w-3 h-3 rounded-full bg-green-500/70"></span>
+        <span class="ml-3 text-xs text-slate-500 font-mono">index.ts</span>
+      </div>
+      <pre class="font-mono text-sm leading-relaxed p-6 overflow-x-auto text-slate-300"><code><span class="tk">import</span> { getDivisions, getDistricts, getUpazilas, getUnions } <span class="tk">from</span> <span class="ts">'bd-geo-info'</span>;
+
+<span class="tc">// All divisions (8 divisions of Bangladesh)</span>
+<span class="tk">const</span> divisions = <span class="tk">await</span> getDivisions(<span class="ts">'en'</span>);
+<span class="tc">// [{ value: '1', label: 'Chittagong' }, { value: '3', label: 'Dhaka' }, ...]</span>
+
+<span class="tc">// Districts for a division</span>
+<span class="tk">const</span> districts = <span class="tk">await</span> getDistricts(<span class="ts">'3'</span>, <span class="ts">'en'</span>);
+
+<span class="tc">// Upazilas for a district</span>
+<span class="tk">const</span> upazilas = <span class="tk">await</span> getUpazilas(<span class="ts">'17'</span>, <span class="ts">'en'</span>);
+
+<span class="tc">// Unions for an upazila</span>
+<span class="tk">const</span> unions = <span class="tk">await</span> getUnions(<span class="ts">'101'</span>, <span class="ts">'en'</span>);
+
+<span class="tc">// বাংলা output — just change the language param</span>
+<span class="tk">const</span> divisionsBn = <span class="tk">await</span> getDivisions(<span class="ts">'bn'</span>);
+<span class="tc">// [{ value: '1', label: 'চট্টগ্রাম' }, ...]</span></code></pre>
+      <button class="copy-btn absolute top-12 right-4 text-slate-500 hover:text-accent transition-colors bg-surface border border-rim rounded-lg p-2" data-copy="import { getDivisions, getDistricts, getUpazilas, getUnions } from 'bd-geo-info';
+
+const divisions = await getDivisions('en');
+const districts = await getDistricts('3', 'en');
+const upazilas  = await getUpazilas('17', 'en');
+const unions    = await getUnions('101', 'en');"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ API REFERENCE ═══════════════════════ -->
+<section id="api" class="py-24">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <span class="inline-block text-xs font-bold tracking-widest uppercase text-accent bg-accent/10 border border-accent/25 px-4 py-1.5 rounded-full mb-4">API Reference</span>
+      <h2 class="text-4xl font-extrabold tracking-tight text-white mb-3">All utility functions</h2>
+      <p class="text-slate-400">Import from <code class="font-mono text-sky-300 text-sm bg-ink-3 px-2 py-0.5 rounded">bd-geo-info</code> — no framework required.</p>
+    </div>
+    <div class="flex flex-col gap-4">
+
+      <!-- getDivisions -->
+      <div class="bg-surface border border-rim rounded-2xl p-6 hover:border-accent/35 transition-colors">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="font-mono font-bold text-[#89b4fa] text-lg">getDivisions</span>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-accent bg-accent/15 border border-accent/30 px-2.5 py-0.5 rounded-full">async</span>
+        </div>
+        <div class="font-mono text-xs text-slate-300 bg-code border border-rim px-3 py-2 rounded-lg mb-3 overflow-x-auto">getDivisions(language?: 'en' | 'bn'): Promise&lt;&#123; value: string; label: string &#125;[]&gt;</div>
+        <p class="text-sm text-slate-400 mb-4">Returns all 8 divisions of Bangladesh. Defaults to English.</p>
+        <div class="relative bg-code border border-rim rounded-lg overflow-hidden">
+          <pre class="font-mono text-sm p-4 overflow-x-auto leading-relaxed text-slate-300"><code><span class="tk">const</span> divisions = <span class="tk">await</span> getDivisions(<span class="ts">'en'</span>);
+<span class="tc">// [{ value: '1', label: 'Chittagong' }, { value: '3', label: 'Dhaka' }, ...]</span>
+<span class="tk">const</span> divisionsBn = <span class="tk">await</span> getDivisions(<span class="ts">'bn'</span>);
+<span class="tc">// [{ value: '1', label: 'চট্টগ্রাম' }, ...]</span></code></pre>
+        </div>
+      </div>
+
+      <!-- getDistricts -->
+      <div class="bg-surface border border-rim rounded-2xl p-6 hover:border-accent/35 transition-colors">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="font-mono font-bold text-[#89b4fa] text-lg">getDistricts</span>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-accent bg-accent/15 border border-accent/30 px-2.5 py-0.5 rounded-full">async</span>
+        </div>
+        <div class="font-mono text-xs text-slate-300 bg-code border border-rim px-3 py-2 rounded-lg mb-3 overflow-x-auto">getDistricts(divisionId: string, language?: 'en' | 'bn'): Promise&lt;&#123; value: string; label: string &#125;[]&gt;</div>
+        <p class="text-sm text-slate-400 mb-4">Returns all districts belonging to a division.</p>
+        <div class="relative bg-code border border-rim rounded-lg overflow-hidden">
+          <pre class="font-mono text-sm p-4 overflow-x-auto leading-relaxed text-slate-300"><code><span class="tk">const</span> districts = <span class="tk">await</span> getDistricts(<span class="ts">'3'</span>, <span class="ts">'en'</span>);
+<span class="tc">// [{ value: '17', label: 'Dhaka' }, { value: '26', label: 'Gazipur' }, ...]</span></code></pre>
+        </div>
+      </div>
+
+      <!-- getUpazilas -->
+      <div class="bg-surface border border-rim rounded-2xl p-6 hover:border-accent/35 transition-colors">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="font-mono font-bold text-[#89b4fa] text-lg">getUpazilas</span>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-accent bg-accent/15 border border-accent/30 px-2.5 py-0.5 rounded-full">async</span>
+        </div>
+        <div class="font-mono text-xs text-slate-300 bg-code border border-rim px-3 py-2 rounded-lg mb-3 overflow-x-auto">getUpazilas(districtId: string, language?: 'en' | 'bn'): Promise&lt;(Upazila &amp; &#123; value: string; label: string &#125;)[]&gt;</div>
+        <p class="text-sm text-slate-400 mb-4">Returns all upazilas for a district. Includes full data fields alongside <code class="font-mono text-sky-300 text-xs bg-ink-3 px-1 rounded">value</code> / <code class="font-mono text-sky-300 text-xs bg-ink-3 px-1 rounded">label</code>.</p>
+        <div class="relative bg-code border border-rim rounded-lg overflow-hidden">
+          <pre class="font-mono text-sm p-4 overflow-x-auto leading-relaxed text-slate-300"><code><span class="tk">const</span> upazilas = <span class="tk">await</span> getUpazilas(<span class="ts">'17'</span>, <span class="ts">'en'</span>);
+<span class="tc">// [{ id: '101', district_id: '17', name: 'Mirpur', value: '101', label: 'Mirpur' }, ...]</span></code></pre>
+        </div>
+      </div>
+
+      <!-- getUnions -->
+      <div class="bg-surface border border-rim rounded-2xl p-6 hover:border-accent/35 transition-colors">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="font-mono font-bold text-[#89b4fa] text-lg">getUnions</span>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-accent bg-accent/15 border border-accent/30 px-2.5 py-0.5 rounded-full">async</span>
+        </div>
+        <div class="font-mono text-xs text-slate-300 bg-code border border-rim px-3 py-2 rounded-lg mb-3 overflow-x-auto">getUnions(upazilaId: string, language?: 'en' | 'bn'): Promise&lt;&#123; value: string; label: string; url?: string &#125;[]&gt;</div>
+        <p class="text-sm text-slate-400 mb-4">Returns all unions for an upazila.</p>
+        <div class="relative bg-code border border-rim rounded-lg overflow-hidden">
+          <pre class="font-mono text-sm p-4 overflow-x-auto leading-relaxed text-slate-300"><code><span class="tk">const</span> unions = <span class="tk">await</span> getUnions(<span class="ts">'101'</span>, <span class="ts">'en'</span>);
+<span class="tc">// [{ value: '1001', label: 'Pallabi', url: '' }, ...]</span></code></pre>
+        </div>
+      </div>
+
+      <!-- getPostCode (sync) -->
+      <div class="bg-surface border border-rim rounded-2xl p-6 hover:border-accent/35 transition-colors">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="font-mono font-bold text-[#89b4fa] text-lg">getPostCode</span>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-[#fab387] bg-orange-400/10 border border-orange-400/30 px-2.5 py-0.5 rounded-full">sync</span>
+        </div>
+        <div class="font-mono text-xs text-slate-300 bg-code border border-rim px-3 py-2 rounded-lg mb-3 overflow-x-auto">getPostCode(params: &#123; division?: string; district?: string; upazila?: string &#125; | null): PostCode[]</div>
+        <p class="text-sm text-slate-400 mb-4">Synchronous postcode lookup. Useful inline without <code class="font-mono text-sky-300 text-xs bg-ink-3 px-1 rounded">await</code>.</p>
+        <div class="relative bg-code border border-rim rounded-lg overflow-hidden">
+          <pre class="font-mono text-sm p-4 overflow-x-auto leading-relaxed text-slate-300"><code><span class="tk">const</span> codes = getPostCode(&#123; district: <span class="ts">'17'</span>, upazila: <span class="ts">'Mirpur'</span> &#125;);
+<span class="tc">// [{ postCode: '1216', postOffice: 'Pallabi', upazila: 'Mirpur', ... }]</span></code></pre>
+        </div>
+      </div>
+
+      <!-- formatAddress -->
+      <div class="bg-surface border border-rim rounded-2xl p-6 hover:border-accent/35 transition-colors">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="font-mono font-bold text-[#89b4fa] text-lg">formatAddress</span>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-accent bg-accent/15 border border-accent/30 px-2.5 py-0.5 rounded-full">async</span>
+        </div>
+        <div class="font-mono text-xs text-slate-300 bg-code border border-rim px-3 py-2 rounded-lg mb-3 overflow-x-auto">formatAddress(division, district, upazila, union, postCode, street, language?): Promise&lt;string&gt;</div>
+        <p class="text-sm text-slate-400 mb-4">Resolves IDs to names and returns a human-readable formatted address string.</p>
+        <div class="relative bg-code border border-rim rounded-lg overflow-hidden">
+          <pre class="font-mono text-sm p-4 overflow-x-auto leading-relaxed text-slate-300"><code><span class="tk">const</span> addr = <span class="tk">await</span> formatAddress(<span class="ts">'3'</span>, <span class="ts">'17'</span>, <span class="ts">'101'</span>, <span class="ts">'1001'</span>, <span class="ts">'1216'</span>, <span class="ts">'House 5'</span>, <span class="ts">'en'</span>);
+<span class="tc">// "House 5, Pallabi, Mirpur, Dhaka-1216, Dhaka"</span></code></pre>
+        </div>
+      </div>
+
+      <!-- validatePostCode -->
+      <div class="bg-surface border border-rim rounded-2xl p-6 hover:border-accent/35 transition-colors">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="font-mono font-bold text-[#89b4fa] text-lg">validatePostCode</span>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-[#fab387] bg-orange-400/10 border border-orange-400/30 px-2.5 py-0.5 rounded-full">sync</span>
+        </div>
+        <div class="font-mono text-xs text-slate-300 bg-code border border-rim px-3 py-2 rounded-lg mb-3 overflow-x-auto">validatePostCode(postCode: string): boolean</div>
+        <p class="text-sm text-slate-400 mb-4">Returns <code class="font-mono text-sky-300 text-xs bg-ink-3 px-1 rounded">true</code> for a valid 4-digit Bangladesh postcode.</p>
+        <div class="relative bg-code border border-rim rounded-lg overflow-hidden">
+          <pre class="font-mono text-sm p-4 overflow-x-auto leading-relaxed text-slate-300"><code>validatePostCode(<span class="ts">'1216'</span>); <span class="tc">// true</span>
+validatePostCode(<span class="ts">'12'</span>);   <span class="tc">// false</span>
+validatePostCode(<span class="ts">'abcd'</span>); <span class="tc">// false</span></code></pre>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FRAMEWORK TABS ═══════════════════════ -->
+<section id="frameworks" class="py-24 bg-ink-2">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <span class="inline-block text-xs font-bold tracking-widest uppercase text-accent bg-accent/10 border border-accent/25 px-4 py-1.5 rounded-full mb-4">Framework Guides</span>
+      <h2 class="text-4xl font-extrabold tracking-tight text-white mb-3">Works everywhere</h2>
+      <p class="text-slate-400">The same three imports, any stack.</p>
+    </div>
+    <!-- Tab bar -->
+    <div class="bg-surface border border-rim rounded-2xl overflow-hidden">
+      <div class="flex overflow-x-auto border-b border-rim bg-ink-3" role="tablist">
+        <button class="tab-btn tab-active px-5 py-3.5 text-sm font-semibold text-slate-400 hover:text-white border-b-2 border-transparent whitespace-nowrap transition-all" data-tab="t-node">Node.js / TS</button>
+        <button class="tab-btn px-5 py-3.5 text-sm font-semibold text-slate-400 hover:text-white border-b-2 border-transparent whitespace-nowrap transition-all" data-tab="t-react">React</button>
+        <button class="tab-btn px-5 py-3.5 text-sm font-semibold text-slate-400 hover:text-white border-b-2 border-transparent whitespace-nowrap transition-all" data-tab="t-vue">Vue 3</button>
+        <button class="tab-btn px-5 py-3.5 text-sm font-semibold text-slate-400 hover:text-white border-b-2 border-transparent whitespace-nowrap transition-all" data-tab="t-angular">Angular</button>
+        <button class="tab-btn px-5 py-3.5 text-sm font-semibold text-slate-400 hover:text-white border-b-2 border-transparent whitespace-nowrap transition-all" data-tab="t-svelte">Svelte</button>
+        <button class="tab-btn px-5 py-3.5 text-sm font-semibold text-slate-400 hover:text-white border-b-2 border-transparent whitespace-nowrap transition-all" data-tab="t-nestjs">NestJS</button>
+        <button class="tab-btn px-5 py-3.5 text-sm font-semibold text-slate-400 hover:text-white border-b-2 border-transparent whitespace-nowrap transition-all" data-tab="t-express">Express</button>
+      </div>
+
+      <div id="t-node" class="tab-panel">
+        <pre class="font-mono text-sm p-6 overflow-x-auto leading-relaxed text-slate-300"><code><span class="tk">import</span> { getDivisions, getDistricts, getUpazilas, getUnions, getPostCode } <span class="tk">from</span> <span class="ts">'bd-geo-info'</span>;
+
+<span class="tk">const</span> divisions = <span class="tk">await</span> getDivisions(<span class="ts">'en'</span>);
+<span class="tk">const</span> districts = <span class="tk">await</span> getDistricts(<span class="ts">'3'</span>, <span class="ts">'en'</span>);
+<span class="tk">const</span> upazilas  = <span class="tk">await</span> getUpazilas(<span class="ts">'17'</span>, <span class="ts">'en'</span>);
+<span class="tk">const</span> unions    = <span class="tk">await</span> getUnions(<span class="ts">'101'</span>, <span class="ts">'en'</span>);
+<span class="tk">const</span> codes     = getPostCode({ district: <span class="ts">'17'</span>, upazila: <span class="ts">'Mirpur'</span> });</code></pre>
+      </div>
+
+      <div id="t-react" class="tab-panel hidden">
+        <pre class="font-mono text-sm p-6 overflow-x-auto leading-relaxed text-slate-300"><code><span class="tk">import</span> { useState, useEffect } <span class="tk">from</span> <span class="ts">'react'</span>;
+<span class="tk">import</span> { getDivisions, getDistricts } <span class="tk">from</span> <span class="ts">'bd-geo-info'</span>;
+
+<span class="tk">export function</span> <span class="tf">AddressSelector</span>() {
+  <span class="tk">const</span> [divisions, setDivisions] = useState([]);
+  <span class="tk">const</span> [districts, setDistricts] = useState([]);
+  <span class="tk">const</span> [divisionId, setDivisionId] = useState(<span class="ts">''</span>);
+
+  useEffect(() =&gt; { getDivisions(<span class="ts">'en'</span>).then(setDivisions); }, []);
+  useEffect(() =&gt; {
+    <span class="tk">if</span> (divisionId) getDistricts(divisionId, <span class="ts">'en'</span>).then(setDistricts);
+    <span class="tk">else</span> setDistricts([]);
+  }, [divisionId]);
+
+  <span class="tk">return</span> (
+    &lt;<span class="tg">select</span> value={divisionId} onChange={e =&gt; setDivisionId(e.target.value)}&gt;
+      {divisions.map(d =&gt; &lt;<span class="tg">option</span> key={d.value} value={d.value}&gt;{d.label}&lt;/<span class="tg">option</span>&gt;)}
+    &lt;/<span class="tg">select</span>&gt;
+  );
+}</code></pre>
+      </div>
+
+      <div id="t-vue" class="tab-panel hidden">
+        <pre class="font-mono text-sm p-6 overflow-x-auto leading-relaxed text-slate-300"><code><span class="tg">&lt;script setup lang="ts"&gt;</span>
+<span class="tk">import</span> { ref, watch, onMounted } <span class="tk">from</span> <span class="ts">'vue'</span>;
+<span class="tk">import</span> { getDivisions, getDistricts } <span class="tk">from</span> <span class="ts">'bd-geo-info'</span>;
+
+<span class="tk">const</span> divisions = ref([]);
+<span class="tk">const</span> districts = ref([]);
+<span class="tk">const</span> selectedDivision = ref(<span class="ts">''</span>);
+
+onMounted(<span class="tk">async</span> () =&gt; { divisions.value = <span class="tk">await</span> getDivisions(<span class="ts">'en'</span>); });
+
+watch(selectedDivision, <span class="tk">async</span> (id) =&gt; {
+  districts.value = id ? <span class="tk">await</span> getDistricts(id, <span class="ts">'en'</span>) : [];
+});
+<span class="tg">&lt;/script&gt;</span>
+
+<span class="tg">&lt;template&gt;</span>
+  <span class="tg">&lt;select</span> v-model=<span class="ts">"selectedDivision"</span><span class="tg">&gt;</span>
+    <span class="tg">&lt;option</span> v-for=<span class="ts">"d in divisions"</span> :key=<span class="ts">"d.value"</span> :value=<span class="ts">"d.value"</span><span class="tg">&gt;</span>{{ d.label }}<span class="tg">&lt;/option&gt;</span>
+  <span class="tg">&lt;/select&gt;</span>
+<span class="tg">&lt;/template&gt;</span></code></pre>
+      </div>
+
+      <div id="t-angular" class="tab-panel hidden">
+        <pre class="font-mono text-sm p-6 overflow-x-auto leading-relaxed text-slate-300"><code><span class="tc">// geo.service.ts</span>
+<span class="tk">import</span> { Injectable } <span class="tk">from</span> <span class="ts">'@angular/core'</span>;
+<span class="tk">import</span> { from } <span class="tk">from</span> <span class="ts">'rxjs'</span>;
+<span class="tk">import</span> { getDivisions, getDistricts, getUpazilas } <span class="tk">from</span> <span class="ts">'bd-geo-info'</span>;
+
+<span class="tn">@Injectable</span>({ providedIn: <span class="ts">'root'</span> })
+<span class="tk">export class</span> <span class="tf">GeoService</span> {
+  getDivisions(lang = <span class="ts">'en'</span>) { <span class="tk">return</span> from(getDivisions(lang)); }
+  getDistricts(id: string, lang = <span class="ts">'en'</span>) { <span class="tk">return</span> from(getDistricts(id, lang)); }
+  getUpazilas(id: string, lang = <span class="ts">'en'</span>) { <span class="tk">return</span> from(getUpazilas(id, lang)); }
+}</code></pre>
+      </div>
+
+      <div id="t-svelte" class="tab-panel hidden">
+        <pre class="font-mono text-sm p-6 overflow-x-auto leading-relaxed text-slate-300"><code><span class="tg">&lt;script lang="ts"&gt;</span>
+  <span class="tk">import</span> { onMount } <span class="tk">from</span> <span class="ts">'svelte'</span>;
+  <span class="tk">import</span> { getDivisions, getDistricts } <span class="tk">from</span> <span class="ts">'bd-geo-info'</span>;
+
+  <span class="tk">let</span> divisions = [], districts = [], divisionId = <span class="ts">''</span>;
+
+  onMount(<span class="tk">async</span> () =&gt; { divisions = <span class="tk">await</span> getDivisions(<span class="ts">'en'</span>); });
+
+  <span class="tk">async function</span> <span class="tf">onDivisionChange</span>() {
+    districts = divisionId ? <span class="tk">await</span> getDistricts(divisionId, <span class="ts">'en'</span>) : [];
+  }
+<span class="tg">&lt;/script&gt;</span>
+
+<span class="tg">&lt;select</span> bind:value={divisionId} on:change={onDivisionChange}<span class="tg">&gt;</span>
+  {#each divisions as d}&lt;<span class="tg">option</span> value={d.value}&gt;{d.label}&lt;/<span class="tg">option</span>&gt;{/each}
+<span class="tg">&lt;/select&gt;</span></code></pre>
+      </div>
+
+      <div id="t-nestjs" class="tab-panel hidden">
+        <pre class="font-mono text-sm p-6 overflow-x-auto leading-relaxed text-slate-300"><code><span class="tk">import</span> { Injectable } <span class="tk">from</span> <span class="ts">'@nestjs/common'</span>;
+<span class="tk">import</span> { getDivisions, getDistricts, getUpazilas, getUnions } <span class="tk">from</span> <span class="ts">'bd-geo-info'</span>;
+
+<span class="tn">@Injectable</span>()
+<span class="tk">export class</span> <span class="tf">GeoService</span> {
+  getDivisions(lang: <span class="ts">'en'</span> | <span class="ts">'bn'</span> = <span class="ts">'en'</span>) { <span class="tk">return</span> getDivisions(lang); }
+  getDistricts(id: string, lang = <span class="ts">'en'</span>) { <span class="tk">return</span> getDistricts(id, lang); }
+  getUpazilas(id: string, lang = <span class="ts">'en'</span>) { <span class="tk">return</span> getUpazilas(id, lang); }
+  getUnions(id: string, lang = <span class="ts">'en'</span>) { <span class="tk">return</span> getUnions(id, lang); }
+}</code></pre>
+      </div>
+
+      <div id="t-express" class="tab-panel hidden">
+        <pre class="font-mono text-sm p-6 overflow-x-auto leading-relaxed text-slate-300"><code><span class="tk">import</span> express <span class="tk">from</span> <span class="ts">'express'</span>;
+<span class="tk">import</span> { getDivisions, getDistricts, getUpazilas } <span class="tk">from</span> <span class="ts">'bd-geo-info'</span>;
+
+<span class="tk">const</span> app = express();
+
+app.get(<span class="ts">'/api/divisions'</span>, <span class="tk">async</span> (req, res) =&gt; {
+  res.json(<span class="tk">await</span> getDivisions((req.query.lang ?? <span class="ts">'en'</span>) as <span class="ts">'en'</span> | <span class="ts">'bn'</span>));
+});
+
+app.get(<span class="ts">'/api/districts'</span>, <span class="tk">async</span> (req, res) =&gt; {
+  <span class="tk">const</span> { divisionId, lang = <span class="ts">'en'</span> } = req.query as any;
+  res.json(<span class="tk">await</span> getDistricts(divisionId, lang));
+});
+
+app.listen(<span class="tn">3000</span>);</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ REACT COMPONENTS ═══════════════════════ -->
+<section id="react" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <span class="inline-block text-xs font-bold tracking-widest uppercase text-accent bg-accent/10 border border-accent/25 px-4 py-1.5 rounded-full mb-4">React Components</span>
+      <h2 class="text-4xl font-extrabold tracking-tight text-white mb-3">Pre-built UI for React</h2>
+      <p class="text-slate-400">Import from <code class="font-mono text-sky-300 text-sm bg-ink-3 px-2 py-0.5 rounded">bd-geo-info/react</code>. Non-React projects are completely unaffected.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+      <!-- Left: component list + props table -->
+      <div>
+        <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Available Components</h3>
+        <div class="flex flex-col gap-2 mb-8">
+          <div class="flex items-start gap-3 bg-surface border border-rim rounded-xl px-4 py-3">
+            <code class="font-mono text-sky-300 text-sm whitespace-nowrap">AddressForm</code>
+            <span class="text-sm text-slate-400">Full cascading form with validation, theming, bilingual support</span>
+          </div>
+          <div class="flex items-start gap-3 bg-surface border border-rim rounded-xl px-4 py-3">
+            <code class="font-mono text-sky-300 text-sm whitespace-nowrap">DivisionSelect</code>
+            <span class="text-sm text-slate-400">Standalone division dropdown</span>
+          </div>
+          <div class="flex items-start gap-3 bg-surface border border-rim rounded-xl px-4 py-3">
+            <code class="font-mono text-sky-300 text-sm whitespace-nowrap">DistrictSelect</code>
+            <span class="text-sm text-slate-400">Districts filtered by selected division</span>
+          </div>
+          <div class="flex items-start gap-3 bg-surface border border-rim rounded-xl px-4 py-3">
+            <code class="font-mono text-sky-300 text-sm whitespace-nowrap">UpazilaSelect</code>
+            <span class="text-sm text-slate-400">Upazilas filtered by selected district</span>
+          </div>
+          <div class="flex items-start gap-3 bg-surface border border-rim rounded-xl px-4 py-3">
+            <code class="font-mono text-sky-300 text-sm whitespace-nowrap">UnionSelect</code>
+            <span class="text-sm text-slate-400">Unions filtered by selected upazila</span>
+          </div>
+        </div>
+        <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-4">AddressForm Props</h3>
+        <div class="overflow-x-auto rounded-xl border border-rim">
+          <table class="w-full text-sm border-collapse">
+            <thead><tr class="border-b border-rim bg-ink-3"><th class="text-left px-4 py-2.5 text-xs font-bold text-slate-500 uppercase tracking-wider">Prop</th><th class="text-left px-4 py-2.5 text-xs font-bold text-slate-500 uppercase tracking-wider">Type</th><th class="text-left px-4 py-2.5 text-xs font-bold text-slate-500 uppercase tracking-wider">Default</th></tr></thead>
+            <tbody class="divide-y divide-rim">
+              <tr><td class="px-4 py-2.5"><code class="font-mono text-[#89b4fa] text-xs">language</code></td><td class="px-4 py-2.5"><code class="font-mono text-[#a6e3a1] text-xs">'en' | 'bn'</code></td><td class="px-4 py-2.5 text-xs text-slate-500"><code class="font-mono">'en'</code></td></tr>
+              <tr><td class="px-4 py-2.5"><code class="font-mono text-[#89b4fa] text-xs">onChange</code></td><td class="px-4 py-2.5"><code class="font-mono text-[#a6e3a1] text-xs">(data) =&gt; void</code></td><td class="px-4 py-2.5 text-xs text-slate-500">—</td></tr>
+              <tr><td class="px-4 py-2.5"><code class="font-mono text-[#89b4fa] text-xs">showPostCode</code></td><td class="px-4 py-2.5"><code class="font-mono text-[#a6e3a1] text-xs">boolean</code></td><td class="px-4 py-2.5 text-xs text-slate-500"><code class="font-mono">true</code></td></tr>
+              <tr><td class="px-4 py-2.5"><code class="font-mono text-[#89b4fa] text-xs">showUnion</code></td><td class="px-4 py-2.5"><code class="font-mono text-[#a6e3a1] text-xs">boolean</code></td><td class="px-4 py-2.5 text-xs text-slate-500"><code class="font-mono">true</code></td></tr>
+              <tr><td class="px-4 py-2.5"><code class="font-mono text-[#89b4fa] text-xs">validation</code></td><td class="px-4 py-2.5"><code class="font-mono text-[#a6e3a1] text-xs">AddressFormValidation</code></td><td class="px-4 py-2.5 text-xs text-slate-500">—</td></tr>
+              <tr><td class="px-4 py-2.5"><code class="font-mono text-[#89b4fa] text-xs">customLabels</code></td><td class="px-4 py-2.5"><code class="font-mono text-[#a6e3a1] text-xs">AddressFormLabels</code></td><td class="px-4 py-2.5 text-xs text-slate-500">—</td></tr>
+              <tr><td class="px-4 py-2.5"><code class="font-mono text-[#89b4fa] text-xs">theme</code></td><td class="px-4 py-2.5"><code class="font-mono text-[#a6e3a1] text-xs">Theme</code></td><td class="px-4 py-2.5 text-xs text-slate-500">—</td></tr>
+              <tr><td class="px-4 py-2.5"><code class="font-mono text-[#89b4fa] text-xs">disabled</code></td><td class="px-4 py-2.5"><code class="font-mono text-[#a6e3a1] text-xs">boolean</code></td><td class="px-4 py-2.5 text-xs text-slate-500"><code class="font-mono">false</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Right: code -->
+      <div class="relative bg-code border border-rim rounded-2xl overflow-hidden">
+        <div class="flex items-center gap-1.5 px-4 py-3 border-b border-rim bg-ink-3">
+          <span class="w-3 h-3 rounded-full bg-red-500/70"></span>
+          <span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
+          <span class="w-3 h-3 rounded-full bg-green-500/70"></span>
+          <span class="ml-3 text-xs text-slate-500 font-mono">AddressPage.tsx</span>
+        </div>
+        <pre class="font-mono text-sm p-6 overflow-x-auto leading-relaxed text-slate-300"><code><span class="tc">// Full address form</span>
+<span class="tk">import</span> { AddressForm } <span class="tk">from</span> <span class="ts">'bd-geo-info/react'</span>;
+<span class="tk">import type</span> { AddressFormData } <span class="tk">from</span> <span class="ts">'bd-geo-info/react'</span>;
+
+<span class="tk">export default function</span> <span class="tf">Page</span>() {
+  <span class="tk">return</span> (
+    &lt;<span class="tg">AddressForm</span>
+      language=<span class="ts">"en"</span>
+      onChange={(data: AddressFormData) =&gt; console.log(data)}
+      showPostCode showUnion
+      validation={{
+        division: { required: <span class="tk">true</span> },
+        district: { required: <span class="tk">true</span> },
+      }}
+      theme={{
+        colors: { primary: <span class="ts">'#2563eb'</span> },
+        borderRadius: <span class="ts">'0.5rem'</span>,
+      }}
+    /&gt;
+  );
+}
+
+<span class="tc">// Individual composable selects</span>
+<span class="tk">import</span> {
+  DivisionSelect, DistrictSelect,
+  UpazilaSelect, UnionSelect
+} <span class="tk">from</span> <span class="ts">'bd-geo-info/react'</span>;
+<span class="tk">import type</span> { Division, District, Upazila } <span class="tk">from</span> <span class="ts">'bd-geo-info/react'</span>;
+
+<span class="tk">const</span> [division, setDivision] = useState&lt;Division&gt;();
+<span class="tk">const</span> [district, setDistrict] = useState&lt;District&gt;();
+
+&lt;<span class="tg">DivisionSelect</span>
+  language=<span class="ts">"en"</span>
+  value={division}
+  onChange={setDivision}
+  customLabel=<span class="ts">"Division"</span>
+/&gt;
+&lt;<span class="tg">DistrictSelect</span>
+  division={division}
+  onChange={setDistrict}
+  customLabel=<span class="ts">"District"</span>
+/&gt;</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ TYPES ═══════════════════════ -->
+<section id="types" class="py-24 bg-ink-2">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <span class="inline-block text-xs font-bold tracking-widest uppercase text-accent bg-accent/10 border border-accent/25 px-4 py-1.5 rounded-full mb-4">TypeScript Types</span>
+      <h2 class="text-4xl font-extrabold tracking-tight text-white mb-3">Full type coverage</h2>
+      <p class="text-slate-400">Core types have no React dependency. React types live in a separate import path.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div>
+        <p class="text-sm font-bold text-white mb-3">Core — <code class="font-mono text-sky-300 text-xs bg-ink-3 px-1.5 py-0.5 rounded">bd-geo-info</code></p>
+        <div class="relative bg-code border border-rim rounded-xl overflow-hidden">
+          <pre class="font-mono text-sm p-5 overflow-x-auto leading-relaxed text-slate-300"><code><span class="tk">import type</span> {
+  Division,       <span class="tc">// id, name, bn_name, lat, long</span>
+  District,       <span class="tc">// id, division_id, name, bn_name</span>
+  Upazila,        <span class="tc">// id, district_id, name, bn_name</span>
+  UnionData,      <span class="tc">// id, upazilla_id, name, bn_name</span>
+  PostCode,       <span class="tc">// division_id, upazila, postCode</span>
+  AddressFormData,
+  AddressFormValidation,
+  ValidationRules,
+  Theme,
+} <span class="tk">from</span> <span class="ts">'bd-geo-info'</span>;</code></pre>
+        </div>
+      </div>
+      <div>
+        <p class="text-sm font-bold text-white mb-3">React — <code class="font-mono text-sky-300 text-xs bg-ink-3 px-1.5 py-0.5 rounded">bd-geo-info/react</code></p>
+        <div class="relative bg-code border border-rim rounded-xl overflow-hidden">
+          <pre class="font-mono text-sm p-5 overflow-x-auto leading-relaxed text-slate-300"><code><span class="tk">import type</span> {
+  AddressFormProps,
+  AddressFormErrors,
+  AddressFormLabels,
+  SelectProps,
+  PostOfficeSelectProps,
+  <span class="tc">// + all core types re-exported</span>
+} <span class="tk">from</span> <span class="ts">'bd-geo-info/react'</span>;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="border-t border-rim bg-ink py-16">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-10 mb-12">
+      <div class="col-span-2 sm:col-span-1">
+        <div class="flex items-center gap-2 font-bold text-white mb-3">
+          <span class="text-xl">🇧🇩</span><span>bd-geo-info</span>
+        </div>
+        <p class="text-sm text-slate-500 mb-4 leading-relaxed">Bangladesh geographical data for every JS/TS framework. MIT licensed, open source.</p>
+        <div class="flex flex-wrap gap-2">
+          <a href="https://www.npmjs.com/package/bd-geo-info" target="_blank"><img src="https://img.shields.io/npm/v/bd-geo-info.svg?style=flat-square" alt="npm" class="h-4" /></a>
+          <a href="https://github.com/mdtanvirahamedshanto/bd-geo-info" target="_blank"><img src="https://img.shields.io/github/stars/mdtanvirahamedshanto/bd-geo-info?style=flat-square" alt="stars" class="h-4" /></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Docs</h4>
+        <ul class="flex flex-col gap-2">
+          <li><a href="#install" class="text-sm text-slate-400 hover:text-white transition-colors">Installation</a></li>
+          <li><a href="#api" class="text-sm text-slate-400 hover:text-white transition-colors">API Reference</a></li>
+          <li><a href="#frameworks" class="text-sm text-slate-400 hover:text-white transition-colors">Framework Guides</a></li>
+          <li><a href="#react" class="text-sm text-slate-400 hover:text-white transition-colors">React Components</a></li>
+          <li><a href="#types" class="text-sm text-slate-400 hover:text-white transition-colors">TypeScript Types</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Resources</h4>
+        <ul class="flex flex-col gap-2">
+          <li><a href="https://www.npmjs.com/package/bd-geo-info" target="_blank" class="text-sm text-slate-400 hover:text-white transition-colors">npm Package</a></li>
+          <li><a href="https://github.com/mdtanvirahamedshanto/bd-geo-info" target="_blank" class="text-sm text-slate-400 hover:text-white transition-colors">GitHub Repository</a></li>
+          <li><a href="https://github.com/mdtanvirahamedshanto/bd-geo-info/issues" target="_blank" class="text-sm text-slate-400 hover:text-white transition-colors">Report an Issue</a></li>
+          <li><a href="https://github.com/mdtanvirahamedshanto/bd-geo-info/blob/main/CONTRIBUTING.md" target="_blank" class="text-sm text-slate-400 hover:text-white transition-colors">Contributing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Author</h4>
+        <ul class="flex flex-col gap-2">
+          <li><a href="https://github.com/mdtanvirahamedshanto" target="_blank" class="text-sm text-slate-400 hover:text-white transition-colors">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/mdtanvirahamedshanto/" target="_blank" class="text-sm text-slate-400 hover:text-white transition-colors">LinkedIn</a></li>
+          <li><a href="https://mdtanvirahamedshanto.vercel.app/" target="_blank" class="text-sm text-slate-400 hover:text-white transition-colors">Portfolio</a></li>
+          <li><a href="mailto:mdtanvirahamedshanto@gmail.com" class="text-sm text-slate-400 hover:text-white transition-colors">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-rim pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-600">
+      <span>Made with ❤️ for Bangladesh 🇧🇩</span>
+      <span>MIT License · <a href="https://github.com/mdtanvirahamedshanto" target="_blank" class="hover:text-slate-300 transition-colors">Md Tanvir Ahamed Shanto</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-6 right-6 bg-accent text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow-xl shadow-accent/30 opacity-0 translate-y-2 transition-all duration-300 pointer-events-none">
+  ✓ Copied!
+</div>
+
+<script src="main.js"></script>
 </body>
 </html>
