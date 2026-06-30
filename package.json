@@ -1,7 +1,7 @@
 {
   "name": "bd-geo-info",
-  "version": "5.0.2",
-  "description": "Bangladesh geo address library — division, district, upazila (thana), union, village, ward, postal code & BBS geocode lookup with Bangla/English names, geolocation, address search and validation. Built for JavaScript & TypeScript. Works with Node.js, React, Next.js, Vue, Nuxt, Angular, NestJS, Express, Bun, Svelte, Remix, Astro, Electron and all major JavaScript frameworks.",
+  "version": "5.0.3",
+  "description": "Bangladesh geo address library — division, district, upazila (thana), union, village, postal code & BBS geocode lookup with Bangla/English names. Built for JavaScript & TypeScript. Works with Node.js, React, Next.js, Vue, Nuxt, Angular, NestJS, Express, Bun, Svelte, Remix, Astro, Electron and all major JavaScript frameworks.",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
