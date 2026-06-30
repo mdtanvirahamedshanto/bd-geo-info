@@ -1,7 +1,7 @@
 {
   "name": "bd-geo-info",
-  "version": "5.0.1",
-  "description": "Bangladesh Geo Address** is a comprehensive JavaScript/TypeScript library for Bangladesh administrative and geographic data. Easily perform division, district, upazila (thana), union, village, and postal code lookups with official BBS geocode resolution, Bangla and English name support, and geolocation utilities. Designed for Node.js, and all major frontend and backend frameworks including React, Next.js, Vue, Angular, NestJS, Express, and Bun. Perfect for address forms, e-commerce, logistics, government services, GIS applications, data validation, location-based services, and Bangladesh-focused web and mobile applications. Lightweight, framework-agnostic, TypeScript-ready, and optimized for fast, reliable geographic data access.",
+  "version": "5.0.2",
+  "description": "Bangladesh geo address library — division, district, upazila (thana), union, village, ward, postal code & BBS geocode lookup with Bangla/English names, geolocation, address search and validation. Built for JavaScript & TypeScript. Works with Node.js, React, Next.js, Vue, Nuxt, Angular, NestJS, Express, Bun, Svelte, Remix, Astro, Electron and all major JavaScript frameworks.",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
